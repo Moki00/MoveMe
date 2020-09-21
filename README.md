@@ -2,4 +2,4 @@
 
 ## A Motivational E-Card Generator
 
-### By moki929 and dancingCamel
+By moki929 and dancingCamel
