@@ -4,7 +4,7 @@ import Logo from "./Logo";
 import Links from "./Links";
 
 const BurgerBtn = styled.button.attrs({
-    className: "navbar-toggler",
+    className: "navbar-toggler text-danger",
     type: "button",
 })``;
 
@@ -14,7 +14,7 @@ const BurgerIcon = styled.span.attrs({
 
 const Nav = styled.nav.attrs({
     className:
-        "navbar navbar-expand-lg navbar-dark bg-warning d-flex justify-content-between",
+        "navbar navbar-expand-lg navbar-light bg-warning d-flex justify-content-between",
 })``;
 
 const NavBar = () => {
