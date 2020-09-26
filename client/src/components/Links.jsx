@@ -1,40 +1,37 @@
-import React, { Component } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const Collapse = styled.div.attrs({
-    className: "collpase navbar-collapse",
+    className: "collapse navbar-collapse",
+    id: "navbarSupportedContent",
 })``;
 
-const List = styled.div.attrs({
-    className: "navbar-nav mr-auto",
+const List = styled.ul.attrs({
+    className:
+        "navbar-nav w-25 d-flex justify-content-around ml-auto align-items-end",
 })``;
 
-const Item = styled.div.attrs({
-    className: "collpase navbar-collapse",
+const Item = styled.li.attrs({
+    className: "nav-item",
 })``;
 
 const Links = () => {
     return (
-        <React.Fragment>
-            <Link to="/" className="navbar-brand">
-                My first MERN Application
-            </Link>
-            <Collapse>
-                <List>
-                    <Item>
-                        <Link to="/movies/list" className="nav-link">
-                            List Movies
-                        </Link>
-                    </Item>
-                    <Item>
-                        <Link to="/movies/create" className="nav-link">
-                            Create Movie
-                        </Link>
-                    </Item>
-                </List>
-            </Collapse>
-        </React.Fragment>
+        <Collapse>
+            <List>
+                <Item>
+                    <Link to="/" className="nav-link text-danger">
+                        Home
+                    </Link>
+                </Item>
+                <Item>
+                    <Link to="/create" className="nav-link text-danger">
+                        Create
+                    </Link>
+                </Item>
+            </List>
+        </Collapse>
     );
 };
 

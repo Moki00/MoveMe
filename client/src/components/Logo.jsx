@@ -1,6 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
-import logo from "../logo.svg";
+import logo from "../logo.png";
 
 const Wrapper = styled.a.attrs({
     className: "navbar-brand",
@@ -8,9 +9,11 @@ const Wrapper = styled.a.attrs({
 
 const Logo = () => {
     return (
-        <Wrapper href="#">
-            <img src={logo} width="50" height="50" alt="sambarros.com" />
-        </Wrapper>
+        <Link to="/">
+            <Wrapper href="/">
+                <img src={logo} height="50" alt="" />
+            </Wrapper>
+        </Link>
     );
 };
 
