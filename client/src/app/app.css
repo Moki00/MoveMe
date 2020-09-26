@@ -1,3 +1,12 @@
 .nav-link {
     letter-spacing: 3px;
 }
+
+.app {
+    min-height: 100vh;
+}
+
+footer {
+    bottom: 0;
+    position: fixed;
+}
