@@ -9,7 +9,7 @@ const Wrapper = styled.a.attrs({
 const Logo = () => {
     return (
         <Wrapper href="#">
-            <img src={logo} width="50" height="50" alt="sambarros.com" />
+            <img src={logo} width="50" height="50" alt="" />
         </Wrapper>
     );
 };
