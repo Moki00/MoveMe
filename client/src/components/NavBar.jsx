@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import styled from "styled-components";
 import Logo from "./Logo";
 import Links from "./Links";
@@ -14,7 +14,7 @@ const BurgerIcon = styled.span.attrs({
 
 const Nav = styled.nav.attrs({
     className:
-        "navbar navbar-expand-lg navbar-dark bg-dark d-flex justify-content-between",
+        "navbar navbar-expand-lg navbar-dark bg-warning d-flex justify-content-between",
 })``;
 
 const NavBar = () => {

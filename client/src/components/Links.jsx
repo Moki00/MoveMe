@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
@@ -21,12 +21,12 @@ const Links = () => {
         <Collapse>
             <List>
                 <Item>
-                    <Link to="/" className="nav-link">
+                    <Link to="/" className="nav-link text-danger">
                         Home
                     </Link>
                 </Item>
                 <Item>
-                    <Link to="/create" className="nav-link">
+                    <Link to="/create" className="nav-link text-danger">
                         Create
                     </Link>
                 </Item>
@@ -36,9 +36,3 @@ const Links = () => {
 };
 
 export default Links;
-
-// <div class="collapse navbar-collapse" id="navbarSupportedContent">
-//     <ul class="navbar-nav">
-
-//     </ul>
-// </div>;
