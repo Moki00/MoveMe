@@ -1,21 +1,16 @@
 import React from "react";
 
 const SearchBar = () => {
-    return <Form.Row>
-                <Form.Group as={Col}>
-                    <InputGroup>
-                        <Form.Control
-                            type="text"
-                            placeholder="Search here.."
-                            />
-                       <InputGroup.Prepend>
-                            <InputGroup.Text>
-                                <FontAwesomeIcon icon="search" />
-                            </InputGroup.Text>
-                        </InputGroup.Prepend>
-                    </InputGroup>
-                </Form.Group>
-            </Form.Row>;
+    return (
+  <form class="form-inline">
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">@</span>
+      </div>
+      <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+    </div>
+  </form>
+  )
 };
 
 export default SearchBar;
