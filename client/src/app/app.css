@@ -1,3 +1,24 @@
 .nav-link {
     letter-spacing: 3px;
 }
+
+.quoteNavArea, .imgNavArea {
+  width: 45%;
+  }
+
+.app {
+    min-height: 100vh;
+}
+
+footer {
+    bottom: 0;
+    position: fixed;
+}
+
+.shareBtn {
+    height: 100px;
+}
+
+.shareText {
+    font-size: 35px;
+}

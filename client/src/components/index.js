@@ -4,5 +4,9 @@ import NavBar from "./NavBar";
 import RandomB from "./RandomB";
 import Footer from "./Footer";
 import ShareModal from "./ShareModal";
+import QuoteNavArea from "./QuoteNavArea";
+import ImgNavArea from "./ImgNavArea";
+import ShareBtn from "./ShareBtn";
+import CreateLinkButton from "./CreateLinkButton";
 
-export { Links, Logo, NavBar, RandomB, Footer, ShareModal };
+export { Links, Logo, NavBar, RandomB, Footer, ShareModal, ImgNavArea, CreateLinkButton, ShareBtn, QuoteNavArea };
