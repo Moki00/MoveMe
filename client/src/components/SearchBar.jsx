@@ -13,7 +13,7 @@ const SearchBar = () => {
         />
         <div className="input-group-append">
           <span className="input-group-text bg-warning" id="basic-addon1">
-            <i className="fa fa-search"></i>
+            <i className="fas fa-search"></i>
           </span>
         </div>
       </div>
