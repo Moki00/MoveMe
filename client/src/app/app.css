@@ -2,11 +2,6 @@
     letter-spacing: 3px;
 }
 
-footer {
-    bottom: 0;
-    position: fixed;
-}
-
 .shareBtn {
     height: 100px;
 }
