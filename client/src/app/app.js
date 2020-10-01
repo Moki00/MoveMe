@@ -19,7 +19,6 @@ const App = () => {
                     <Route path="/" exact component={Home} />
                     <Route path="/create" component={Create} />
                 </Switch>      
-                <SocialIcons className="display-1"/>
             </Router>            
         </div>
     );
