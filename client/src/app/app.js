@@ -12,17 +12,17 @@ import "bootstrap/dist/js/bootstrap";
 import "font-awesome/css/font-awesome.css";
 
 const App = () => {
-  return (
-    <div className="app">
-      <Router>
-        <NavBar />
-        <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/create" component={Create} />
-        </Switch>
-      </Router>
-    </div>
-  );
+    return (
+        <div className="app">
+            <Router>
+                <NavBar />
+                <Switch>
+                    <Route path="/" exact component={Home} />
+                    <Route path="/create" component={Create} />
+                </Switch>
+            </Router>
+        </div>
+    );
 };
 
 export default App;
