@@ -5,7 +5,9 @@ import LeftArrowButton from "./LeftArrowButton";
 
 const ImageNavWrapper = styled.div.attrs({
     className: "imgNavArea d-flex flex-column align-item-center text-center",
-})``;
+})`
+    width: 45%;
+`;
 
 const ImageNavButtonWrapper = styled.div.attrs({
     className:
