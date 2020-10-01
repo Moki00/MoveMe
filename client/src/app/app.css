@@ -2,10 +2,6 @@
     letter-spacing: 3px;
 }
 
-.quoteNavArea, .imgNavArea {
-  width: 45%;
-  }
-
 .app {
     min-height: 100vh;
 }
