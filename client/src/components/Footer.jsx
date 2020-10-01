@@ -3,7 +3,10 @@ import styled from "styled-components";
 
 const FooterWrapper = styled.footer.attrs({
     className: "footer bg-warning w-100",
-})``;
+})`
+    bottom: 0;
+    position: fixed;
+`;
 
 const FooterDiv = styled.div.attrs({
     className: "container d-flex justify-content-around",

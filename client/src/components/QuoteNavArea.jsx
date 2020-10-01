@@ -3,7 +3,9 @@ import styled from "styled-components";
 
 const QuoteNavWrapper = styled.div.attrs({
     className: "quoteNavArea d-flex flex-column align-item-center text-center",
-})``;
+})`
+    width: 45%;
+`;
 
 const QuoteNavButtonWrapper = styled.div.attrs({
     className:

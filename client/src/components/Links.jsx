@@ -16,19 +16,29 @@ const Item = styled.li.attrs({
     className: "nav-item",
 })``;
 
+const LinkWrapper = styled.div.attrs({
+    className: "nav-link",
+})`
+    letter-spacing: 3px;
+`;
+
 const Links = () => {
     return (
         <Collapse>
             <List>
                 <Item>
-                    <Link to="/" className="nav-link text-danger">
-                        Home
-                    </Link>
+                    <LinkWrapper>
+                        <Link to="/" className="text-danger">
+                            Home
+                        </Link>
+                    </LinkWrapper>
                 </Item>
                 <Item>
-                    <Link to="/create" className="nav-link text-danger">
-                        Create
-                    </Link>
+                    <LinkWrapper>
+                        <Link to="/create" className="text-danger">
+                            Create
+                        </Link>
+                    </LinkWrapper>
                 </Item>
             </List>
         </Collapse>
