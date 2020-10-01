@@ -1,23 +1,19 @@
 import React from "react";
-import styled from "styled-components";
-
-
-const a = styled.button.attrs({
-    
-})`
-
- padding: 20px;
-  font-size: 30px;
-  width: 50px;
-  text-align: center;
-  text-decoration: none;
-  margin: 5px 2px;
-  `;
+import insta from'../images/instagram.png';
+import facebook from'../images/facebook.png';
+import twitter from'../images/twitter.png';
+import whatsapp from'../images/whatsapp.png';
+import './styles/social.css';
 
 const SocialIcons = () =>{
 	return(
-		<a href="#" className="fa fa-instagram"></a>
-		);
+ <div className="iconspanel">
+<a href=""><img src={insta} className="fa" alt="" /></a>
+<a href=""><img src={facebook} className="fa" alt="" /></a>
+<a href=""><img src={twitter} className="fa" alt="" /></a>
+<a href=""><img src={whatsapp} className="fa" alt="" /></a>
+ </div>
+ );
 };
 
 export default SocialIcons;

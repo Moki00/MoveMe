@@ -19,7 +19,7 @@ const App = () => {
                     <Route path="/" exact component={Home} />
                     <Route path="/create" component={Create} />
                 </Switch>      
-                <SocialIcons />
+                <SocialIcons className="display-1"/>
             </Router>            
         </div>
     );
