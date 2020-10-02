@@ -3,30 +3,20 @@ import styled from "styled-components";
 import { TwitterShareButton } from "react-share";
 import { TwitterIcon } from "react-share";
 
-import ReactDOM from "react-dom";
-ReactDOM.render(
-    <SocialIcon url="https://twitter.com/jaketrent" />,
-    document.body
-);
-
-const Button = styled.button.attrs({
-    className: "btn btn-lg btn-warning text-danger shareBtn w-75",
-    type: "button",
-})`
-    height: 100px;
-`;
-
-const Text = styled.div.attrs({
-    className: "font-weight-bold shareText",
-})`
-    font-size: 35px;
-`;
+// const Button = styled.button.attrs({
+//     className: "",
+// })``;
 
 const ShareTwitter = () => {
     return (
-        <Button data-toggle="modal" data-target="#shareModal">
-            <TwitterIcon size={32} round={true} />;
-        </Button>
+        //URL should be taken from State and linked to view image page; get hashtags from State
+        <TwitterShareButton
+            url="google.com"
+            title="e-card from MoveMe:"
+            hashtags={["nature"]}
+        >
+            <TwitterIcon borderRadius={10} />
+        </TwitterShareButton>
     );
 };
 
