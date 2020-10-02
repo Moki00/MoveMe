@@ -1,6 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import { TwitterShareButton } from "react-share";
+import { TwitterIcon } from "react-share";
+
+import ReactDOM from "react-dom";
+ReactDOM.render(
+    <SocialIcon url="https://twitter.com/jaketrent" />,
+    document.body
+);
 
 const Button = styled.button.attrs({
     className: "btn btn-lg btn-warning text-danger shareBtn w-75",
