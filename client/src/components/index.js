@@ -10,6 +10,19 @@ import QuoteNavArea from "./QuoteNavArea";
 import ImgNavArea from "./ImgNavArea";
 import ShareBtn from "./ShareBtn";
 import CreateLinkButton from "./CreateLinkButton";
+import ShareTwitter from "./ShareTwitter";
 
-export { Links, Logo, NavBar, RandomB, Footer, ShareModal, ImgNavArea, CreateLinkButton, ShareBtn, QuoteNavArea, SearchBar};
-
+export {
+    Links,
+    Logo,
+    NavBar,
+    RandomB,
+    Footer,
+    ShareModal,
+    ImgNavArea,
+    CreateLinkButton,
+    ShareBtn,
+    QuoteNavArea,
+    SearchBar,
+    ShareTwitter,
+};
