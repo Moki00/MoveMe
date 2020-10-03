@@ -95,6 +95,11 @@ const Canvas = () => {
             canvasRef.current.width,
             canvasRef.current.height
         );
+        // https://stackoverflow.com/questions/15661339/how-do-i-fix-blurry-text-in-my-html5-canvas
+        canvasRef.current.width = 1000; // set this to viewport width?
+        canvasRef.current.height = 500; // set this to viewport height?
+        canvasRef.current.style.width = canvasRef.current.width;
+        canvasRef.current.style.height = canvasRef.current.height;
         context.fillStyle = textColor;
         context.font = `${fontWeight} ${fontSize}px ${font}`;
         context.textAlign = "center";
