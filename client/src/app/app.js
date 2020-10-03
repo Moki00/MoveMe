@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { NavBar, ImgNavArea, QuoteNavArea } from "../components";
+import { NavBar, ImgNavArea, QuoteNavArea, ShareTwitter } from "../components";
 import Create from "../pages/Create";
 import Home from "../pages/Home";
 import styled from "styled-components";
