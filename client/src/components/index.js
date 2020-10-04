@@ -11,6 +11,7 @@ import ImgNavArea from "./ImgNavArea";
 import ShareBtn from "./ShareBtn";
 import CreateLinkButton from "./CreateLinkButton";
 import ShareTwitter from "./ShareTwitter";
+import ShareWhatsapp from "./ShareWhatsapp";
 
 export {
     Links,
@@ -25,4 +26,5 @@ export {
     QuoteNavArea,
     SearchBar,
     ShareTwitter,
+    ShareWhatsapp,
 };
