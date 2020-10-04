@@ -8,7 +8,7 @@ const ShareWhatsapp = () => {
         <WhatsappShareButton
             url="google.com"
             title="e-card from MoveMe:"
-            hashtags={["nature"]}
+            separator=" "
         >
             <WhatsappIcon borderRadius={10} />
         </WhatsappShareButton>
