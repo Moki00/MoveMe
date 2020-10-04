@@ -1,11 +1,6 @@
 import React from "react";
-import styled from "styled-components";
 import { FacebookShareButton } from "react-share";
 import { FacebookIcon } from "react-share";
-
-// const Button = styled.button.attrs({
-//     className: "",
-// })``;
 
 const ShareFacebook = () => {
     return (
@@ -13,6 +8,7 @@ const ShareFacebook = () => {
         <FacebookShareButton
             url="google.com"
             hashtags={["nature"]}
+            quote="e-card from MoveMe:"
         >
             <FacebookIcon borderRadius={10} />
         </FacebookShareButton>
