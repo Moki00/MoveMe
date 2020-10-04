@@ -9,6 +9,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "jquery/dist/jquery.js";
 import "popper.js/dist/popper";
 import "bootstrap/dist/js/bootstrap";
+import "font-awesome/css/font-awesome.css";
 
 const App = () => {
     return (

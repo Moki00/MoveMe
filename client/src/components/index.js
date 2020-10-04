@@ -11,5 +11,16 @@ import ImgNavArea from "./ImgNavArea";
 import ShareBtn from "./ShareBtn";
 import CreateLinkButton from "./CreateLinkButton";
 
-export { Links, Logo, NavBar, RandomB, Footer, ShareModal, ImgNavArea, CreateLinkButton, ShareBtn, QuoteNavArea, SearchBar};
-
+export {
+    Links,
+    Logo,
+    NavBar,
+    RandomB,
+    Footer,
+    ShareModal,
+    ImgNavArea,
+    CreateLinkButton,
+    ShareBtn,
+    QuoteNavArea,
+    SearchBar,
+};
