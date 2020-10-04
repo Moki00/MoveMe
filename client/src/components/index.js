@@ -10,7 +10,7 @@ import QuoteNavArea from "./QuoteNavArea";
 import ImgNavArea from "./ImgNavArea";
 import ShareBtn from "./ShareBtn";
 import CreateLinkButton from "./CreateLinkButton";
-import CardPreviewArea from "./Canvas";
+import { TextCanvas, ImgCanvas, FinalCanvas } from "./Canvas";
 
 export {
     Links,
@@ -24,5 +24,7 @@ export {
     ShareBtn,
     QuoteNavArea,
     SearchBar,
-    CardPreviewArea,
+    TextCanvas,
+    ImgCanvas,
+    FinalCanvas,
 };
