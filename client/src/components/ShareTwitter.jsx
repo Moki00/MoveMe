@@ -1,11 +1,6 @@
 import React from "react";
-import styled from "styled-components";
 import { TwitterShareButton } from "react-share";
 import { TwitterIcon } from "react-share";
-
-// const Button = styled.button.attrs({
-//     className: "",
-// })``;
 
 const ShareTwitter = () => {
     return (
