@@ -2,11 +2,18 @@ import React, { useRef } from "react";
 import styled from "styled-components";
 
 const SearchIconButton = styled.div.attrs({
+    className: "input-group-text bg-warning",
+    id: "SearchIcon",
+})``;
+
+const Wrapper = styled.div.attrs({
     className: "input-group-append",
     id: "searchButton",
-    // change later
 })`
     cursor: pointer;
+    &:hover ${SearchIconButton} {
+        transform: scale(1.1);
+    }
 `;
 
 const SearchBar = () => {
@@ -22,14 +29,13 @@ const SearchBar = () => {
                     aria-describedby="SearchIcon"
                     useRef={searchBoxRef}
                 />
-                <SearchIconButton>
-                    <span
-                        className="input-group-text bg-warning"
-                        id="SearchIcon"
-                    >
-                        <i className="fa fa-search"></i>
-                    </span>
-                </SearchIconButton>
+                <Wrapper>
+                    <SearchIconButton>
+                        <span>
+                            <i className="fa fa-search"></i>
+                        </span>
+                    </SearchIconButton>
+                </Wrapper>
             </div>
         </form>
     );
