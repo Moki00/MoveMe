@@ -19,7 +19,6 @@ const App = () => {
     const [fontSize, setFontSize] = useState(18);
     const [fontWeight, setFontWeight] = useState("400");
     const [textColor, setTextColor] = useState("black");
-    const [lineHeight, setLineHeight] = useState(18);
     const [canvasWidth, setCanvasWidth] = useState(0);
     const [canvasHeight, setCanvasHeight] = useState(150);
     const [margin, setMargin] = useState(10);
@@ -33,7 +32,6 @@ const App = () => {
     const [finalFontSize, setFinalFontSize] = useState(18);
     const [finalFontWeight, setFinalFontWeight] = useState("400");
     const [finalTextColor, setFinalTextColor] = useState("black");
-    const [finalLineHeight, setFinalLineHeight] = useState(18);
     const [finalCanvasWidth, setFinalCanvasWidth] = useState(0);
     const [finalCanvasHeight, setFinalCanvasHeight] = useState(150);
     const [finalMargin, setFinalMargin] = useState(10);
@@ -54,7 +52,6 @@ const App = () => {
     };
 
     const generateFinalCanvas = () =>{
-        // console.log("making the final image")
         setFinalImgUrl(imgUrl)
         setFinalText(text)
         setFinalFont(font)
