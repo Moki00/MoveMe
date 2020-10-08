@@ -1,32 +1,41 @@
-import React from "react";
+import React, { useRef } from "react";
 import styled from "styled-components";
 
-const Button = styled.button.attrs({
-    type: "button",
-    className: "btn btn-warning",
+const SearchIconButton = styled.div.attrs({
+    className: "input-group-text bg-warning",
+    id: "SearchIcon",
 })``;
 
+const Wrapper = styled.div.attrs({
+    className: "input-group-append",
+    id: "searchButton",
+})`
+    cursor: pointer;
+    &:hover ${SearchIconButton} {
+        transform: scale(1.1);
+    }
+`;
+
 const SearchBar = () => {
+    const searchBoxRef = useRef(null);
     return (
         <form className="form-inline">
             <div className="input-group">
                 <input
                     type="text"
                     className="form-control"
-                    placeholder="Username"
-                    aria-label="Username"
-                    aria-describedby="basic-addon1"
+                    placeholder="e.g. Nature"
+                    aria-label="SearchBox"
+                    aria-describedby="SearchIcon"
+                    useRef={searchBoxRef}
                 />
-                <div className="input-group-append">
-                    <span
-                        className="input-group-text bg-warning"
-                        id="basic-addon1"
-                    >
-                        <Button data-toggle="modal" data-target="#shareModal">
+                <Wrapper>
+                    <SearchIconButton>
+                        <span>
                             <i className="fa fa-search"></i>
-                        </Button>
-                    </span>
-                </div>
+                        </span>
+                    </SearchIconButton>
+                </Wrapper>
             </div>
         </form>
     );
