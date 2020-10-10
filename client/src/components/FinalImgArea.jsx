@@ -26,6 +26,7 @@ const FinalImgArea = ({finalImgUrl,
                     finalBgColor= {finalBgColor}
                     finalBgOpacity = {finalBgOpacity}
                     generateFinalCanvas={generateFinalCanvas}
+                    id="finalCanvas"
                 /> 
         </div>
     )

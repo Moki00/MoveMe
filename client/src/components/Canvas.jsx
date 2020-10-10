@@ -245,7 +245,8 @@ const FinalCanvas = ({
     finalMargin,
     finalBgColor,
     finalBgOpacity,
-    generateFinalCanvas
+    generateFinalCanvas,
+    id
 }) => {
     const canvasRef = useRef(null);
 
@@ -348,6 +349,7 @@ const FinalCanvas = ({
                 // textColor={textColor}
                 width={window.outerWidth}
                 onClick = {handleGenerateFinalCanvas}
+                id={id}
             />
         </div>
     );

@@ -81,7 +81,8 @@ const Create = () => {
                     finalMargin = {finalMargin}
                     finalBgColor= {finalBgColor}
                     finalBgOpacity = {finalBgOpacity}
-                    generateFinalCanvas={generateFinalCanvas}/>
+                    generateFinalCanvas={generateFinalCanvas}
+                    />
         </div>
     );
 };

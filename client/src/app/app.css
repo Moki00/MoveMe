@@ -31,3 +31,7 @@ footer {
     top: 0px;
     left: 0px;
 }
+
+#finalCanvas {
+    visibility: hidden;
+}
