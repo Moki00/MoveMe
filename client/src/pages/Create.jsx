@@ -28,6 +28,10 @@ const Create = () => {
     const [finalBgColor, setFinalBgColor] = useState("#ffffff");
     const [finalBgOpacity, setFinalBgOpacity] = useState(0.2);
 
+    //Quote Api
+    const [random, setRandom] = useState(true);
+    const [searchTerm, setSearchTerm] = useState("");
+
     // remove for production. replace with functions to grap api data / user settings and set props
     const clickCanvas = () => {
         setImgUrl(background);
@@ -38,51 +42,81 @@ const Create = () => {
                 "Just some example text   happens if it gets really long? But what hapy long? But what happeple text but what happens if it gets really long? But what happeappeple text but what happens if it gets really long? But what happes if it gets really really really long?"
             );
         }, 2000);
-        
     };
 
-    const generateFinalCanvas = () =>{
-        setFinalImgUrl(imgUrl)
-        setFinalText(text)
-        setFinalFont(font)
-        setFinalFontSize(fontSize)
-        setFinalFontWeight(fontWeight)
-        setFinalTextColor(textColor)
-        setFinalMargin(margin)
-        setFinalBgColor(bgColor)
-        setFinalBgOpacity(bgOpacity)
-    }
+    const generateFinalCanvas = () => {
+        setFinalImgUrl(imgUrl);
+        setFinalText(text);
+        setFinalFont(font);
+        setFinalFontSize(fontSize);
+        setFinalFontWeight(fontWeight);
+        setFinalTextColor(textColor);
+        setFinalMargin(margin);
+        setFinalBgColor(bgColor);
+        setFinalBgOpacity(bgOpacity);
+    };
+
+    //function for quote Api
+    const getQuote = async () => {
+        if (random) {
+            const response = await fetch(
+                "https://cors-anywhere.herokuapp.com/https://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en",
+                {
+                    mode: "cors",
+                    headers: {
+                        "Access-Control-Allow-Origin": "http://localhost:8000",
+                    },
+                }
+            );
+            const responsejson = await response.json();
+            console.log(responsejson);
+            setText(responsejson.quoteText + " - " + responsejson.quoteAuthor);
+        } else {
+            //run other quote API
+        }
+    };
 
     return (
         <div>
             <p>In this page you'll see the image creation screen</p>
-            <ImgPreviewArea text={text}
-                    font={font}
-                    fontSize={fontSize}
-                    fontWeight={fontWeight}
-                    textColor={textColor}
-                    clickCanvas={clickCanvas}
-                    width={window.outerWidth}
-                    canvasHeight={canvasHeight}
-                    margin={margin}
-                    bgColor={bgColor}
-                    bgOpacity = {bgOpacity}
-                    // background import is just for testing. remove later
-                    background = {background}
-                    setCanvasHeight={setCanvasHeight}
-                    imgUrl={imgUrl}/>
-            <FinalImgArea finalImgUrl={finalImgUrl}
-                    finalText={finalText}
-                    finalFont={finalFont}
-                    finalFontSize={finalFontSize}
-                    finalFontWeight={finalFontWeight}
-                    finalTextColor={finalTextColor}
-                    width={window.outerWidth}
-                    finalMargin = {finalMargin}
-                    finalBgColor= {finalBgColor}
-                    finalBgOpacity = {finalBgOpacity}
-                    generateFinalCanvas={generateFinalCanvas}
-                    />
+            <div
+                height="100px"
+                width="100px"
+                style={{ backgroundColor: "blue", marginTop: "30px" }}
+                onClick={getQuote}
+            >
+                button
+            </div>
+            <ImgPreviewArea
+                text={text}
+                font={font}
+                fontSize={fontSize}
+                fontWeight={fontWeight}
+                textColor={textColor}
+                clickCanvas={clickCanvas}
+                width={window.outerWidth}
+                canvasHeight={canvasHeight}
+                margin={margin}
+                bgColor={bgColor}
+                bgOpacity={bgOpacity}
+                // background import is just for testing. remove later
+                background={background}
+                setCanvasHeight={setCanvasHeight}
+                imgUrl={imgUrl}
+            />
+            <FinalImgArea
+                finalImgUrl={finalImgUrl}
+                finalText={finalText}
+                finalFont={finalFont}
+                finalFontSize={finalFontSize}
+                finalFontWeight={finalFontWeight}
+                finalTextColor={finalTextColor}
+                width={window.outerWidth}
+                finalMargin={finalMargin}
+                finalBgColor={finalBgColor}
+                finalBgOpacity={finalBgOpacity}
+                generateFinalCanvas={generateFinalCanvas}
+            />
         </div>
     );
 };
