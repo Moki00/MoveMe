@@ -4,7 +4,7 @@ import NavBar from "./NavBar";
 import RandomB from "./RandomB";
 import Footer from "./Footer";
 import SearchBar from "./SearchBar";
-
+import FontEdit from "./font-edit";
 import ShareModal from "./ShareModal";
 import QuoteNavArea from "./QuoteNavArea";
 import ImgNavArea from "./ImgNavArea";
@@ -27,4 +27,5 @@ export {
     SearchBar,
     ShareTwitter,
     ShareWhatsapp,
+    FontEdit
 };

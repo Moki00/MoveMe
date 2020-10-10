@@ -6,6 +6,7 @@ import {
     QuoteNavArea,
     ShareTwitter,
     ShareWhatsapp,
+    FontEdit
 } from "../components";
 import Create from "../pages/Create";
 import Home from "../pages/Home";
