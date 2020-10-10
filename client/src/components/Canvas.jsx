@@ -74,7 +74,8 @@ const TextCanvas = ({
     margin,
     clickCanvas,
     bgColor,
-    bgOpacity
+    bgOpacity,
+    id
 }) => {
     // we use a ref to access the canvas' DOM node
     const canvasRef = useRef(null);
@@ -154,6 +155,7 @@ const TextCanvas = ({
                 textColor={textColor}
                 onClick={handleClickCanvas}
                 width={window.outerWidth}
+                id={id}
             />
         </div>
     );
@@ -167,6 +169,7 @@ const ImgCanvas = ({
     fontWeight,
     textColor,
     setCanvasHeight,
+    id
 }) => {
     // we use a ref to access the canvas' DOM node
     const canvasRef = useRef(null);
@@ -226,6 +229,7 @@ const ImgCanvas = ({
                 fontWeight={fontWeight}
                 textColor={textColor}
                 width={window.outerWidth}
+                id={id}
             />
         </div>
     );

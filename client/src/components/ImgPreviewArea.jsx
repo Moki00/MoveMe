@@ -1,5 +1,10 @@
 import React from 'react';
+import styled from 'styled-components'
 import { TextCanvas, ImgCanvas } from ".";
+
+const Wrapper = styled.div.attrs({})`
+    position: relative;    
+`;
 
 const ImgPreviewArea = ({
     text,
@@ -17,7 +22,19 @@ const ImgPreviewArea = ({
     setCanvasHeight,
 }) => {
     return (
-        <div>
+        <Wrapper>
+            <ImgCanvas
+                imgUrl={imgUrl}
+                text={text}
+                font={font}
+                fontSize={fontSize}
+                fontWeight={fontWeight}
+                textColor={textColor}
+                width={window.outerWidth}
+                background={background}
+                setCanvasHeight={setCanvasHeight}
+                id="imgCanvas"
+            />
             <TextCanvas
                 text={text}
                 font={font}
@@ -30,20 +47,9 @@ const ImgPreviewArea = ({
                 margin={margin}
                 bgColor={bgColor}
                 bgOpacity = {bgOpacity}
+                id="textCanvas"
             />
-            <ImgCanvas
-                imgUrl={imgUrl}
-                text={text}
-                font={font}
-                fontSize={fontSize}
-                fontWeight={fontWeight}
-                textColor={textColor}
-                width={window.outerWidth}
-                background={background}
-                setCanvasHeight={setCanvasHeight}
-            />
-                
-        </div>
+        </Wrapper>
     )
 }
 

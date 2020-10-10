@@ -2,9 +2,10 @@
     letter-spacing: 3px;
 }
 
-.quoteNavArea, .imgNavArea {
-  width: 45%;
-  }
+.quoteNavArea,
+.imgNavArea {
+    width: 45%;
+}
 
 .app {
     min-height: 100vh;
@@ -21,4 +22,12 @@ footer {
 
 .shareText {
     font-size: 35px;
+}
+
+/* Canvas Area */
+#textCanvas,
+#imgCanvas {
+    position: absolute;
+    top: 0px;
+    left: 0px;
 }
