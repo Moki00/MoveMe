@@ -1,24 +1,44 @@
-import React from "react";
+import React, { useRef } from "react";
+import styled from "styled-components";
+
+const SearchIconButton = styled.div.attrs({
+    className: "input-group-text bg-warning",
+    id: "SearchIcon",
+})``;
+
+const Wrapper = styled.div.attrs({
+    className: "input-group-append",
+    id: "searchButton",
+})`
+    cursor: pointer;
+    &:hover ${SearchIconButton} {
+        transform: scale(1.1);
+    }
+`;
 
 const SearchBar = () => {
-  return (
-    <form className="form-inline">
-      <div className="input-group">
-        <input
-          type="text"
-          className="form-control"
-          placeholder="Username"
-          aria-label="Username"
-          aria-describedby="basic-addon1"
-        />
-        <div className="input-group-append">
-          <span className="input-group-text bg-warning" id="basic-addon1">
-            <i className="fa fa-search"></i>
-          </span>
-        </div>
-      </div>
-    </form>
-  );
+    const searchBoxRef = useRef(null);
+    return (
+        <form className="form-inline">
+            <div className="input-group">
+                <input
+                    type="text"
+                    className="form-control"
+                    placeholder="e.g. Nature"
+                    aria-label="SearchBox"
+                    aria-describedby="SearchIcon"
+                    useRef={searchBoxRef}
+                />
+                <Wrapper>
+                    <SearchIconButton>
+                        <span>
+                            <i className="fa fa-search"></i>
+                        </span>
+                    </SearchIconButton>
+                </Wrapper>
+            </div>
+        </form>
+    );
 };
 
 export default SearchBar;

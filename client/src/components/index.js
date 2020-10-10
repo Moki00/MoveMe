@@ -12,6 +12,8 @@ import ShareBtn from "./ShareBtn";
 import CreateLinkButton from "./CreateLinkButton";
 import FinalImgArea from "./FinalImgArea";
 import { TextCanvas, ImgCanvas, FinalCanvas } from "./Canvas";
+import ShareTwitter from "./ShareTwitter";
+import ShareWhatsapp from "./ShareWhatsapp";
 
 export {
     Links,
@@ -30,4 +32,6 @@ export {
     FinalCanvas,
     ImgPreviewArea,
     FinalImgArea
+    ShareTwitter,
+    ShareWhatsapp,
 };
