@@ -31,7 +31,7 @@ export {
     ImgCanvas,
     FinalCanvas,
     ImgPreviewArea,
-    FinalImgArea
+    FinalImgArea,
     ShareTwitter,
     ShareWhatsapp,
 };
