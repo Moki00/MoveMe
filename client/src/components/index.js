@@ -4,12 +4,13 @@ import NavBar from "./NavBar";
 import RandomB from "./RandomB";
 import Footer from "./Footer";
 import SearchBar from "./SearchBar";
-
+import ImgPreviewArea from "./ImgPreviewArea";
 import ShareModal from "./ShareModal";
 import QuoteNavArea from "./QuoteNavArea";
 import ImgNavArea from "./ImgNavArea";
 import ShareBtn from "./ShareBtn";
 import CreateLinkButton from "./CreateLinkButton";
+import FinalImgArea from "./FinalImgArea";
 import { TextCanvas, ImgCanvas, FinalCanvas } from "./Canvas";
 
 export {
@@ -27,4 +28,6 @@ export {
     TextCanvas,
     ImgCanvas,
     FinalCanvas,
+    ImgPreviewArea,
+    FinalImgArea
 };
