@@ -20,6 +20,8 @@ import "font-awesome/css/font-awesome.css";
 
 const AppWrapper = styled.div`
     min-height: 100vh;
+    background-color: #333333;
+    color: #e5e5e5
 `;
 
 const App = () => {
