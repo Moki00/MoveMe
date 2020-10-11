@@ -30,7 +30,7 @@ const Create = () => {
 
     //Quote Api
     const [random, setRandom] = useState(false); //set to true for production!!
-    const [searchTerm, setSearchTerm] = useState("");
+    const [searchTerm, setSearchTerm] = useState("Nature"); //set to emptry string for production!!
 
     // Unsplash API
     // populate this in image fetch function
@@ -77,17 +77,24 @@ const Create = () => {
             console.log(responsejson);
             setText(responsejson.quoteText + " - " + responsejson.quoteAuthor);
         } else {
-            const response = await fetch(
-                "https://api.paperquotes.com/apiv1/quotes/?tags=love",
-                {
+            let quote = "";
+            let author = "";
+            while (quote == "") {
+                let offset = Math.ceil(Math.random() * 100);
+                let url = `https://api.paperquotes.com/apiv1/quotes?tags=${searchTerm}&limit=1&offset=${offset}`;
+                const response = await fetch(url, {
                     headers: {
                         Authorization:
                             "Token c2edfb4e967ae878f377afa3810c0dd7ef5ab7ce",
                     },
-                }
-            );
-            const responsejson = await response.json();
-            console.log(responsejson);
+                });
+                const responsejson = await response.json();
+                quote = responsejson.results[0].quote;
+                author = responsejson.results[0].author;
+                console.log(responsejson);
+            }
+            console.log(quote); //get list of all tags from paperquotes
+            setText(quote + " - " + author);
         }
     };
 
