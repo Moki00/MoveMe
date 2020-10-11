@@ -29,14 +29,19 @@ const Create = () => {
     const [finalBgOpacity, setFinalBgOpacity] = useState(0.2);
 
     //Quote Api
-    const [random, setRandom] = useState(true);
+    const [random, setRandom] = useState(false); //set to true for production!!
     const [searchTerm, setSearchTerm] = useState("");
+
+    // Unsplash API
+    // populate this in image fetch function
+    const [photographer, setPhotographer] = useState("");
 
     // remove for production. replace with functions to grap api data / user settings and set props
     const clickCanvas = () => {
         setImgUrl(background);
         setBgColor("#FF00FF");
         setBgOpacity(0.2);
+        setPhotographer("Jim Bean");
         setTimeout(function () {
             setText(
                 "Just some example text   happens if it gets really long? But what hapy long? But what happeple text but what happens if it gets really long? But what happeappeple text but what happens if it gets really long? But what happes if it gets really really really long?"
@@ -72,7 +77,17 @@ const Create = () => {
             console.log(responsejson);
             setText(responsejson.quoteText + " - " + responsejson.quoteAuthor);
         } else {
-            //run other quote API
+            const response = await fetch(
+                "https://api.paperquotes.com/apiv1/quotes/?tags=love",
+                {
+                    headers: {
+                        Authorization:
+                            "Token c2edfb4e967ae878f377afa3810c0dd7ef5ab7ce",
+                    },
+                }
+            );
+            const responsejson = await response.json();
+            console.log(responsejson);
         }
     };
 
@@ -116,6 +131,7 @@ const Create = () => {
                 finalBgColor={finalBgColor}
                 finalBgOpacity={finalBgOpacity}
                 generateFinalCanvas={generateFinalCanvas}
+                photographer={photographer}
             />
         </div>
     );
