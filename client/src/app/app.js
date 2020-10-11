@@ -33,6 +33,7 @@ const App = () => {
                     <Route path="/create" component={Create} />
                 </Switch>
             </Router>
+            <FontEdit />
         </AppWrapper>
     );
 };
