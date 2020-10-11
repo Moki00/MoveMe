@@ -317,7 +317,7 @@ const FinalCanvas = ({
             );
 
             // add attribution
-            addAttribution(canvasRef.current, context, finalTextColor, photographer, "Unsplah.com");
+            addAttribution(canvasRef.current, context, finalTextColor, photographer, "Unsplah");
         };
     }, [finalImgUrl, finalText, finalFont, finalFontSize, finalFontWeight, finalTextColor, finalMargin,  finalBgColor, finalBgOpacity]);
 
