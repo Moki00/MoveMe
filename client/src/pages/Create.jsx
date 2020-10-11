@@ -30,7 +30,7 @@ const Create = () => {
 
     //Quote Api
     const [random, setRandom] = useState(false); //set to true for production!!
-    const [searchTerm, setSearchTerm] = useState("Nature"); //set to emptry string for production!!
+    const [searchTerm, setSearchTerm] = useState("deceptive-hunters-series"); //set to emptry string for production!!
 
     // Unsplash API
     // populate this in image fetch function
@@ -79,8 +79,9 @@ const Create = () => {
         } else {
             let quote = "";
             let author = "";
-            while (quote == "") {
-                let offset = Math.ceil(Math.random() * 100);
+            let maxOffset = 100;
+            while (quote === "") {
+                let offset = Math.ceil(Math.random() * maxOffset);
                 let url = `https://api.paperquotes.com/apiv1/quotes?tags=${searchTerm}&limit=1&offset=${offset}`;
                 const response = await fetch(url, {
                     headers: {
@@ -89,8 +90,14 @@ const Create = () => {
                     },
                 });
                 const responsejson = await response.json();
-                quote = responsejson.results[0].quote;
-                author = responsejson.results[0].author;
+                if (
+                    responsejson.results.length > 0 &&
+                    responsejson.results != undefined
+                ) {
+                    quote = responsejson.results[0].quote;
+                    author = responsejson.results[0].author;
+                }
+                maxOffset /= 4;
                 console.log(responsejson);
             }
             console.log(quote); //get list of all tags from paperquotes
