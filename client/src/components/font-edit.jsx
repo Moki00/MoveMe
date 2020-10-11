@@ -17,25 +17,49 @@ const wrapper = styled.div.attrs({
 })`	
 `;
 
+const Container = styled.div.attrs({
+	className:"container"
+})`
+line-height:40px;	
+`;
+
+const Row = styled.div.attrs({
+	className:"row "
+})`	`;
+
+const Col = styled.div.attrs({
+	className:"col-lg-2	"
+})`	`;
+
 const FontEdit = () =>{
  return(
- 	<wrapper>
- 		Size
- 		<Button className="ml-5">+</Button>
- 		<Button>-</Button>
- 		<br /><br />
- 		Font Weight	
- 		<Button>+</Button>
- 		<Button>-</Button>
- 		<br /><br />	
- 		Font color <input type="color"/>
- 		<br /><br />
- 		Background color <input type="color"/>
- 		<br /><br />
- 		Background Opacity	
- 		<Button>+</Button>
- 		<Button>-</Button>
- 	</wrapper>
+ 	<Container>
+  <Row>
+    <Col>Size</Col>
+    <Col><Button >+</Button></Col>
+    <Col><Button >-</Button></Col>
+  </Row>
+  <Row>
+    <Col>Font Weight</Col>
+    <Col><Button >+</Button></Col>
+    <Col><Button >-</Button></Col>
+  </Row>
+  <Row>
+    <Col>Font color </Col>
+    <Col></Col>
+    <Col><input type="color"/></Col>
+  </Row>
+    <Row>
+    <Col>Background color</Col>
+    <Col></Col>
+    <Col><input type="color"/></Col>
+  </Row>
+    <Row>
+    <Col>Background Opacity</Col>
+    <Col><Button >+</Button></Col>
+    <Col><Button >-</Button></Col>
+  </Row>
+</Container>
  	)
 }
 
