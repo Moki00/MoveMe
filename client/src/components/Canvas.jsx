@@ -64,6 +64,22 @@ const wrapText = (
     }
 }
 
+const addAttribution = (
+    canvas,
+    context,
+    textColor,
+    photographer,
+    source) => {
+        context.textAlign = "end";
+        context.fillStyle = textColor;
+        context.font = 'normal 10px Georgia';
+
+        const attribution = `Made by MoveMe. Photo by ${photographer} on ${source}`;
+        const x=canvas.width;
+        const y=canvas.height;
+        context.fillText(attribution, x - 5, y - 5);
+}
+
 const TextCanvas = ({
     text,
     font,
@@ -246,6 +262,7 @@ const FinalCanvas = ({
     finalBgColor,
     finalBgOpacity,
     generateFinalCanvas,
+    photographer,
     id
 }) => {
     const canvasRef = useRef(null);
@@ -285,7 +302,7 @@ const FinalCanvas = ({
             context.fillRect(0,0,canvasRef.current.width,canvasRef.current.height);
             context.restore();
 
-            // write text
+            // write quote
             wrapText(
                 canvasRef.current,
                 context,
@@ -298,32 +315,35 @@ const FinalCanvas = ({
                 finalTextColor,
                 finalFontWeight
             );
+
+            // add attribution
+            addAttribution(canvasRef.current, context, finalTextColor, photographer, "Unsplah");
         };
     }, [finalImgUrl, finalText, finalFont, finalFontSize, finalFontWeight, finalTextColor, finalMargin,  finalBgColor, finalBgOpacity]);
 
     // handle changing text
-    useEffect(() => {
-        const context = canvasRef.current.getContext("2d");
-        //draw overlay
-        context.save();
-        context.globalAlpha = finalBgOpacity;
-        context.fillStyle = finalBgColor;
-        context.fillRect(0,0,canvasRef.current.width,canvasRef.current.height);
-        context.restore();
+    // useEffect(() => {
+    //     const context = canvasRef.current.getContext("2d");
+    //     //draw overlay
+    //     context.save();
+    //     context.globalAlpha = finalBgOpacity;
+    //     context.fillStyle = finalBgColor;
+    //     context.fillRect(0,0,canvasRef.current.width,canvasRef.current.height);
+    //     context.restore();
 
-        wrapText(
-            canvasRef.current,
-            context,
-            finalText,
-            canvasRef.current.width / 2,
-            canvasRef.current.height / 2,
-            finalMargin,
-            finalFont,
-            finalFontSize,
-            finalTextColor,
-            finalFontWeight
-        );
-    }, [finalText, finalFont, finalFontSize, finalFontWeight, finalTextColor, finalMargin,  finalBgColor, finalBgOpacity]);
+    //     wrapText(
+    //         canvasRef.current,
+    //         context,
+    //         finalText,
+    //         canvasRef.current.width / 2,
+    //         canvasRef.current.height / 2,
+    //         finalMargin,
+    //         finalFont,
+    //         finalFontSize,
+    //         finalTextColor,
+    //         finalFontWeight
+    //     );
+    // }, [finalText, finalFont, finalFontSize, finalFontWeight, finalTextColor, finalMargin,  finalBgColor, finalBgOpacity]);
 
     // set style width of canvas to fixed value 
     useEffect(() => {

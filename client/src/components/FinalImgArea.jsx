@@ -11,7 +11,7 @@ const FinalImgArea = ({finalImgUrl,
     finalMargin,
     finalBgColor,
     finalBgOpacity,
-    generateFinalCanvas,}) => {
+    generateFinalCanvas,photographer}) => {
     return (
         <div>
             <FinalCanvas
@@ -26,6 +26,7 @@ const FinalImgArea = ({finalImgUrl,
                     finalBgColor= {finalBgColor}
                     finalBgOpacity = {finalBgOpacity}
                     generateFinalCanvas={generateFinalCanvas}
+                    photographer = {photographer}
                     id="finalCanvas"
                 /> 
         </div>
