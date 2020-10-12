@@ -1,15 +1,12 @@
 import React from "react";
 import styled from "styled-components";
+import {Dropdown} from "react-bootstrap";
+
 
 const Button = styled.div.attrs({
     className: "btn btn-warning ",
 })`
 width:100px;
-`;
-
-const dropdown = styled.div.attrs({
-    className: "btn btn-secondary dropdown-toggle",
-})`
 `;
 
 const wrapper = styled.div.attrs({
@@ -28,8 +25,10 @@ const Row = styled.div.attrs({
 })`	`;
 
 const Col = styled.div.attrs({
-	className:"col-lg-2	"
-})`	`;
+	className:"col-sm-2"
+})`
+	`;
+
 
 const FontEdit = () =>{
  return(
@@ -59,6 +58,23 @@ const FontEdit = () =>{
     <Col><Button >+</Button></Col>
     <Col><Button >-</Button></Col>
   </Row>
+  <Row>
+  <Col>Font</Col>
+  <Col></Col>
+  <Col>
+  <Dropdown>
+  <Dropdown.Toggle variant="warning" id="dropdown-basic">
+    Dropdown
+  </Dropdown.Toggle>
+
+  <Dropdown.Menu>
+    <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+    <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+    <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+  </Dropdown.Menu>
+</Dropdown>
+</Col>
+</Row>
 </Container>
  	)
 }

@@ -13,6 +13,7 @@ import CreateLinkButton from "./CreateLinkButton";
 import ShareTwitter from "./ShareTwitter";
 import ShareWhatsapp from "./ShareWhatsapp";
 
+
 export {
     Links,
     Logo,
@@ -27,5 +28,6 @@ export {
     SearchBar,
     ShareTwitter,
     ShareWhatsapp,
-    FontEdit
+    FontEdit,
+
 };
