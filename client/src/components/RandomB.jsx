@@ -6,8 +6,11 @@ const Button = styled.button.attrs({
     className: "btn btn-primary",
 })``;
 
-const RandomB = () => {
-    return <Button>Random</Button>;
+const RandomB = ({ getQuote }) => {
+    const handleGetQuote = () => {
+        getQuote();
+    };
+    return <Button onClick={handleGetQuote}>Random</Button>;
 };
 
 export default RandomB;

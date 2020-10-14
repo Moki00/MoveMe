@@ -112,7 +112,7 @@ const Create = () => {
                 height="100px"
                 width="100px"
                 style={{ backgroundColor: "blue", marginTop: "30px" }}
-                onClick={getQuote}
+                getQuote={getQuote}
             />
             <ImgPreviewArea
                 text={text}
