@@ -79,17 +79,23 @@ const Create = () => {
         } else {
             let quote = "";
             let author = "";
-            let maxOffset = 100;
+            let offset = 100;
+            let counter = 0;
             while (quote === "") {
-                let offset = Math.ceil(Math.random() * maxOffset);
+                offset = Math.floor(Math.random() * offset);
                 let url = `https://api.paperquotes.com/apiv1/quotes?tags=${searchTerm}&limit=1&offset=${offset}`;
                 const response = await fetch(url, {
                     headers: {
                         Authorization:
-                            "Token c2edfb4e967ae878f377afa3810c0dd7ef5ab7ce",
+                            "Token f95acdb382c7b0aa5a7723e2e68f1ada66d39875",
                     },
                 });
                 const responsejson = await response.json();
+                // console.log(counter);
+                // console.log(responsejson);
+                // console.log(responsejson.results);
+                // console.log(responsejson.results.length);
+
                 if (
                     responsejson.results.length > 0 &&
                     responsejson.results != undefined
@@ -97,11 +103,17 @@ const Create = () => {
                     quote = responsejson.results[0].quote;
                     author = responsejson.results[0].author;
                 }
-                maxOffset /= 4;
-                console.log(responsejson);
+                offset = Math.ceil(offset / 2) - 1;
+                counter++;
+                if (counter == 4) {
+                    break; //show warning to user
+                }
             }
             console.log(quote); //get list of all tags from paperquotes
-            setText(quote + " - " + author);
+            if (quote != "") {
+                quote = quote.replace(author, "");
+                setText(quote + " - " + author);
+            }
         }
     };
 
