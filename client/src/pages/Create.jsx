@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FinalImgArea, ImgPreviewArea } from "../components";
+import { FinalImgArea, ImgPreviewArea, RandomB } from "../components";
 import background from "../images/blossom.jpg"; // need to get this from state passed from app.js
 
 const Create = () => {
@@ -108,14 +108,12 @@ const Create = () => {
     return (
         <div>
             <p>In this page you'll see the image creation screen</p>
-            <div
+            <RandomB
                 height="100px"
                 width="100px"
                 style={{ backgroundColor: "blue", marginTop: "30px" }}
                 onClick={getQuote}
-            >
-                button
-            </div>
+            />
             <ImgPreviewArea
                 text={text}
                 font={font}
