@@ -30,7 +30,7 @@ const Create = () => {
 
     //Quote Api
     const [random, setRandom] = useState(false); //set to true for production!!
-    const [searchTerm, setSearchTerm] = useState("deceptive-hunters-series"); //set to emptry string for production!!
+    const [searchTerm, setSearchTerm] = useState("nature"); //(deceptive-hunters-series) set to emptry string for production!!
 
     // Unsplash API
     // populate this in image fetch function
@@ -67,10 +67,10 @@ const Create = () => {
             const response = await fetch(
                 "https://cors-anywhere.herokuapp.com/https://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en",
                 {
-                    mode: "cors",
-                    headers: {
-                        "Access-Control-Allow-Origin": "http://localhost:8000",
-                    },
+                    // mode: "cors",
+                    // headers: {
+                    //     "Access-Control-Allow-Origin": "http://localhost:8000",
+                    // },
                 }
             );
             const responsejson = await response.json();
