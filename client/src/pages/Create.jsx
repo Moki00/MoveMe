@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FinalImgArea, ImgPreviewArea } from "../components";
+import { FinalImgArea, ImgPreviewArea, RandomB } from "../components";
 import background from "../images/blossom.jpg"; // need to get this from state passed from app.js
 
 const Create = () => {
@@ -29,8 +29,12 @@ const Create = () => {
     const [finalBgOpacity, setFinalBgOpacity] = useState(0.2);
 
     //Quote Api
-    const [random, setRandom] = useState(true);
-    const [searchTerm, setSearchTerm] = useState("");
+    const [random, setRandom] = useState(false); //set to true for production!!
+    const [searchTerm, setSearchTerm] = useState("nature"); //(deceptive-hunters-series) set to emptry string for production!!
+
+    // Unsplash API
+    // populate this in image fetch function
+    const [photographer, setPhotographer] = useState("");
 
     // Unsplash API
     // populate this in image fetch function
@@ -41,7 +45,8 @@ const Create = () => {
         setImgUrl(background);
         setBgColor("#FF00FF");
         setBgOpacity(0.2);
-        setPhotographer("Jim Bean")
+        setPhotographer("Jim Bean");
+
         setTimeout(function () {
             setText(
                 "Just some example text   happens if it gets really long? But what hapy long? But what happeple text but what happens if it gets really long? But what happeappeple text but what happens if it gets really long? But what happes if it gets really really really long?"
@@ -67,31 +72,65 @@ const Create = () => {
             const response = await fetch(
                 "https://cors-anywhere.herokuapp.com/https://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en",
                 {
-                    mode: "cors",
-                    headers: {
-                        "Access-Control-Allow-Origin": "http://localhost:8000",
-                    },
+                    // mode: "cors",
+                    // headers: {
+                    //     "Access-Control-Allow-Origin": "http://localhost:8000",
+                    // },
                 }
             );
             const responsejson = await response.json();
             console.log(responsejson);
             setText(responsejson.quoteText + " - " + responsejson.quoteAuthor);
         } else {
-            //run other quote API
+            let quote = "";
+            let author = "";
+            let offset = 100;
+            let counter = 0;
+            while (quote === "") {
+                offset = Math.floor(Math.random() * offset);
+                let url = `https://api.paperquotes.com/apiv1/quotes?tags=${searchTerm}&limit=1&offset=${offset}`;
+                const response = await fetch(url, {
+                    headers: {
+                        Authorization:
+                            "Token f95acdb382c7b0aa5a7723e2e68f1ada66d39875",
+                    },
+                });
+                const responsejson = await response.json();
+                // console.log(counter);
+                // console.log(responsejson);
+                // console.log(responsejson.results);
+                // console.log(responsejson.results.length);
+
+                if (
+                    responsejson.results.length > 0 &&
+                    responsejson.results != undefined
+                ) {
+                    quote = responsejson.results[0].quote;
+                    author = responsejson.results[0].author;
+                }
+                offset = Math.ceil(offset / 2) - 1;
+                counter++;
+                if (counter == 4) {
+                    break; //show warning to user
+                }
+            }
+            console.log(quote); //get list of all tags from paperquotes
+            if (quote != "") {
+                quote = quote.replace(author, "");
+                setText(quote + " - " + author);
+            }
         }
     };
 
     return (
         <div>
             <p>In this page you'll see the image creation screen</p>
-            <div
+            <RandomB
                 height="100px"
                 width="100px"
                 style={{ backgroundColor: "blue", marginTop: "30px" }}
-                onClick={getQuote}
-            >
-                button
-            </div>
+                getQuote={getQuote}
+            />
             <ImgPreviewArea
                 text={text}
                 font={font}
@@ -122,6 +161,7 @@ const Create = () => {
                 finalBgOpacity={finalBgOpacity}
                 generateFinalCanvas={generateFinalCanvas}
                 photographer = {photographer}
+
             />
         </div>
     );
