@@ -36,12 +36,17 @@ const Create = () => {
     // populate this in image fetch function
     const [photographer, setPhotographer] = useState("");
 
+    // Unsplash API
+    // populate this in image fetch function
+    const [photographer, setPhotographer]= useState("");
+
     // remove for production. replace with functions to grap api data / user settings and set props
     const clickCanvas = () => {
         setImgUrl(background);
         setBgColor("#FF00FF");
         setBgOpacity(0.2);
         setPhotographer("Jim Bean");
+
         setTimeout(function () {
             setText(
                 "Just some example text   happens if it gets really long? But what hapy long? But what happeple text but what happens if it gets really long? But what happeappeple text but what happens if it gets really long? But what happes if it gets really really really long?"
@@ -155,7 +160,8 @@ const Create = () => {
                 finalBgColor={finalBgColor}
                 finalBgOpacity={finalBgOpacity}
                 generateFinalCanvas={generateFinalCanvas}
-                photographer={photographer}
+                photographer = {photographer}
+
             />
         </div>
     );
