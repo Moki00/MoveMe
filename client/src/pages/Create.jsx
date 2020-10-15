@@ -137,10 +137,6 @@ const Create = () => {
             setPhotographer(responsejson.user.name);
             setImgUrl(responsejson.urls.regular);
         } else {
-            // need to use offsets again as this search always pulls up the same list
-            // use page as offset?
-            // or just get loads of images and save to local storage?
-            // or hit api twice. first time grab the "total" and then use that as a random page denominator
             const checkTotalImages = await fetch(
                 `https://api.unsplash.com/search/photos?query=${searchTerm}&per_page=0`,
                 {
@@ -150,7 +146,7 @@ const Create = () => {
                 }
             );
             const checkTotalImagesJson = await checkTotalImages.json();
-            // Sometimes images can't be found with larget offsets, so limit to 600
+            // Sometimes images can't be found with large offsets, so limit to 600
             let maxOffset =
                 checkTotalImagesJson.total > 600
                     ? 600
