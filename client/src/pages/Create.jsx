@@ -36,10 +36,6 @@ const Create = () => {
     // populate this in image fetch function
     const [photographer, setPhotographer] = useState("");
 
-    // Unsplash API
-    // populate this in image fetch function
-    const [photographer, setPhotographer]= useState("");
-
     // remove for production. replace with functions to grap api data / user settings and set props
     const clickCanvas = () => {
         setImgUrl(background);
@@ -160,8 +156,7 @@ const Create = () => {
                 finalBgColor={finalBgColor}
                 finalBgOpacity={finalBgOpacity}
                 generateFinalCanvas={generateFinalCanvas}
-                photographer = {photographer}
-
+                photographer={photographer}
             />
         </div>
     );
