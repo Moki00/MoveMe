@@ -6,7 +6,6 @@ import {
     QuoteNavArea,
     ShareTwitter,
     ShareWhatsapp,
-    Carousel1
 } from "../components";
 import Create from "../pages/Create";
 import Home from "../pages/Home";
@@ -33,7 +32,6 @@ const App = () => {
                     <Route path="/create" component={Create} />
                 </Switch>
             </Router>
-            <Carousel1 />
         </AppWrapper>
     );
 };
