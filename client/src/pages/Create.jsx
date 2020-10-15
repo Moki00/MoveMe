@@ -36,7 +36,7 @@ const Create = () => {
     // populate this in image fetch function
     const [photographer, setPhotographer] = useState("");
 
-    // remove for production. replace with functions to grap api data / user settings and set props
+    // remove for production. replace with functions to grab api data / user settings and set props
     const clickCanvas = () => {
         setImgUrl(background);
         setBgColor("#FF00FF");
@@ -68,10 +68,10 @@ const Create = () => {
             const response = await fetch(
                 "https://cors-anywhere.herokuapp.com/https://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en",
                 {
-                    // mode: "cors",
-                    // headers: {
-                    //     "Access-Control-Allow-Origin": "http://localhost:8000",
-                    // },
+                    mode: "cors",
+                    headers: {
+                        "Access-Control-Allow-Origin": "http://localhost:8000",
+                    },
                 }
             );
             const responsejson = await response.json();
@@ -115,6 +115,14 @@ const Create = () => {
                 quote = quote.replace(author, "");
                 setText(quote + " - " + author);
             }
+        }
+    };
+
+    const getImage = () => {
+        if (random) {
+            setImgUrl("");
+        } else {
+            setImgUrl("");
         }
     };
 
