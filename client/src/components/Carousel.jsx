@@ -4,7 +4,7 @@ import quote1 from "../quote1.jpg";
 import quote2 from "../quote2.jpg";
 import quote3 from "../quote3.jpeg";
 
-const Carousel1 = () => {
+const CarouselArea = () => {
     return (
         <div>
             <Carousel interval="3000">

@@ -4,7 +4,7 @@ import NavBar from "./NavBar";
 import RandomB from "./RandomB";
 import Footer from "./Footer";
 import SearchBar from "./SearchBar";
-import Carousel1 from "./Carousel";
+import CarouselArea from "./Carousel";
 import ImgPreviewArea from "./ImgPreviewArea";
 import ShareModal from "./ShareModal";
 import QuoteNavArea from "./QuoteNavArea";
@@ -35,5 +35,5 @@ export {
     FinalImgArea,
     ShareTwitter,
     ShareWhatsapp,
-    Carousel1	
+    CarouselArea,
 };
