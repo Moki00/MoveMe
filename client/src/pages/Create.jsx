@@ -150,13 +150,13 @@ const Create = () => {
                 }
             );
             const checkTotalImagesJson = await checkTotalImages.json();
+            // Sometimes images can't be found with larget offsets, so limit to 600
             let maxOffset =
                 checkTotalImagesJson.total > 600
                     ? 600
                     : checkTotalImagesJson.total;
 
             const offset = Math.floor(Math.random() * maxOffset);
-            console.log(checkTotalImagesJson);
 
             const response = await fetch(
                 `https://api.unsplash.com/search/photos?query=${searchTerm}&per_page=1&content_filter=high&page=${offset}`,
@@ -169,7 +169,6 @@ const Create = () => {
             const responsejson = await response.json();
             console.log(responsejson);
 
-            // error check
             if (responsejson.results.length === 0) {
                 // show error here
                 return;
