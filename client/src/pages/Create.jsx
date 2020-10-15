@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { FinalImgArea, ImgPreviewArea, RandomB } from "../components";
 import background from "../images/blossom.jpg"; // need to get this from state passed from app.js
+import { UNSPLASH_ACCESS_KEY, UNSPLASH_SECRET_KEY } from "../app/keys";
 
 const Create = () => {
-    const [imgUrl, setImgUrl] = useState("");
     const [text, setText] = useState("Quote here");
     const [font, setFont] = useState("Ariel");
     const [fontSize, setFontSize] = useState(18);
@@ -30,16 +30,17 @@ const Create = () => {
 
     //Quote Api
     const [random, setRandom] = useState(false); //set to true for production!!
-    const [searchTerm, setSearchTerm] = useState("nature"); //(deceptive-hunters-series) set to emptry string for production!!
+    const [searchTerm, setSearchTerm] = useState("o3f3fqw"); //(nature / deceptive hunters series) set to emptry string for production!!
 
     // Unsplash API
     // populate this in image fetch function
     const [photographer, setPhotographer] = useState("");
+    const [imgUrl, setImgUrl] = useState("");
 
     // remove for production. replace with functions to grab api data / user settings and set props
     const clickCanvas = () => {
         setImgUrl(background);
-        setBgColor("#FF00FF");
+        setBgColor("#ADD8E6");
         setBgOpacity(0.2);
         setPhotographer("Jim Bean");
 
@@ -83,8 +84,9 @@ const Create = () => {
             let offset = 100;
             let counter = 0;
             while (quote === "") {
+                const formattedSearchTerm = searchTerm.replace(" ", "-");
                 offset = Math.floor(Math.random() * offset);
-                let url = `https://api.paperquotes.com/apiv1/quotes?tags=${searchTerm}&limit=1&offset=${offset}`;
+                let url = `https://api.paperquotes.com/apiv1/quotes?tags=${formattedSearchTerm}&limit=1&offset=${offset}`;
                 const response = await fetch(url, {
                     headers: {
                         Authorization:
@@ -118,17 +120,71 @@ const Create = () => {
         }
     };
 
-    const getImage = () => {
+    const getImage = async () => {
         if (random) {
-            setImgUrl("");
+            const response = await fetch(
+                "https://api.unsplash.com/photos/random",
+                {
+                    // mode: "cors",
+                    headers: {
+                        // "Access-Control-Allow-Origin": "http://localhost:8000",
+                        Authorization: "Client-ID " + UNSPLASH_ACCESS_KEY,
+                    },
+                }
+            );
+            const responsejson = await response.json();
+            console.log(responsejson);
+            setPhotographer(responsejson.user.name);
+            setImgUrl(responsejson.urls.regular);
         } else {
-            setImgUrl("");
+            // need to use offsets again as this search always pulls up the same list
+            // use page as offset?
+            // or just get loads of images and save to local storage?
+            // or hit api twice. first time grab the "total" and then use that as a random page denominator
+            const checkTotalImages = await fetch(
+                `https://api.unsplash.com/search/photos?query=${searchTerm}&per_page=0`,
+                {
+                    headers: {
+                        Authorization: "Client-ID " + UNSPLASH_ACCESS_KEY,
+                    },
+                }
+            );
+            const checkTotalImagesJson = await checkTotalImages.json();
+            let maxOffset =
+                checkTotalImagesJson.total > 600
+                    ? 600
+                    : checkTotalImagesJson.total;
+
+            const offset = Math.floor(Math.random() * maxOffset);
+            console.log(checkTotalImagesJson);
+
+            const response = await fetch(
+                `https://api.unsplash.com/search/photos?query=${searchTerm}&per_page=1&content_filter=high&page=${offset}`,
+                {
+                    headers: {
+                        Authorization: "Client-ID " + UNSPLASH_ACCESS_KEY,
+                    },
+                }
+            );
+            const responsejson = await response.json();
+            console.log(responsejson);
+
+            // error check
+            if (responsejson.results.length === 0) {
+                // show error here
+                return;
+            }
+
+            setPhotographer(responsejson.results[0].user.name);
+            setImgUrl(responsejson.results[0].urls.regular);
         }
     };
 
     return (
         <div>
-            <p>In this page you'll see the image creation screen</p>
+            <p onClick={getImage}>
+                In this page you'll see the image creation screen
+            </p>
             <RandomB
                 height="100px"
                 width="100px"
