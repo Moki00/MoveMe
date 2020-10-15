@@ -6,7 +6,7 @@ import {
     QuoteNavArea,
     ShareTwitter,
     ShareWhatsapp,
-    
+    Footer
 } from "../components";
 import Create from "../pages/Create";
 import Home from "../pages/Home";
@@ -21,6 +21,8 @@ import "font-awesome/css/font-awesome.css";
 
 const AppWrapper = styled.div`
     min-height: 100vh;
+    background-color: #333333;
+    color: #e5e5e5
 `;
 
 const App = () => {
@@ -33,6 +35,7 @@ const App = () => {
                     <Route path="/create" component={Create} />
                 </Switch>
             </Router>
+            <Footer />
         </AppWrapper>
     );
 };
