@@ -5,6 +5,8 @@ import RandomB from "./RandomB";
 import Footer from "./Footer";
 import SearchBar from "./SearchBar";
 import Carousel1 from "./Carousel";
+import NxtBtn from "./NextBtn";
+import PrvBtn from "./PreviousBtn";
 import ImgPreviewArea from "./ImgPreviewArea";
 import ShareModal from "./ShareModal";
 import QuoteNavArea from "./QuoteNavArea";
@@ -15,6 +17,7 @@ import FinalImgArea from "./FinalImgArea";
 import { TextCanvas, ImgCanvas, FinalCanvas } from "./Canvas";
 import ShareTwitter from "./ShareTwitter";
 import ShareWhatsapp from "./ShareWhatsapp";
+
 
 export {
     Links,
@@ -35,5 +38,7 @@ export {
     FinalImgArea,
     ShareTwitter,
     ShareWhatsapp,
-    Carousel1	
+    Carousel1,
+    PrvBtn,
+    NxtBtn	
 };
