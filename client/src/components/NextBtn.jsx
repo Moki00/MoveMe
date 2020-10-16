@@ -2,12 +2,12 @@ import React from "react";
 import styled from "styled-components";
 
 
-const Nxtbtn = styled.i.attrs({
+const Nxtbtn = styled.button.attrs({
     className: "btn",
 })`
   text-decoration: none;
   display: inline-block;
-  padding: 8px 16px;
+  padding: 8px 30px;
   background-color: #fff55a;
   color: black;
 `;

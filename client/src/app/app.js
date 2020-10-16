@@ -2,9 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import {
     NavBar,
-    Footer,
-    NxtBtn,
-    PrvBtn
+    Footer
 } from "../components";
 import Create from "../pages/Create";
 import Home from "../pages/Home";
@@ -25,18 +23,16 @@ const AppWrapper = styled.div`
 
 const App = () => {
     return (
-        <PrvBtn />
-        // <AppWrapper>
-        //     <Router>
-        //         <NavBar />
-        //         <Switch>
-        //             <Route path="/" exact component={Home} />
-        //             <Route path="/create" component={Create} />
-        //         </Switch>
-        //     </Router>
-        //     <ArrowBtn />
-        //     <Footer />
-        // </AppWrapper>
+        <AppWrapper>
+            <Router>
+                <NavBar />
+                <Switch>
+                    <Route path="/" exact component={Home} />
+                    <Route path="/create" component={Create} />
+                </Switch>
+            </Router>
+            <Footer />
+        </AppWrapper>
     );
 };
 

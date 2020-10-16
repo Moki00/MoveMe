@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 
-const prvbtn = styled.i.attrs({
+const Prvbtn = styled.button.attrs({
     className: "btn",
 })`
   text-decoration: none;
@@ -15,7 +15,7 @@ const prvbtn = styled.i.attrs({
 const PrvBtn = () => {
     return (
     <div>
-        <prvbtn>Previous &raquo;</prvbtn>
+        <Prvbtn>Previous &raquo;</Prvbtn>
     </div>  
     );
 };
