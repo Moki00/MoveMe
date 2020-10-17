@@ -4,16 +4,16 @@ import background from "../images/blossom.jpg"; // need to get this from state p
 import { UNSPLASH_ACCESS_KEY, UNSPLASH_SECRET_KEY } from "../app/keys";
 
 const Create = () => {
-    const [text, setText] = useState("Quote here");
+    const [text, setText] = useState("");
     const [font, setFont] = useState("Ariel");
-    const [fontSize, setFontSize] = useState(18);
+    const [fontSize, setFontSize] = useState(54);
     const [fontWeight, setFontWeight] = useState("400");
-    const [textColor, setTextColor] = useState("black");
+    const [textColor, setTextColor] = useState("white");
     const [canvasWidth, setCanvasWidth] = useState(0);
     const [canvasHeight, setCanvasHeight] = useState(150);
-    const [margin, setMargin] = useState(10);
-    const [bgColor, setBgColor] = useState("#ff00ff");
-    const [bgOpacity, setBgOpacity] = useState(0.3);
+    const [margin, setMargin] = useState(30);
+    const [bgColor, setBgColor] = useState("#444444");
+    const [bgOpacity, setBgOpacity] = useState(0.5);
 
     // final image state settings
     const [finalImgUrl, setFinalImgUrl] = useState("");
@@ -29,8 +29,8 @@ const Create = () => {
     const [finalBgOpacity, setFinalBgOpacity] = useState(0.2);
 
     //Quote Api
-    const [random, setRandom] = useState(false); //set to true for production!!
-    const [searchTerm, setSearchTerm] = useState("o3f3fqw"); //(nature / deceptive hunters series) set to emptry string for production!!
+    const [random, setRandom] = useState(true); //set to true for production!!
+    const [searchTerm, setSearchTerm] = useState("nature"); //(nature / deceptive hunters series) set to emptry string for production!!
 
     // Unsplash API
     // populate this in image fetch function
@@ -41,7 +41,7 @@ const Create = () => {
     const clickCanvas = () => {
         setImgUrl(background);
         setBgColor("#ADD8E6");
-        setBgOpacity(0.2);
+        setBgOpacity(0.0);
         setPhotographer("Jim Bean");
 
         setTimeout(function () {
@@ -75,9 +75,16 @@ const Create = () => {
                     },
                 }
             );
-            const responsejson = await response.json();
-            console.log(responsejson);
-            setText(responsejson.quoteText + " - " + responsejson.quoteAuthor);
+            try {
+                const responsejson = await response.json();
+                console.log(responsejson);
+                setText(
+                    responsejson.quoteText + " - " + responsejson.quoteAuthor
+                );
+            } catch (e) {
+                // show error?
+                console.log(e);
+            }
         } else {
             let quote = "";
             let author = "";
@@ -85,19 +92,24 @@ const Create = () => {
             let counter = 0;
             while (quote === "") {
                 const formattedSearchTerm = searchTerm.replace(" ", "-");
+                let responsejson;
                 offset = Math.floor(Math.random() * offset);
                 let url = `https://api.paperquotes.com/apiv1/quotes?tags=${formattedSearchTerm}&limit=1&offset=${offset}`;
-                const response = await fetch(url, {
-                    headers: {
-                        Authorization:
-                            "Token f95acdb382c7b0aa5a7723e2e68f1ada66d39875",
-                    },
-                });
-                const responsejson = await response.json();
-                // console.log(counter);
-                // console.log(responsejson);
-                // console.log(responsejson.results);
-                // console.log(responsejson.results.length);
+
+                try {
+                    const response = await fetch(url, {
+                        headers: {
+                            Authorization:
+                                "Token f95acdb382c7b0aa5a7723e2e68f1ada66d39875",
+                        },
+                    });
+                    console.log(response);
+                    responsejson = await response.json();
+                } catch (e) {
+                    console.log(e);
+                    // show error message?
+                    continue;
+                }
 
                 if (
                     responsejson.results.length > 0 &&
@@ -112,7 +124,7 @@ const Create = () => {
                     break; //show warning to user
                 }
             }
-            console.log(quote); //get list of all tags from paperquotes
+            console.log(quote); //get list of all tags from paperquotes for autocomplete input box
             if (quote != "") {
                 quote = quote.replace(author, "");
                 setText(quote + " - " + author);
@@ -175,6 +187,10 @@ const Create = () => {
         }
     };
 
+    const buildPreview = () => {
+        getImage();
+        getQuote();
+    };
     return (
         <div>
             <p onClick={getImage}>
@@ -184,7 +200,8 @@ const Create = () => {
                 height="100px"
                 width="100px"
                 style={{ backgroundColor: "blue", marginTop: "30px" }}
-                getQuote={getQuote}
+                // getQuote={getQuote}
+                getQuote={buildPreview}
             />
             <ImgPreviewArea
                 text={text}

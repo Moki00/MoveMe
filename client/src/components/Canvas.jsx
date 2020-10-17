@@ -1,4 +1,4 @@
-import React, { useRef, useEffect} from "react";
+import React, { useRef, useEffect } from "react";
 import styled from "styled-components";
 
 const CanvasElement = styled.canvas.attrs({ className: "w-100" })`
@@ -53,7 +53,8 @@ const wrapText = (
         }
 
         // fiddle to get it into centre
-        offset += 4;
+        offset += newSize / 4;
+        x += newSize / 5;
 
         // draw each line in correct place on canvas
         lines.forEach((element) => {
@@ -62,23 +63,18 @@ const wrapText = (
         });
         break;
     }
-}
+};
 
-const addAttribution = (
-    canvas,
-    context,
-    textColor,
-    photographer,
-    source) => {
-        context.textAlign = "end";
-        context.fillStyle = textColor;
-        context.font = 'normal 10px Georgia';
+const addAttribution = (canvas, context, textColor, photographer, source) => {
+    context.textAlign = "end";
+    context.fillStyle = textColor;
+    context.font = "normal 10px Georgia";
 
-        const attribution = `Made by MoveMe. Photo by ${photographer} on ${source}`;
-        const x=canvas.width;
-        const y=canvas.height;
-        context.fillText(attribution, x - 5, y - 5);
-}
+    const attribution = `Made by MoveMe. Photo by ${photographer} on ${source}`;
+    const x = canvas.width;
+    const y = canvas.height;
+    context.fillText(attribution, x - 5, y - 5);
+};
 
 const TextCanvas = ({
     text,
@@ -91,7 +87,7 @@ const TextCanvas = ({
     clickCanvas,
     bgColor,
     bgOpacity,
-    id
+    id,
 }) => {
     // we use a ref to access the canvas' DOM node
     const canvasRef = useRef(null);
@@ -116,23 +112,40 @@ const TextCanvas = ({
         context.save();
         context.globalAlpha = bgOpacity;
         context.fillStyle = bgColor;
-        context.fillRect(0,0,canvasRef.current.width,canvasRef.current.height);
+        context.fillRect(
+            0,
+            0,
+            canvasRef.current.width,
+            canvasRef.current.height
+        );
         context.restore();
 
         // write text in centre
-        wrapText(
-            canvasRef.current,
-            context,
-            text,
-            canvasRef.current.width / 2,
-            canvasRef.current.height / 2,
-            margin,
-            font,
-            fontSize,
-            textColor,
-            fontWeight
+        setTimeout(
+            wrapText(
+                canvasRef.current,
+                context,
+                text,
+                canvasRef.current.width / 2,
+                canvasRef.current.height / 2,
+                margin,
+                font,
+                fontSize,
+                textColor,
+                fontWeight
+            ),
+            500
         );
-    }, [text, font, fontSize, fontWeight, textColor, margin,  bgColor, bgOpacity]);
+    }, [
+        text,
+        font,
+        fontSize,
+        fontWeight,
+        textColor,
+        margin,
+        bgColor,
+        bgOpacity,
+    ]);
 
     useEffect(() => {
         const styleWidth =
@@ -145,6 +158,19 @@ const TextCanvas = ({
     useEffect(() => {
         const context = canvasRef.current.getContext("2d");
         canvasRef.current.height = canvasHeight;
+
+        //draw overlay
+        context.save();
+        context.globalAlpha = bgOpacity;
+        context.fillStyle = bgColor;
+        context.fillRect(
+            0,
+            0,
+            canvasRef.current.width,
+            canvasRef.current.height
+        );
+        context.restore();
+
         // redraw the text at new height
         wrapText(
             canvasRef.current,
@@ -185,7 +211,7 @@ const ImgCanvas = ({
     fontWeight,
     textColor,
     setCanvasHeight,
-    id
+    id,
 }) => {
     // we use a ref to access the canvas' DOM node
     const canvasRef = useRef(null);
@@ -212,7 +238,6 @@ const ImgCanvas = ({
             const ratio = base_image.height / base_image.width;
             const newHeight = canvasRef.current.width * ratio;
 
-            
             handleSetCanvasHeight(newHeight);
 
             canvasRef.current.height = newHeight;
@@ -263,7 +288,7 @@ const FinalCanvas = ({
     finalBgOpacity,
     generateFinalCanvas,
     photographer,
-    id
+    id,
 }) => {
     const canvasRef = useRef(null);
 
@@ -299,7 +324,12 @@ const FinalCanvas = ({
             context.save();
             context.globalAlpha = finalBgOpacity;
             context.fillStyle = finalBgColor;
-            context.fillRect(0,0,canvasRef.current.width,canvasRef.current.height);
+            context.fillRect(
+                0,
+                0,
+                canvasRef.current.width,
+                canvasRef.current.height
+            );
             context.restore();
 
             // write quote
@@ -317,9 +347,26 @@ const FinalCanvas = ({
             );
 
             // add attribution
-            addAttribution(canvasRef.current, context, finalTextColor, photographer, "Unsplah");
+            addAttribution(
+                canvasRef.current,
+                context,
+                finalTextColor,
+                photographer,
+                "Unsplah"
+            );
         };
-    }, [finalImgUrl, finalText, finalFont, finalFontSize, finalFontWeight, finalTextColor, finalMargin,  finalBgColor, finalBgOpacity]);
+        // should this just keep track of a state var e.g. "generated" then run this function? Set true in generate final function?
+    }, [
+        finalImgUrl,
+        finalText,
+        finalFont,
+        finalFontSize,
+        finalFontWeight,
+        finalTextColor,
+        finalMargin,
+        finalBgColor,
+        finalBgOpacity,
+    ]);
 
     // handle changing text
     // useEffect(() => {
@@ -345,7 +392,7 @@ const FinalCanvas = ({
     //     );
     // }, [finalText, finalFont, finalFontSize, finalFontWeight, finalTextColor, finalMargin,  finalBgColor, finalBgOpacity]);
 
-    // set style width of canvas to fixed value 
+    // set style width of canvas to fixed value
     useEffect(() => {
         const styleWidth =
             window.outerWidth * 2 > 1200 ? 1200 : window.outerWidth * 2;
@@ -353,9 +400,9 @@ const FinalCanvas = ({
     }, []);
 
     const handleGenerateFinalCanvas = () => {
-        console.log("making the final image")
+        console.log("making the final image");
         generateFinalCanvas();
-    }
+    };
 
     return (
         <div>
@@ -368,7 +415,7 @@ const FinalCanvas = ({
                 // fontWeight={fontWeight}
                 // textColor={textColor}
                 width={window.outerWidth}
-                onClick = {handleGenerateFinalCanvas}
+                onClick={handleGenerateFinalCanvas}
                 id={id}
             />
         </div>
