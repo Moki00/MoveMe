@@ -29,7 +29,7 @@ const Create = () => {
     const [finalBgOpacity, setFinalBgOpacity] = useState(0.2);
 
     //Quote Api
-    const [random, setRandom] = useState(true); //set to true for production!!
+    const [random, setRandom] = useState(false); //set to true for production!!
     const [searchTerm, setSearchTerm] = useState("nature"); //(nature / deceptive hunters series) set to emptry string for production!!
 
     // Unsplash API
@@ -134,56 +134,72 @@ const Create = () => {
 
     const getImage = async () => {
         if (random) {
-            const response = await fetch(
-                "https://api.unsplash.com/photos/random",
-                {
-                    // mode: "cors",
-                    headers: {
-                        // "Access-Control-Allow-Origin": "http://localhost:8000",
-                        Authorization: "Client-ID " + UNSPLASH_ACCESS_KEY,
-                    },
-                }
-            );
-            const responsejson = await response.json();
-            console.log(responsejson);
-            setPhotographer(responsejson.user.name);
-            setImgUrl(responsejson.urls.regular);
+            try {
+                const response = await fetch(
+                    "https://api.unsplash.com/photos/random",
+                    {
+                        // mode: "cors",
+                        headers: {
+                            // "Access-Control-Allow-Origin": "http://localhost:8000",
+                            Authorization: "Client-ID " + UNSPLASH_ACCESS_KEY,
+                        },
+                    }
+                );
+                const responsejson = await response.json();
+                console.log(responsejson);
+                setPhotographer(responsejson.user.name);
+                setImgUrl(responsejson.urls.regular);
+            } catch (e) {
+                console.log(e);
+                // show error message
+            }
         } else {
-            const checkTotalImages = await fetch(
-                `https://api.unsplash.com/search/photos?query=${searchTerm}&per_page=0`,
-                {
-                    headers: {
-                        Authorization: "Client-ID " + UNSPLASH_ACCESS_KEY,
-                    },
-                }
-            );
-            const checkTotalImagesJson = await checkTotalImages.json();
-            // Sometimes images can't be found with large offsets, so limit to 600
-            let maxOffset =
-                checkTotalImagesJson.total > 600
-                    ? 600
-                    : checkTotalImagesJson.total;
+            let offset;
+            try {
+                const checkTotalImages = await fetch(
+                    `https://api.unsplash.com/search/photos?query=${searchTerm}&per_page=0`,
+                    {
+                        headers: {
+                            Authorization: "Client-ID " + UNSPLASH_ACCESS_KEY,
+                        },
+                    }
+                );
+                const checkTotalImagesJson = await checkTotalImages.json();
+                // Sometimes images can't be found with large offsets, so limit to 600
+                let maxOffset =
+                    checkTotalImagesJson.total > 600
+                        ? 600
+                        : checkTotalImagesJson.total;
 
-            const offset = Math.floor(Math.random() * maxOffset);
-
-            const response = await fetch(
-                `https://api.unsplash.com/search/photos?query=${searchTerm}&per_page=1&content_filter=high&page=${offset}`,
-                {
-                    headers: {
-                        Authorization: "Client-ID " + UNSPLASH_ACCESS_KEY,
-                    },
-                }
-            );
-            const responsejson = await response.json();
-            console.log(responsejson);
-
-            if (responsejson.results.length === 0) {
-                // show error here
-                return;
+                offset = Math.floor(Math.random() * maxOffset);
+            } catch (e) {
+                console.log(e);
+                // show error
             }
 
-            setPhotographer(responsejson.results[0].user.name);
-            setImgUrl(responsejson.results[0].urls.regular);
+            try {
+                const response = await fetch(
+                    `https://api.unsplash.com/search/photos?query=${searchTerm}&per_page=1&content_filter=high&page=${offset}`,
+                    {
+                        headers: {
+                            Authorization: "Client-ID " + UNSPLASH_ACCESS_KEY,
+                        },
+                    }
+                );
+                const responsejson = await response.json();
+                console.log(responsejson);
+
+                if (responsejson.results.length === 0) {
+                    // show error here
+                    return;
+                }
+
+                setPhotographer(responsejson.results[0].user.name);
+                setImgUrl(responsejson.results[0].urls.regular);
+            } catch (e) {
+                console.log(e);
+                // show error;
+            }
         }
     };
 
