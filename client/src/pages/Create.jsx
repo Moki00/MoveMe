@@ -1,5 +1,10 @@
 import React, { useState } from "react";
-import { FinalImgArea, ImgPreviewArea, RandomB } from "../components";
+import {
+    FinalImgArea,
+    ImgPreviewArea,
+    RandomB,
+    ShareModal,
+} from "../components";
 import background from "../images/blossom.jpg"; // need to get this from state passed from app.js
 
 const Create = () => {
@@ -27,10 +32,11 @@ const Create = () => {
     const [finalMargin, setFinalMargin] = useState(0);
     const [finalBgColor, setFinalBgColor] = useState("#ffffff");
     const [finalBgOpacity, setFinalBgOpacity] = useState(0.2);
+    const [finalUrl, setFinalUrl] = useState("robbmdev.com");
 
     //Quote Api
     const [random, setRandom] = useState(true); //set to true for production!!
-    const [searchTerm, setSearchTerm] = useState("nature"); //(deceptive-hunters-series) set to emptry string for production!!
+    const [searchTerm, setSearchTerm] = useState(""); //(deceptive-hunters-series) set to emptry string for production!!
 
     // Unsplash API
     // populate this in image fetch function
@@ -60,6 +66,8 @@ const Create = () => {
         setFinalMargin(margin);
         setFinalBgColor(bgColor);
         setFinalBgOpacity(bgOpacity);
+        // save to db then
+        // setFinalUrl("url/for/view/page");
     };
 
     //function for quote Api
@@ -158,6 +166,20 @@ const Create = () => {
                 finalBgOpacity={finalBgOpacity}
                 generateFinalCanvas={generateFinalCanvas}
                 photographer={photographer}
+            />
+            {/* open modal button */}
+            <button
+                type="button"
+                className="btn btn-warning text-danger"
+                data-toggle="modal"
+                data-target="#shareModal"
+            >
+                SHARE
+            </button>
+            <ShareModal
+                searchTerm={searchTerm}
+                random={random}
+                finalUrl={finalUrl}
             />
         </div>
     );
