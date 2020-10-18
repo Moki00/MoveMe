@@ -35,45 +35,46 @@ const FontEdit = () =>{
  	<Container>
   <Row>
     <Col>Size</Col>
-    <Col><Button >+</Button></Col>
     <Col><Button >-</Button></Col>
+    <Col><Button >+</Button></Col>
   </Row>
   <Row>
     <Col>Font Weight</Col>
-    <Col><Button >+</Button></Col>
     <Col><Button >-</Button></Col>
+    <Col><Button >+</Button></Col>
+  </Row>
+      <Row>
+    <Col>Background Opacity</Col>
+    <Col><Button >-</Button></Col>
+    <Col><Button >+</Button></Col>
   </Row>
   <Row>
     <Col>Font color </Col>
+    <Col><input type="color" style={{width:"60%",height:"25px"}} value="#00ffff"/></Col>
     <Col></Col>
-    <Col><input type="color"/></Col>
   </Row>
     <Row>
     <Col>Background color</Col>
+    <Col><input type="color" style={{width:"60%",height:"25px"}} value="#00ffff"/></Col>
     <Col></Col>
-    <Col><input type="color"/></Col>
   </Row>
-    <Row>
-    <Col>Background Opacity</Col>
-    <Col><Button >+</Button></Col>
-    <Col><Button >-</Button></Col>
-  </Row>
+
   <Row>
   <Col>Font</Col>
-  <Col></Col>
   <Col>
-  <Dropdown>
-  <Dropdown.Toggle variant="warning" id="dropdown-basic">
-    Dropdown
-  </Dropdown.Toggle>
-
-  <Dropdown.Menu>
-    <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-    <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-    <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-  </Dropdown.Menu>
-</Dropdown>
+  <select name="cars" id="cars" style={{background: "#ffc107",width:"60%"}}>
+  <option value="">Arial</option>
+  <option value="">Arial</option>
+  <option value="">Arial</option>
+  <option value="">Arial</option>
+</select>
 </Col>
+  <Col></Col>
+</Row>
+<Row style={{"margin-top":"20px"}}>
+ <Col></Col>
+<Col><Button>Close</Button></Col>
+<Col><Button>Save</Button></Col>
 </Row>
 </Container>
  	)

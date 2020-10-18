@@ -6,7 +6,8 @@ import {
     QuoteNavArea,
     ShareTwitter,
     ShareWhatsapp,
-    Footer
+    Footer,
+    FontEdit
 } from "../components";
 import Create from "../pages/Create";
 import Home from "../pages/Home";
@@ -27,16 +28,17 @@ const AppWrapper = styled.div`
 
 const App = () => {
     return (
-        <AppWrapper>
-            <Router>
-                <NavBar />
-                <Switch>
-                    <Route path="/" exact component={Home} />
-                    <Route path="/create" component={Create} />
-                </Switch>
-            </Router>
-            <Footer />
-        </AppWrapper>
+<FontEdit />
+        // <AppWrapper>
+        //     <Router>
+        //         <NavBar />
+        //         <Switch>
+        //             <Route path="/" exact component={Home} />
+        //             <Route path="/create" component={Create} />
+        //         </Switch>
+        //     </Router>
+        //     <Footer />
+        // </AppWrapper>
     );
 };
 
