@@ -46,7 +46,7 @@ const Create = () => {
 
         setTimeout(function () {
             setText(
-                "Just some example text   happens if it gets really long? But what hapy long? But what happeple text but what happens if it gets really long? But what happeappeple text but what happens if it gets really long? But what happes if it gets really really really long?"
+                "Just some example text But what hapy long? Butappens if it gets really long? But what happes if it gets really really really long?"
             );
         }, 2000);
     };
@@ -69,7 +69,9 @@ const Create = () => {
             const response = await fetch(
                 "https://cors-anywhere.herokuapp.com/https://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en",
                 {
+
                     mode: "cors",
+
                     headers: {
                         "Access-Control-Allow-Origin": "http://localhost:8000",
                     },
@@ -86,6 +88,7 @@ const Create = () => {
                 console.log(e);
             }
         } else {
+            //search quote
             let quote = "";
             let author = "";
             let offset = 100;
