@@ -3,8 +3,6 @@ Start Compass with:
 mongodb-compass
 
 
-mongodb+srv://m001-student:m001-mongodb-basics@cluster0-jxeqq.mongodb.net/test
-
 sudo service mongodb start
 
 mongo
@@ -29,10 +27,10 @@ ctrl C to exit
 
 
 
-m001-student
-m001-mongodb-basics
 
-mongo "mongodb+srv://sandbox.iytet.mongodb.net/<dbname>" --username m001-student
-mongo "mongodb+srv://sandbox-xxxxx.mongodb.net/test"  --username m001-student --password m001-mongodb-basics
+username + password ....got messed up...
+mongo "mongodb+srv://sandbox.PrivateCode.mongodb.net/<dbname>" --username m001-student --password m001-mongodb-basics
 
-mongodb+srv://m001-student:m001-mongodb-basics@sandbox.iytet.mongodb.net/test
+
+
+
