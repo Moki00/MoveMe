@@ -15,6 +15,7 @@ import FinalImgArea from "./FinalImgArea";
 import { TextCanvas, ImgCanvas, FinalCanvas } from "./Canvas";
 import ShareTwitter from "./ShareTwitter";
 import ShareWhatsapp from "./ShareWhatsapp";
+import ShareFacebook from "./ShareFacebook";
 
 
 export {
@@ -37,5 +38,5 @@ export {
     ShareTwitter,
     ShareWhatsapp,
     FontEdit,
-
+    ShareFacebook
 };

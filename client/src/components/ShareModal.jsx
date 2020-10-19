@@ -1,5 +1,8 @@
 import React from "react";
 import styled from "styled-components";
+import ShareTwitter from "./ShareTwitter";
+import ShareFacebook from "./ShareFacebook";
+import ShareWhatsapp from "./ShareWhatsapp";
 
 const ModalWrapper = styled.div.attrs({
     className: "modal fade",
@@ -32,7 +35,7 @@ const ModalCloseButton = styled.button.attrs({
 })``;
 
 const ModalBody = styled.div.attrs({
-    className: "modal-body",
+    className: "modal-body d-flex flex-row justify-content-around",
 })``;
 
 const ModalFooter = styled.div.attrs({
@@ -44,7 +47,7 @@ const ModalTitle = styled.h5.attrs({
     id: "shareModalLabel",
 })``;
 
-const ShareModal = () => {
+const ShareModal = ({ finalUrl, random, searchTerm }) => {
     return (
         <ModalWrapper aria-labelledby="shareModalLabel" aria-hidden="true">
             <ModalDialog role="document">
@@ -58,7 +61,20 @@ const ShareModal = () => {
                             <span aria-hidden="true">&times;</span>
                         </ModalHeaderButton>
                     </ModalHeader>
-                    <ModalBody>Links go here</ModalBody>
+                    <ModalBody>
+                        {/* card preview here? */}
+                        <ShareFacebook
+                            finalUrl={finalUrl}
+                            searchTerm={searchTerm}
+                            random={random}
+                        />
+                        <ShareTwitter
+                            finalUrl={finalUrl}
+                            searchTerm={searchTerm}
+                            random={random}
+                        />
+                        <ShareWhatsapp finalUrl={finalUrl} />
+                    </ModalBody>
                     <ModalFooter>
                         <ModalCloseButton data-dismiss="modal">
                             Close

@@ -1,14 +1,24 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { TwitterShareButton } from "react-share";
 import { TwitterIcon } from "react-share";
 
-const ShareTwitter = () => {
+const ShareTwitter = ({ finalUrl, random, searchTerm }) => {
+    const [shortSearchTerm, setShortSearchTerm] = useState("");
+    useEffect(() => {
+        if (random) {
+            setShortSearchTerm("random");
+        } else {
+            let temp = searchTerm;
+            let sub = temp.replace(" ", "");
+            setShortSearchTerm(sub);
+        }
+    }, [searchTerm, random]);
     return (
         //URL should be taken from this.state and linked to view image page; get hashtags from State
         <TwitterShareButton
-            url="google.com"
+            url={finalUrl}
             title="e-card from MoveMe:"
-            hashtags={["nature"]}
+            hashtags={[shortSearchTerm]}
         >
             <TwitterIcon borderRadius={10} />
         </TwitterShareButton>
