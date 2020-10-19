@@ -37,39 +37,28 @@ width:100%;
 
 const FontEdit = () =>{
  return(
- 	<Container>
+ 	<Container style={{background:"#cecece"}}>
   <Row>
     <Col>Size</Col>
-    <Col><Button >-</Button></Col>
-    <Col><Button >+</Button></Col>
+    <Col><Button style={{color:"red"}}>-</Button></Col>
+    <Col><Button style={{color:"red"}}>+</Button></Col>
   </Row>
   <Row>
     <Col>Font Weight</Col>
-    <Col><Button >-</Button></Col>
-    <Col><Button >+</Button></Col>
+    <Col><Button style={{color:"red"}}>-</Button></Col>
+    <Col><Button style={{color:"red"}}>+</Button></Col>
   </Row>
-      <Row>
-    <Col>Background Opacity</Col>
-    <Col><Button >-</Button></Col>
-    <Col><Button >+</Button></Col>
-  </Row>
-  <Row>
+    <Row>
     <Col>Font color </Col>
     <Col><input type="color" style={{width:"65%",height:"25px"}} value="#00ffff"/></Col>
     <Col></Col>
   </Row>
     <Row>
-    <Col>Background color</Col>
-    <Col><input type="color" style={{width:"65%",height:"25px"}} value="#00ffff"/></Col>
-    <Col></Col>
-  </Row>
-
-  <Row>
   <Col>Font</Col>
   <Col>
-  <select name="cars" id="cars" style={{background: "#ffc107",width:"65%"}}>
+  <select name="cars" id="cars" style={{background: "#ffc107",width:"65%",color:"red"}}>
   <option></option>
-  <option value="">Arial</option>
+  <option value="" >Arial</option>
   <option value="">Times New Roman</option>
   <option value="">Times</option>
   <option value="">Courier New</option>
@@ -77,11 +66,21 @@ const FontEdit = () =>{
 </Col>
   <Col></Col>
 </Row>
+    <Row>
+    <Col>Background color</Col>
+    <Col><input type="color" style={{width:"65%",height:"25px"}} value="#00ffff"/></Col>
+    <Col></Col>
+  </Row>
+
+      <Row>
+    <Col>Background Opacity</Col>
+    <Col><Button style={{color:"red"}}>-</Button></Col>
+    <Col><Button style={{color:"red"}} >+</Button></Col>
+  </Row>
 <Row style={{"margin-top":"20px"}}>
- <Col></Col>
- <hr />
-<Col><Button>Close</Button></Col>
-<Col><Button>Save</Button></Col>
+ <Col><Button style={{background:"red",border:"red"}}>Close</Button></Col>
+<Col><Button style={{background:"red",border:"red"}}>Save</Button></Col>
+<Col></Col>
 </Row>
 </Container>
  	)
