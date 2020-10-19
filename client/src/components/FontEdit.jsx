@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import {Dropdown} from "react-bootstrap";
+
 
 
 const Button = styled.div.attrs({
@@ -18,15 +18,20 @@ const Container = styled.div.attrs({
 	className:"container"
 })`
 line-height:40px;	
+width:39%;
+border:1px solid black; 
 `;
 
 const Row = styled.div.attrs({
 	className:"row "
-})`	`;
+})`	
+
+`;
 
 const Col = styled.div.attrs({
-	className:"col-sm-2"
+	className:"col"
 })`
+width:100%;
 	`;
 
 
@@ -50,29 +55,31 @@ const FontEdit = () =>{
   </Row>
   <Row>
     <Col>Font color </Col>
-    <Col><input type="color" style={{width:"60%",height:"25px"}} value="#00ffff"/></Col>
+    <Col><input type="color" style={{width:"65%",height:"25px"}} value="#00ffff"/></Col>
     <Col></Col>
   </Row>
     <Row>
     <Col>Background color</Col>
-    <Col><input type="color" style={{width:"60%",height:"25px"}} value="#00ffff"/></Col>
+    <Col><input type="color" style={{width:"65%",height:"25px"}} value="#00ffff"/></Col>
     <Col></Col>
   </Row>
 
   <Row>
   <Col>Font</Col>
   <Col>
-  <select name="cars" id="cars" style={{background: "#ffc107",width:"60%"}}>
+  <select name="cars" id="cars" style={{background: "#ffc107",width:"65%"}}>
+  <option></option>
   <option value="">Arial</option>
-  <option value="">Arial</option>
-  <option value="">Arial</option>
-  <option value="">Arial</option>
+  <option value="">Times New Roman</option>
+  <option value="">Times</option>
+  <option value="">Courier New</option>
 </select>
 </Col>
   <Col></Col>
 </Row>
 <Row style={{"margin-top":"20px"}}>
  <Col></Col>
+ <hr />
 <Col><Button>Close</Button></Col>
 <Col><Button>Save</Button></Col>
 </Row>
