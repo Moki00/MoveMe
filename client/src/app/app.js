@@ -2,12 +2,9 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import {
     NavBar,
-    ImgNavArea,
-    QuoteNavArea,
-    Footer,
-    FontEdit
+    Footer
 } from "../components";
-//import Create from "../pages/Create";
+import Create from "../pages/Create";
 import Home from "../pages/Home";
 import styled from "styled-components";
 import "./app.css";
@@ -26,17 +23,16 @@ const AppWrapper = styled.div`
 
 const App = () => {
     return (
-<FontEdit />
-        // <AppWrapper>
-        //     <Router>
-        //         <NavBar />
-        //         <Switch>
-        //             <Route path="/" exact component={Home} />
-        //             <Route path="/create" component={Create} />
-        //         </Switch>
-        //     </Router>
-        //     <Footer />
-        // </AppWrapper>
+        <AppWrapper>
+            <Router>
+                <NavBar />
+                <Switch>
+                    <Route path="/" exact component={Home} />
+                    <Route path="/create" component={Create} />
+                </Switch>
+            </Router>
+            <Footer />
+        </AppWrapper>
     );
 };
 

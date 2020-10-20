@@ -6,7 +6,7 @@ import {
     ShareModal,
 } from "../components";
 import background from "../images/blossom.jpg"; // need to get this from state passed from app.js
-//  import { UNSPLASH_ACCESS_KEY, UNSPLASH_SECRET_KEY } from "../app/keys";
+import { UNSPLASH_ACCESS_KEY, UNSPLASH_SECRET_KEY } from "../app/keys";
 
 const Create = () => {
     const [text, setText] = useState("");
@@ -43,7 +43,7 @@ const Create = () => {
     const [photographer, setPhotographer] = useState("");
     const [imgUrl, setImgUrl] = useState("");
 
-    // remove for production. replace with functions to grap api data / user settings and set props
+    // remove for production. replace with functions to grab api data / user settings and set props
     const clickCanvas = () => {
         setImgUrl(background);
         setBgColor("#ADD8E6");
@@ -260,6 +260,20 @@ const Create = () => {
                 finalBgOpacity={finalBgOpacity}
                 generateFinalCanvas={generateFinalCanvas}
                 photographer={photographer}
+            />
+            {/* open modal button */}
+            <button
+                type="button"
+                className="btn btn-warning text-danger"
+                data-toggle="modal"
+                data-target="#shareModal"
+            >
+                SHARE
+            </button>
+            <ShareModal
+                searchTerm={searchTerm}
+                random={random}
+                finalUrl={finalUrl}
             />
         </div>
     );
