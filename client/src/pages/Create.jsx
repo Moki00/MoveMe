@@ -6,7 +6,7 @@ import {
     ShareModal,
 } from "../components";
 import background from "../images/blossom.jpg"; // need to get this from state passed from app.js
-import { UNSPLASH_ACCESS_KEY, UNSPLASH_SECRET_KEY } from "../app/keys";
+//  import { UNSPLASH_ACCESS_KEY, UNSPLASH_SECRET_KEY } from "../app/keys";
 
 const Create = () => {
     const [text, setText] = useState("");
