@@ -1,36 +1,127 @@
-
 Start Compass with:
 mongodb-compass
 
-
 sudo service mongodb start
-
 mongo
-
 show dbs;
-
 use mydb;
-
 db;
-
 db.SampleCollection.insert({"name":"MoKi"});
-
 show dbs;
-
 show collections;
-
 db.SampleCollection.find();
-
 ctrl C to exit
 
 "key":"value",
 
-
-
-
 username + password ....got messed up...
 mongo "mongodb+srv://sandbox.PrivateCode.mongodb.net/<dbname>" --username m001-student --password m001-mongodb-basics
 
+$rename
+The $rename operator updates the name of a field and has the following form:
+db.students.update( { _id: 1 }, { $rename: { 'nickname': 'alias', 'cell': 'mobile' } } )
+
+$push
+The $push operator appends a specified value to an array.
+adds to an array
+
+$mul 
+multiplies
+{ "_id" : 1, "item" : "ABC", "price" : NumberDecimal("10.99"), "qty" : 25 }
+db.products.update(
+   { _id: 1 },
+   { $mul: { price: NumberDecimal("1.25"), qty: 2 } }
+)
+result= { "_id" : 1, "item" : "ABC", "price" : NumberDecimal("13.7375"), "qty" : 50 }
+
+$addToSet
+ operator adds a value to an array (like $push)
+ { _id: 1, letters: ["a", "b"] }
+ db.test.update(
+   { _id: 1 },
+   { $addToSet: { letters: [ "c", "d" ] } }
+)
+{ _id: 1, letters: [ "a", "b", [ "c", "d" ] ] }
+
+$slice
+ modifier limits the number of array elements during a $push operation
+{ "_id" : 1, "scores" : [ 40, 50, 60 ] }
+db.students.update(
+   { _id: 1 },
+   {
+     $push: {
+       scores: {
+         $each: [ 80, 78, 86 ],
+         $slice: -5
+       }
+     }
+   }
+)
+result= { "_id" : 1, "scores" : [  50,  60,  80,  78,  86 ] }
+
+$set
+ operator replaces the value of a field with the specified value.
+db.products.update(
+   { _id: 100 },
+   { $set: { "details.make": "zzz" } }
+)
+
+$position
+ modifier specifies the location in the array at which the $push operator inserts elements.
+{ "_id" : 1, "scores" : [  50,  60,  20,  30,  70,  100 ] }
+db.students.update(
+   { _id: 1 },
+   {
+     $push: {
+        scores: {
+           $each: [ 90, 80 ],
+           $position: -2
+        }
+     }
+   }
+)
+result= { "_id" : 1, "scores" : [ 50, 60, 20, 30, 90, 80, 70, 100 ] }
+
+$unset
+ operator deletes a particular field
+
+$inc
+  operator increments a field by a specified value and has the following form:
+{
+  _id: 1,
+  sku: "abc123",
+  quantity: 10,
+  metrics: {
+    orders: 2,
+    ratings: 3.5
+  }
+}
+db.products.update(
+   { sku: "abc123" },
+   { $inc: { quantity: -2, "metrics.orders": 1 } }
+)
+{
+   "_id" : 1,
+   "sku" : "abc123",
+   "quantity" : 8,
+   "metrics" : {
+      "orders" : 3,
+      "ratings" : 3.5
+   }
+}
 
 
+$in
+ how many movies list "Ethan Coen" or "Joel Coen"
+db.movieDetails.find({"writers": {"$in": ["Ethan Coen", "Joel Coen"]}}).count()
+
+
+
+db.movieDetails.find({$and: [{"metacritic": null},
+ {"metacritic":{$exists:true}}]},
+{_id:0, title: 1, "metacritic": 1})
+
+
+
+{ $or: [ { "watlev": "always dry" }, { depth: 0 } ] }
 
