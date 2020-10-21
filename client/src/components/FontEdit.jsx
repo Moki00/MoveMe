@@ -78,8 +78,8 @@ const FontEdit = () =>{
       <Col><Button style={{color:"red"}} >+</Button></Col>
     </Row>
   <Row style={{"margin-top":"20px"}}>
-   <Col><Button style={{background:"red",border:"red"}}>Close</Button></Col>
-  <Col><Button style={{background:"red",border:"red"}}>Save</Button></Col>
+   <Col><Button className="d-lg-none" style={{background:"red",border:"red"}}>Close</Button></Col>
+  <Col><Button className="d-lg-none" style={{background:"red",border:"red"}}>Save</Button></Col>
   <Col></Col>
   </Row>
 </Container>
