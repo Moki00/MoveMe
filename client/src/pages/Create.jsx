@@ -35,8 +35,8 @@ const Create = () => {
     const [finalUrl, setFinalUrl] = useState("robbmdev.com");
 
     //Quote Api
-    const [random, setRandom] = useState(true); //set to true for production!!
-    const [searchTerm, setSearchTerm] = useState(""); //(deceptive-hunters-series) set to emptry string for production!!
+    const [random, setRandom] = useState(false); //set to true for production!!
+    const [searchTerm, setSearchTerm] = useState("deceptive hunters series"); //(deceptive-hunters-series) set to emptry string for production!!
 
     // Unsplash API
     // populate this in image fetch function
@@ -115,7 +115,8 @@ const Create = () => {
             let author = "";
             let offset = 100;
             let counter = 0;
-            const formattedSearchTerm = searchTerm.replace(" ", "-");
+            const formattedSearchTerm = searchTerm.trim().replace(/\s/g, "-");
+            console.log(formattedSearchTerm);
             while (quote === "") {
                 let responsejson;
                 offset = Math.floor(Math.random() * offset);
@@ -180,6 +181,11 @@ const Create = () => {
                 );
                 const responsejson = await response.json();
                 console.log(responsejson);
+                const photo = {
+                    photographer: responsejson.user.name,
+                    url: responsejson.urls.regular,
+                };
+                saveToLocalStorage("random" + "-images", photo);
                 setPhotographer(responsejson.user.name);
                 setImgUrl(responsejson.urls.regular);
             } catch (e) {
@@ -226,7 +232,14 @@ const Create = () => {
                     // show error here
                     return;
                 }
-
+                const photo = {
+                    photographer: responsejson.results[0].user.name,
+                    url: responsejson.results[0].urls.regular,
+                };
+                saveToLocalStorage(
+                    searchTerm.trim().replace(/\s/g, "-") + "-images",
+                    photo
+                );
                 setPhotographer(responsejson.results[0].user.name);
                 setImgUrl(responsejson.results[0].urls.regular);
             } catch (e) {
