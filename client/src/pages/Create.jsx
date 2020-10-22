@@ -35,8 +35,8 @@ const Create = () => {
     const [finalUrl, setFinalUrl] = useState("robbmdev.com");
 
     //Quote Api
-    const [random, setRandom] = useState(false); //set to true for production!!
-    const [searchTerm, setSearchTerm] = useState("deceptive hunters series"); //(deceptive-hunters-series) set to emptry string for production!!
+    const [random, setRandom] = useState(true); //set to true for production!!
+    const [searchTerm, setSearchTerm] = useState(""); //(deceptive hunters series) set to emptry string for production!!
 
     // Unsplash API
     // populate this in image fetch function
