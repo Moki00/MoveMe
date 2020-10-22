@@ -38,6 +38,6 @@ export {
     ShareTwitter,
     ShareWhatsapp,
     ShareFacebook,
-    FontEdit
+    FontEdit,
     Editbtn
 };
