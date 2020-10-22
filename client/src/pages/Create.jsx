@@ -103,7 +103,7 @@ const Create = () => {
                 const author = responsejson.quoteAuthor.trim();
                 const attributedQuote = quote + " - " + author;
 
-                saveToLocalStorage("random", attributedQuote);
+                saveToLocalStorage("random" + "-quotes", attributedQuote);
                 setText(attributedQuote);
             } catch (e) {
                 // show error?
@@ -154,9 +154,12 @@ const Create = () => {
                 // need to check if "Unknown" is in the quote and no author attributed here
 
                 quote = quote.replace(author, "");
-                const attributedQuote = quote + " - " + author;
+                const attributedQuote = quote.trim() + " - " + author.trim();
 
-                saveToLocalStorage(formattedSearchTerm, attributedQuote);
+                saveToLocalStorage(
+                    formattedSearchTerm + "-quotes",
+                    attributedQuote
+                );
                 setText(attributedQuote);
             }
         }
