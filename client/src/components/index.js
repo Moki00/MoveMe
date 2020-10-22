@@ -4,6 +4,7 @@ import NavBar from "./NavBar";
 import RandomB from "./RandomB";
 import Footer from "./Footer";
 import SearchBar from "./SearchBar";
+import FontEdit from "./FontEdit";
 import Editbtn from "./EditBtn";
 import ImgPreviewArea from "./ImgPreviewArea";
 import ShareModal from "./ShareModal";
@@ -37,5 +38,6 @@ export {
     ShareTwitter,
     ShareWhatsapp,
     ShareFacebook,
+    FontEdit,
     Editbtn
 };
