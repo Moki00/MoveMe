@@ -27,16 +27,12 @@ const ButtonWrapper = styled.div.attrs({
 const CardGet = ({ match }) => {
     const imgRef = useRef(null);
     const [img, setImg] = useState("");
-    const [isLoading, setIsLoading] = useState(false);
     const [height, setHeight] = useState("auto");
     const [width, setWidth] = useState("95%");
 
-    React.componentDidMount = async () => {
-        // not sure this function gets fired
-        setIsLoading(true);
-        console.log("mounted");
-
-        await api.getCard(match.params.id).then((card) => {
+    useEffect(() => {
+        // Need backend in place before proceeding
+        api.getCard(match.params.id).then((card) => {
             // check if mobile device
             console.log(card);
             const src = "data:image/png;base64," + card.data.data; // need to check this is the base64
@@ -72,7 +68,7 @@ const CardGet = ({ match }) => {
             // set img
             setImg(src); // need to check this according to return from db after mongo set up
         });
-    };
+    });
 
     return (
         <ViewPageWrapper>
