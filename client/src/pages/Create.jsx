@@ -36,7 +36,7 @@ const Create = () => {
 
     //Quote Api
     const [random, setRandom] = useState(true); //set to true for production!!
-    const [searchTerm, setSearchTerm] = useState(""); //(deceptive-hunters-series) set to emptry string for production!!
+    const [searchTerm, setSearchTerm] = useState(""); //(deceptive hunters series) set to emptry string for production!!
 
     // Unsplash API
     // populate this in image fetch function
@@ -71,13 +71,24 @@ const Create = () => {
         // setFinalUrl("url/for/view/page");
     };
 
+    const saveToLocalStorage = (key, value) => {
+        let savedQuotes = [];
+        // get array from localStorage if exists
+        if (localStorage.getItem(key) !== null) {
+            savedQuotes = JSON.parse(localStorage.getItem(key));
+        }
+
+        // append the new quote and save it to local storage
+        savedQuotes.push(value);
+        localStorage.setItem(key, JSON.stringify(savedQuotes));
+    };
+
     //function for quote Api
     const getQuote = async () => {
         if (random) {
             const response = await fetch(
                 "https://cors-anywhere.herokuapp.com/https://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en",
                 {
-
                     mode: "cors",
 
                     headers: {
@@ -88,9 +99,12 @@ const Create = () => {
             try {
                 const responsejson = await response.json();
                 console.log(responsejson);
-                setText(
-                    responsejson.quoteText + " - " + responsejson.quoteAuthor
-                );
+                const quote = responsejson.quoteText.trim();
+                const author = responsejson.quoteAuthor.trim();
+                const attributedQuote = quote + " - " + author;
+
+                saveToLocalStorage("random" + "-quotes", attributedQuote);
+                setText(attributedQuote);
             } catch (e) {
                 // show error?
                 console.log(e);
@@ -101,8 +115,9 @@ const Create = () => {
             let author = "";
             let offset = 100;
             let counter = 0;
+            const formattedSearchTerm = searchTerm.trim().replace(/\s/g, "-");
+            console.log(formattedSearchTerm);
             while (quote === "") {
-                const formattedSearchTerm = searchTerm.replace(" ", "-");
                 let responsejson;
                 offset = Math.floor(Math.random() * offset);
                 let url = `https://api.paperquotes.com/apiv1/quotes?tags=${formattedSearchTerm}&limit=1&offset=${offset}`;
@@ -137,8 +152,16 @@ const Create = () => {
             }
             console.log(quote); //get list of all tags from paperquotes for autocomplete input box
             if (quote != "") {
+                // need to check if "Unknown" is in the quote and no author attributed here
+
                 quote = quote.replace(author, "");
-                setText(quote + " - " + author);
+                const attributedQuote = quote.trim() + " - " + author.trim();
+
+                saveToLocalStorage(
+                    formattedSearchTerm + "-quotes",
+                    attributedQuote
+                );
+                setText(attributedQuote);
             }
         }
     };
@@ -158,6 +181,11 @@ const Create = () => {
                 );
                 const responsejson = await response.json();
                 console.log(responsejson);
+                const photo = {
+                    photographer: responsejson.user.name,
+                    url: responsejson.urls.regular,
+                };
+                saveToLocalStorage("random" + "-images", photo);
                 setPhotographer(responsejson.user.name);
                 setImgUrl(responsejson.urls.regular);
             } catch (e) {
@@ -204,7 +232,14 @@ const Create = () => {
                     // show error here
                     return;
                 }
-
+                const photo = {
+                    photographer: responsejson.results[0].user.name,
+                    url: responsejson.results[0].urls.regular,
+                };
+                saveToLocalStorage(
+                    searchTerm.trim().replace(/\s/g, "-") + "-images",
+                    photo
+                );
                 setPhotographer(responsejson.results[0].user.name);
                 setImgUrl(responsejson.results[0].urls.regular);
             } catch (e) {
