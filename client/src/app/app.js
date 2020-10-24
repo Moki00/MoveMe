@@ -1,11 +1,9 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import {
-    NavBar,
-    Footer
-} from "../components";
+import { NavBar, Footer } from "../components";
 import Create from "../pages/Create";
 import Home from "../pages/Home";
+import CardGet from "../pages/CardGet";
 import styled from "styled-components";
 import "./app.css";
 
@@ -18,7 +16,7 @@ import "font-awesome/css/font-awesome.css";
 const AppWrapper = styled.div`
     min-height: 100vh;
     background-color: #333333;
-    color: #e5e5e5
+    color: #e5e5e5;
 `;
 
 const App = () => {
@@ -29,6 +27,7 @@ const App = () => {
                 <Switch>
                     <Route path="/" exact component={Home} />
                     <Route path="/create" component={Create} />
+                    <Route path="/card/get/:id" exact component={CardGet} />
                 </Switch>
             </Router>
             <Footer />
