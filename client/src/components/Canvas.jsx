@@ -92,11 +92,6 @@ const TextCanvas = ({
     // we use a ref to access the canvas' DOM node
     const canvasRef = useRef(null);
 
-    //handle Click canvas - remove for production. replace with function to grap api data
-    const handleClickCanvas = () => {
-        clickCanvas();
-    };
-
     // handle changing text or background overlay
     useEffect(() => {
         const context = canvasRef.current.getContext("2d");
@@ -195,7 +190,6 @@ const TextCanvas = ({
                 fontSize={fontSize}
                 fontWeight={fontWeight}
                 textColor={textColor}
-                onClick={handleClickCanvas}
                 width={window.outerWidth}
                 id={id}
             />

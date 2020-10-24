@@ -43,20 +43,6 @@ const Create = () => {
     const [photographer, setPhotographer] = useState("");
     const [imgUrl, setImgUrl] = useState("");
 
-    // remove for production. replace with functions to grab api data / user settings and set props
-    const clickCanvas = () => {
-        setImgUrl(background);
-        setBgColor("#ADD8E6");
-        setBgOpacity(0.0);
-        setPhotographer("Jim Bean");
-
-        setTimeout(function () {
-            setText(
-                "Just some example text But what hapy long? Butappens if it gets really long? But what happes if it gets really really really long?"
-            );
-        }, 2000);
-    };
-
     const generateFinalCanvas = () => {
         setFinalImgUrl(imgUrl);
         setFinalText(text);
@@ -271,7 +257,6 @@ const Create = () => {
                 fontSize={fontSize}
                 fontWeight={fontWeight}
                 textColor={textColor}
-                clickCanvas={clickCanvas}
                 width={window.outerWidth}
                 canvasHeight={canvasHeight}
                 margin={margin}
