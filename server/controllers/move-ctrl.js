@@ -1,39 +1,38 @@
-const Movie = require("../models/move-model");
+const Move = require("../models/move-model");
 
-createMovie = (req, res) => {
+createMove = (req, res) => {
     const body = req.body;
 
     if (!body) {
         return res.status(400).json({
             success: false,
-            error: "You must provide a movie",
+            error: "You must provide a move",
         });
     }
 
-    const movie = new Movie(body);
+    const move = new Move(body);
 
-    if (!movie) {
+    if (!move) {
         return res.status(400).json({ success: false, error: err });
     }
 
-    movie
-        .save()
+    move.save()
         .then(() => {
             return res.status(201).json({
                 success: true,
-                id: movie._id,
-                message: "Movie created!",
+                id: move._id,
+                message: "Move created!",
             });
         })
         .catch((error) => {
             return res.status(400).json({
                 error,
-                message: "Movie not created!",
+                message: "Move not created!",
             });
         });
 };
 
-updateMovie = async (req, res) => {
+updateMove = async (req, res) => {
     const body = req.body;
 
     if (!body) {
@@ -43,83 +42,82 @@ updateMovie = async (req, res) => {
         });
     }
 
-    Movie.findOne({ _id: req.params.id }, (err, movie) => {
+    Move.findOne({ _id: req.params.id }, (err, move) => {
         if (err) {
             return res.status(404).json({
                 err,
-                message: "Movie not found!",
+                message: "Move not found!",
             });
         }
-        movie.name = body.name;
-        movie.time = body.time;
-        movie.rating = body.rating;
-        movie
-            .save()
+        move.name = body.name;
+        move.time = body.time;
+        move.rating = body.rating;
+        move.save()
             .then(() => {
                 return res.status(200).json({
                     success: true,
-                    id: movie._id,
-                    message: "Movie updated!",
+                    id: move._id,
+                    message: "Move updated!",
                 });
             })
             .catch((error) => {
                 return res.status(404).json({
                     error,
-                    message: "Movie not updated!",
+                    message: "Move not updated!",
                 });
             });
     });
 };
 
-deleteMovie = async (req, res) => {
-    await Movie.findOneAndDelete({ _id: req.params.id }, (err, movie) => {
+deleteMove = async (req, res) => {
+    await Move.findOneAndDelete({ _id: req.params.id }, (err, move) => {
         if (err) {
             return res.status(400).json({ success: false, error: err });
         }
 
-        if (!movie) {
+        if (!move) {
             return res
                 .status(404)
-                .json({ success: false, error: `Movie not found` });
+                .json({ success: false, error: `Move not found` });
         }
 
-        return res.status(200).json({ success: true, data: movie });
+        return res.status(200).json({ success: true, data: move });
     }).catch((err) => console.log(err));
 };
 
-getMovieById = async (req, res) => {
-    await Movie.findOne({ _id: req.params.id }, (err, movie) => {
+getMoveById = async (req, res) => {
+    await Move.findOne({ _id: req.params.id }, (err, move) => {
         if (err) {
             return res.status(400).json({ success: false, error: err });
         }
 
-        if (!movie) {
+        if (!move) {
             return res
                 .status(404)
-                .json({ success: false, error: `Movie not found` });
+                .json({ success: false, error: `Move not found` });
         }
-        return res.status(200).json({ success: true, data: movie });
+        return res.status(200).json({ success: true, data: move });
     }).catch((err) => console.log(err));
 };
 
-getMovies = async (req, res) => {
-    await Movie.find({}, (err, movies) => {
+getMoves = async (req, res) => {
+    await Move.find({}, (err, moves) => {
         if (err) {
             return res.status(400).json({ success: false, error: err });
         }
-        if (!movies.length) {
+        if (!moves.length) {
             return res
                 .status(404)
-                .json({ success: false, error: `Movie not found` });
+                .json({ success: false, error: `Move not found` });
         }
-        return res.status(200).json({ success: true, data: movies });
+        return res.status(200).json({ success: true, data: moves });
     }).catch((err) => console.log(err));
 };
 
 module.exports = {
-    createMovie,
-    updateMovie,
-    deleteMovie,
-    getMovies,
-    getMovieById,
+    createMove,
+    updateMove,
+    deleteMove,
+    getMoves,
+    getMoveById,
 };
