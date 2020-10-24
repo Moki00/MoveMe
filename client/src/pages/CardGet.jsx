@@ -44,7 +44,6 @@ const CardGet = ({ match }) => {
                 setWidth("95%");
             } else {
                 // get img and make Img object
-
                 const image = new Image();
 
                 image.src = src;
@@ -82,7 +81,6 @@ const CardGet = ({ match }) => {
                         height={height}
                     />
                 </ImgWrapper>
-                {/* Need to have an img in centre with create button below. Img should have max width */}
                 <ButtonWrapper>
                     <CreateLinkButton />
                 </ButtonWrapper>
