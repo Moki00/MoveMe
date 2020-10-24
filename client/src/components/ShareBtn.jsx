@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const Button = styled.button.attrs({
-    className: "btn btn-lg btn-warning text-danger shareBtn w-75",
+    className: "btn btn-lg yellow-background red-text shareBtn w-75",
     type: "button",
 })`
     height: 100px;

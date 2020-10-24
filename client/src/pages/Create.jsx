@@ -299,7 +299,7 @@ const Create = () => {
             {/* open modal button */}
             <button
                 type="button"
-                className="btn btn-warning text-danger"
+                className="btn yellow-background red-text"
                 data-toggle="modal"
                 data-target="#shareModal"
             >

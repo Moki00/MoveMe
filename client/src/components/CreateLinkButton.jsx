@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 const Button = styled.button.attrs({
     type: "button",
-    className: "btn btn-warning red-text",
+    className: "btn yellow-background red-text",
 })`
     font-size: 1.3rem !important;
     font-weight: 500;
