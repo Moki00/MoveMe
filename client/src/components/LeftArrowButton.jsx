@@ -3,7 +3,7 @@ import styled from "styled-components";
 import LeftArrow from "./LeftArrow";
 
 const Button = styled.button.attrs({
-    className: "btn btn-warning text-danger",
+    className: "btn yellow-background red-text",
 })``;
 
 const LeftArrowButton = () => {

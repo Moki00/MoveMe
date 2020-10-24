@@ -30,7 +30,7 @@ const ModalHeaderButton = styled.button.attrs({
 })``;
 
 const ModalCloseButton = styled.button.attrs({
-    className: "btn btn-warning text-danger",
+    className: "btn yellow-background red-text",
     type: "button",
 })``;
 

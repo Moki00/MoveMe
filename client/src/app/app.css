@@ -1,21 +1,40 @@
-.nav-link {
-    letter-spacing: 3px;
+/* GLOBAL */
+:root {
+    --moveme-yellow: #fff55a;
+    --moveme-red: #ff0e0e;
 }
 
-.quoteNavArea,
-.imgNavArea {
-    width: 45%;
+.red-text {
+    color: var(--moveme-red) !important;
+}
+
+.yellow-background {
+    background-color: var(--moveme-yellow) !important;
 }
 
 .app {
     min-height: 100vh;
 }
 
+/* FOOTER */
+
 footer {
     bottom: 0;
     position: fixed;
 }
 
+/* NAV */
+.nav-link {
+    letter-spacing: 3px;
+}
+
+/* CREATE PAGE */
+.quoteNavArea,
+.imgNavArea {
+    width: 45%;
+}
+
+/* SHARE BUTTON */
 .shareBtn {
     height: 100px;
 }

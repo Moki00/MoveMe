@@ -4,12 +4,12 @@ import styled from "styled-components";
 
 const Button = styled.button.attrs({
     type: "button",
-    className: "btn btn-warning text-danger",
+    className: "btn yellow-background red-text",
 })`
-font-size:1.3rem !important; 
-font-weight:500; 
-width:150px;
-border-radius: 10px !important;
+    font-size: 1.3rem !important;
+    font-weight: 500;
+    width: 150px;
+    border-radius: 10px !important;
 `;
 
 const CreateLinkButton = () => {

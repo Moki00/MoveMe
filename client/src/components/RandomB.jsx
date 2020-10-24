@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const Button = styled.button.attrs({
     type: "button",
-    className: "btn btn-warning text-danger",
+    className: "btn yellow-background red-text",
 })``;
 
 const RandomB = ({ getQuote }) => {

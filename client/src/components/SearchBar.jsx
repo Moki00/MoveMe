@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import styled from "styled-components";
 
 const SearchIconButton = styled.div.attrs({
-    className: "input-group-text bg-warning",
+    className: "input-group-text yellow-background",
     id: "SearchIcon",
 })``;
 

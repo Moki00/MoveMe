@@ -9,12 +9,12 @@ const BurgerBtn = styled.button.attrs({
 })``;
 
 const BurgerIcon = styled.span.attrs({
-    className: "navbar-toggler-icon",
+    className: "navbar-toggler-icon red-text",
 })``;
 
 const Nav = styled.nav.attrs({
     className:
-        "navbar navbar-expand-lg navbar-light bg-warning d-flex justify-content-between",
+        "navbar navbar-expand-lg navbar-light d-flex justify-content-between red-text yellow-background",
 })``;
 
 const NavBar = () => {

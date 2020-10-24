@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const FooterWrapper = styled.footer.attrs({
-    className: "footer bg-warning w-100",
+    className: "footer yellow-background w-100",
 })`
     bottom: 0;
     position: fixed;
@@ -17,7 +17,7 @@ const MutedText = styled.span.attrs({
 })``;
 
 const FooterLink = styled.a.attrs({
-    className: "text-danger",
+    className: "red-text",
     href: "https://github.com/moki929/MoveMe",
 })``;
 
