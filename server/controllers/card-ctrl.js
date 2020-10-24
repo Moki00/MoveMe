@@ -1,39 +1,39 @@
-const Move = require("../models/move-model");
+const Card = require("../models/card-model");
 
-createMove = (req, res) => {
+createCard = (req, res) => {
     const body = req.body;
 
     if (!body) {
         return res.status(400).json({
             success: false,
-            error: "You must provide a move",
+            error: "You must provide a card",
         });
     }
 
-    const move = new Move(body);
+    const card = new Card(body);
 
-    if (!move) {
+    if (!card) {
         return res.status(400).json({ success: false, error: err });
     }
 
-    move.save()
+    card.save()
         .then(() => {
             return res.status(201).json({
                 success: true,
-                id: move._id,
-                message: "Move created!",
+                id: card._id,
+                message: "Card created!",
             });
         })
         .catch((error) => {
             return res.status(400).json({
                 error,
-                message: "Move not created!",
+                message: "Card not created!",
             });
         });
 };
 
 //maybe remove for MVP
-updateMove = async (req, res) => {
+updateCard = async (req, res) => {
     const body = req.body;
 
     if (!body) {
@@ -43,82 +43,82 @@ updateMove = async (req, res) => {
         });
     }
 
-    Move.findOne({ _id: req.params.id }, (err, move) => {
+    Card.findOne({ _id: req.params.id }, (err, card) => {
         if (err) {
             return res.status(404).json({
                 err,
-                message: "Move not found!",
+                message: "Card not found!",
             });
         }
-        move.name = body.name;
-        move.time = body.time;
-        move.rating = body.rating;
-        move.save()
+        card.name = body.name;
+        card.time = body.time;
+        card.rating = body.rating;
+        card.save()
             .then(() => {
                 return res.status(200).json({
                     success: true,
-                    id: move._id,
-                    message: "Move updated!",
+                    id: card._id,
+                    message: "Card updated!",
                 });
             })
             .catch((error) => {
                 return res.status(404).json({
                     error,
-                    message: "Move not updated!",
+                    message: "Card not updated!",
                 });
             });
     });
 };
 
-deleteMove = async (req, res) => {
-    await Move.findOneAndDelete({ _id: req.params.id }, (err, move) => {
+deleteCard = async (req, res) => {
+    await Card.findOneAndDelete({ _id: req.params.id }, (err, card) => {
         if (err) {
             return res.status(400).json({ success: false, error: err });
         }
 
-        if (!move) {
+        if (!card) {
             return res
                 .status(404)
-                .json({ success: false, error: `Move not found` });
+                .json({ success: false, error: `Card not found` });
         }
 
-        return res.status(200).json({ success: true, data: move });
+        return res.status(200).json({ success: true, data: card });
     }).catch((err) => console.log(err));
 };
 
-getMoveById = async (req, res) => {
-    await Move.findOne({ _id: req.params.id }, (err, move) => {
+getCardById = async (req, res) => {
+    await Card.findOne({ _id: req.params.id }, (err, card) => {
         if (err) {
             return res.status(400).json({ success: false, error: err });
         }
 
-        if (!move) {
+        if (!card) {
             return res
                 .status(404)
-                .json({ success: false, error: `Move not found` });
+                .json({ success: false, error: `Card not found` });
         }
-        return res.status(200).json({ success: true, data: move });
+        return res.status(200).json({ success: true, data: card });
     }).catch((err) => console.log(err));
 };
 
-getMoves = async (req, res) => {
-    await Move.find({}, (err, moves) => {
+getCards = async (req, res) => {
+    await Card.find({}, (err, cards) => {
         if (err) {
             return res.status(400).json({ success: false, error: err });
         }
-        if (!moves.length) {
+        if (!cards.length) {
             return res
                 .status(404)
-                .json({ success: false, error: `Move not found` });
+                .json({ success: false, error: `Card not found` });
         }
-        return res.status(200).json({ success: true, data: moves });
+        return res.status(200).json({ success: true, data: cards });
     }).catch((err) => console.log(err));
 };
 
 module.exports = {
-    createMove,
-    updateMove,
-    deleteMove,
-    getMoves,
-    getMoveById,
+    createCard,
+    updateCard,
+    deleteCard,
+    getCards,
+    getCardById,
 };

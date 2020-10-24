@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const Move = new Schema(
+const Card = new Schema(
     {
         name: { type: String, required: true },
         time: { type: [String], required: true },
@@ -10,4 +10,4 @@ const Move = new Schema(
     { timestamps: true }
 );
 
-module.exports = mongoose.model("moves", Move);
+module.exports = mongoose.model("cards", Card);
