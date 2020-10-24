@@ -15,7 +15,7 @@ ctrl C to exit
 "key":"value",
 
 username + password ....got messed up...
-mongo "mongodb+srv://sandbox.PrivateCode.mongodb.net/<dbname>" --username m001-student --password m001-mongodb-basics
+mongo "mongodb+srv://sandbox.PrivateCode.mongodb.net/<dbname>" --username xxxxxx --password xxxxxxx
 
 $rename
 The $rename operator updates the name of a field and has the following form:
