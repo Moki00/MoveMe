@@ -32,6 +32,7 @@ createMove = (req, res) => {
         });
 };
 
+//maybe remove for MVP
 updateMove = async (req, res) => {
     const body = req.body;
 
