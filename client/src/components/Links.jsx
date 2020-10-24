@@ -28,14 +28,14 @@ const Links = () => {
             <List>
                 <Item>
                     <LinkWrapper>
-                        <Link to="/" className="text-danger">
+                        <Link to="/" className="red-text">
                             Home
                         </Link>
                     </LinkWrapper>
                 </Item>
                 <Item>
                     <LinkWrapper>
-                        <Link to="/create" className="text-danger">
+                        <Link to="/create" className="red-text">
                             Create
                         </Link>
                     </LinkWrapper>
