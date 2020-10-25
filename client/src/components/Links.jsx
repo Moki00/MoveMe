@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
@@ -23,19 +23,28 @@ const LinkWrapper = styled.div.attrs({
 `;
 
 const Links = () => {
+    const collapseRef = useRef(null);
+    const hideNav = () => {
+        collapseRef.current.classList.remove("show");
+    };
+
     return (
-        <Collapse>
+        <Collapse ref={collapseRef}>
             <List>
                 <Item>
                     <LinkWrapper>
-                        <Link to="/" className="red-text">
+                        <Link to="/" className="red-text" onClick={hideNav}>
                             Home
                         </Link>
                     </LinkWrapper>
                 </Item>
                 <Item>
                     <LinkWrapper>
-                        <Link to="/create" className="red-text">
+                        <Link
+                            to="/create"
+                            className="red-text"
+                            onClick={hideNav}
+                        >
                             Create
                         </Link>
                     </LinkWrapper>
