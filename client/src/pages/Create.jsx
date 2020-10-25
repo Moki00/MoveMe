@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import {
     FinalImgArea,
+    FontEdit,
     ImgPreviewArea,
     RandomB,
     ShareModal,
@@ -77,7 +78,6 @@ const Create = () => {
             const response = await fetch(
                 "https://cors-anywhere.herokuapp.com/https://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en",
                 {
-
                     mode: "cors",
 
                     headers: {
@@ -261,6 +261,9 @@ const Create = () => {
                 generateFinalCanvas={generateFinalCanvas}
                 photographer={photographer}
             />
+            <div className="w-50">
+                <FontEdit />
+            </div>
             {/* open modal button */}
             <button
                 type="button"
