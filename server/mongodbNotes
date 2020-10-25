@@ -1,6 +1,17 @@
 Start Compass with:
 mongodb-compass
 
+<<<{[{[{config file}]}]}>>>
+storage:
+  dbPath: /data/db
+net:
+  bindIp: localhost
+  port: 27000
+security:
+  authorization: enabled
+
+
+
 sudo service mongodb start
 mongo
 show dbs;
