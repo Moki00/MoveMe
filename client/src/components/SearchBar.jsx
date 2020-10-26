@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import styled from "styled-components";
 import Autocomplete from "react-autocomplete";
 import json from "../data/test.json";
@@ -22,20 +22,26 @@ const Wrapper = styled.div.attrs({
 // https://www.digitalocean.com/community/tutorials/react-react-autocomplete
 // https://www.npmjs.com/package/react-autocomplete
 
+// TODO:
+// need to add unique ID to each item in formatTags.
+
+// use this? https://jsbin.com/mipesawapi/edit?js,output
 const SearchBar = () => {
+    const [value, setValue] = useState("");
     const searchBoxRef = useRef(null);
-    console.log(json);
+    // console.log(json);
     return (
         <form className="form-inline">
             <Autocomplete
                 getItemValue={(item) => item.label}
                 items={[
-                    { label: "apple" },
-                    { label: "banana" },
-                    { label: "pear" },
+                    { id: "1", label: "apple" },
+                    { id: "2", label: "banana" },
+                    { id: "3", label: "pear" },
                 ]}
                 renderItem={(item, isHighlighted) => (
                     <div
+                        key={item.id}
                         style={{
                             background: isHighlighted ? "lightgray" : "white",
                         }}
@@ -44,8 +50,8 @@ const SearchBar = () => {
                     </div>
                 )}
                 value={value}
-                onChange={(e) => (value = e.target.value)}
-                onSelect={(val) => (value = val)}
+                onChange={(e) => setValue(e.target.value)}
+                onSelect={(val) => setValue(val)}
             />
             <div className="input-group">
                 <input
