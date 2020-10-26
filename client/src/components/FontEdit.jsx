@@ -14,23 +14,23 @@ const Container = styled.div.attrs({
 })``;
 
 const Row = styled.div.attrs({
-    className: "row ",
+    className: "row mt-3",
 })``;
 
 const Input = styled.div.attrs({
-    className: "col-3",
+    className: "col-4",
 })``;
 
 const Label = styled.div.attrs({
-    className: "col-6",
+    className: "col-4",
 })``;
 
 const LeftSide = styled.div.attrs({
-    className: "col-12 col-lg-6",
+    className: "col-12 col-lg-6 p-2",
 })``;
 
 const RightSide = styled.div.attrs({
-    className: "col-12 col-lg-6",
+    className: "col-12 col-lg-6 p-2",
 })``;
 
 const FontEdit = () => {
@@ -64,7 +64,7 @@ const FontEdit = () => {
                         <Input>
                             <input
                                 type="color"
-                                style={{ width: "65%", height: "25px" }}
+                                style={{ width: "100%", height: "25px" }}
                                 value="#00ffff"
                             />
                         </Input>
@@ -78,7 +78,7 @@ const FontEdit = () => {
                                 id="cars"
                                 style={{
                                     background: "#ffc107",
-                                    width: "65%",
+                                    width: "100%",
                                     color: "red",
                                 }}
                             >
@@ -93,12 +93,15 @@ const FontEdit = () => {
                     </Row>
                 </LeftSide>
                 <RightSide>
+                    <div className="mt-3 d-none d-lg-block text-center font-weight-bold">
+                        Overlay
+                    </div>
                     <Row>
                         <Label>BG color</Label>
                         <Input>
                             <input
                                 type="color"
-                                style={{ width: "65%", height: "25px" }}
+                                style={{ width: "100%", height: "25px" }}
                                 value="#00ffff"
                             />
                         </Input>

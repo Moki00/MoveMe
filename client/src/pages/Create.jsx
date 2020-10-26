@@ -261,9 +261,6 @@ const Create = () => {
                 generateFinalCanvas={generateFinalCanvas}
                 photographer={photographer}
             />
-            <div className="w-50">
-                <FontEdit />
-            </div>
             {/* open modal button */}
             <button
                 type="button"
