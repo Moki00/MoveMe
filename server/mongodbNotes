@@ -3,7 +3,7 @@ mongodb-compass
 
 <<<{[{[{config file}]}]}>>>
 storage:
-  dbPath: /data/db
+  dbPath: /var/mongodb/db
 net:
   bindIp: localhost
   port: 27000
@@ -11,6 +11,35 @@ security:
   authorization: enabled
 
 
+sudo mkdir -p /var/mongodb/db/
+mkdir -p /var/mongodb/db/
+sudo kill -9 2400
+mongod -f /data/mongod.conf
+rm -rf mongodb-27000.sock
+sudo chown -R vagrant:vagrant /var/mongodb/db/
+
+storage:
+  dbPath: "/var/mongodb/db/"
+systemLog:
+  path: "/data/logs/mongod.log"
+  destination: "file"
+net:
+  bindIp : "127.0.0.1,192.168.103.100"
+  port: 27000
+security:
+  authorization: enabled
+processManagement:
+  fork : true
+
+mongo admin --host localhost:27000 --eval '
+  db.createUser({
+    user: "m103-admin",
+    pwd: "m103-pass",
+    roles: [
+      {role: "root", db: "admin"}
+    ]
+  })
+'
 
 sudo service mongodb start
 mongo
