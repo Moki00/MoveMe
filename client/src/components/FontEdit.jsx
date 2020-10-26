@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const Button = styled.div.attrs({
-    className: "btn btn-warning w-100",
+    className: "btn btn-warning w-100 text-danger",
 })``;
 
 const wrapper = styled.div.attrs({
@@ -10,7 +10,7 @@ const wrapper = styled.div.attrs({
 })``;
 
 const Container = styled.div.attrs({
-    className: "col-12 text-dark",
+    className: "col-12 text-dark ",
 })``;
 
 const Row = styled.div.attrs({
@@ -18,7 +18,7 @@ const Row = styled.div.attrs({
 })``;
 
 const Input = styled.div.attrs({
-    className: "col-4",
+    className: "col-3",
 })``;
 
 const Label = styled.div.attrs({
@@ -26,11 +26,11 @@ const Label = styled.div.attrs({
 })``;
 
 const LeftSide = styled.div.attrs({
-    className: "col-12 col-lg-6 p-2",
+    className: "col-12 col-lg-4 p-2",
 })``;
 
 const RightSide = styled.div.attrs({
-    className: "col-12 col-lg-6 p-2",
+    className: "col-12 col-lg-4 p-2",
 })``;
 
 const FontEdit = () => {
@@ -44,19 +44,19 @@ const FontEdit = () => {
                     <Row>
                         <Label>Size</Label>
                         <Input>
-                            <Button style={{ color: "red" }}>-</Button>
+                            <Button>-</Button>
                         </Input>
                         <Input>
-                            <Button style={{ color: "red" }}>+</Button>
+                            <Button>+</Button>
                         </Input>
                     </Row>
                     <Row>
                         <Label>Font Weight</Label>
                         <Input>
-                            <Button style={{ color: "red" }}>-</Button>
+                            <Button>-</Button>
                         </Input>
                         <Input>
-                            <Button style={{ color: "red" }}>+</Button>
+                            <Button>+</Button>
                         </Input>
                     </Row>
                     <Row>
@@ -111,10 +111,10 @@ const FontEdit = () => {
                     <Row>
                         <Label>BG Opacity</Label>
                         <Input>
-                            <Button style={{ color: "red" }}>-</Button>
+                            <Button>-</Button>
                         </Input>
                         <Input>
-                            <Button style={{ color: "red" }}>+</Button>
+                            <Button>+</Button>
                         </Input>
                     </Row>
                     <Row style={{ "margin-top": "20px" }}>
