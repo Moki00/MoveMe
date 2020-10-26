@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import styled from "styled-components";
+import Autocomplete from "react-autocomplete";
 import json from "../data/test.json";
 
 const SearchIconButton = styled.div.attrs({
@@ -26,6 +27,26 @@ const SearchBar = () => {
     console.log(json);
     return (
         <form className="form-inline">
+            <Autocomplete
+                getItemValue={(item) => item.label}
+                items={[
+                    { label: "apple" },
+                    { label: "banana" },
+                    { label: "pear" },
+                ]}
+                renderItem={(item, isHighlighted) => (
+                    <div
+                        style={{
+                            background: isHighlighted ? "lightgray" : "white",
+                        }}
+                    >
+                        {item.label}
+                    </div>
+                )}
+                value={value}
+                onChange={(e) => (value = e.target.value)}
+                onSelect={(val) => (value = val)}
+            />
             <div className="input-group">
                 <input
                     type="text"
