@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import {
     FinalImgArea,
+    FontEdit,
     ImgPreviewArea,
     RandomB,
     ShareModal,
