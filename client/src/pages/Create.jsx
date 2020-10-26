@@ -4,6 +4,7 @@ import {
     ImgPreviewArea,
     RandomB,
     ShareModal,
+    SearchBar,
 } from "../components";
 import background from "../images/blossom.jpg"; // need to get this from state passed from app.js
 import { UNSPLASH_ACCESS_KEY, UNSPLASH_SECRET_KEY } from "../app/keys";
@@ -251,6 +252,7 @@ const Create = () => {
                 // getQuote={getQuote}
                 getQuote={buildPreview}
             />
+            <SearchBar />
             <ImgPreviewArea
                 text={text}
                 font={font}

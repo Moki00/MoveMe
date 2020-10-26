@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import styled from "styled-components";
+import json from "../data/test.json";
 
 const SearchIconButton = styled.div.attrs({
     className: "input-group-text yellow-background",
@@ -16,8 +17,13 @@ const Wrapper = styled.div.attrs({
     }
 `;
 
+// https://www.roytuts.com/autocomplete-input-using-react/#:~:text=%20Autocomplete%20input%20using%20React%20%201%20Introduction.,Source%20Code.%20Thanks%20for%20reading.%20%20More%20
+// https://www.digitalocean.com/community/tutorials/react-react-autocomplete
+// https://www.npmjs.com/package/react-autocomplete
+
 const SearchBar = () => {
     const searchBoxRef = useRef(null);
+    console.log(json);
     return (
         <form className="form-inline">
             <div className="input-group">
@@ -27,7 +33,7 @@ const SearchBar = () => {
                     placeholder="e.g. Nature"
                     aria-label="SearchBox"
                     aria-describedby="SearchIcon"
-                    useRef={searchBoxRef}
+                    ref={searchBoxRef}
                 />
                 <Wrapper>
                     <SearchIconButton>
