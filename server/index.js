@@ -1,3 +1,5 @@
+const MongoAtlasServer = require("./mongo.js");
+
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
@@ -24,8 +26,6 @@ app.listen(apiPort, () => console.log(`Server running on port ${apiPort}`));
 
 ////
 
-////
-
 // const client = new MongoClient(uri, { useNewUrlParser: true });
 // client.connect((err) => {
 //     const collection = client.db("test").collection("devices");
@@ -36,15 +36,14 @@ app.listen(apiPort, () => console.log(`Server running on port ${apiPort}`));
 // our cloud database
 
 var MongoClient = require("mongodb").MongoClient;
-var url =
-    "mongodb+srv://Moki929:m006-MoveMe1s2d@cluster0.smqjt.mongodb.net/firstTry";
+var url = MongoAtlasServer;
 
 // to insert into our cloud database
 
 MongoClient.connect(url, function (err, db) {
     if (err) throw err;
     var dbo = db.db("firstTry");
-    var myobj = { image_id: 8750981750918750972002, image: "bananas" };
+    var myobj = { image_id: "8750982002", image: "choco" };
     dbo.collection("firstCollection").insertOne(myobj, function (err, res) {
         if (err) throw err;
         console.log("1 document inserted");
