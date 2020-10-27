@@ -3,11 +3,11 @@ import styled from "styled-components";
 
 const Button = styled.button.attrs({
     type: "button",
-    className: "btn yellow-background red-text d-lg-none",
+    className: "btn yellow-background red-text d-md-none",
 })`
     position: absolute;
     top: 30%;
-    left: 92%;
+    right: -2%;
     border-radius: 10px;
 `;
 
