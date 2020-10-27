@@ -29,6 +29,7 @@ const LeftSide = styled.div.attrs({
     className: "col-12 col-lg-4 p-2",
 })``;
 
+//for desktop only
 const RightSide = styled.div.attrs({
     className: "col-12 col-lg-4 p-2",
 })``;
