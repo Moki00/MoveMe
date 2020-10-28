@@ -43,7 +43,7 @@ var url = MongoAtlasServer;
 MongoClient.connect(url, function (err, db) {
     if (err) throw err;
     var dbo = db.db("firstTry");
-    var myobj = { image_id: "8750982002", image: "choco" };
+    var myobj = { image_id: "875098200DDD", image: "donkeyKong" };
     dbo.collection("firstCollection").insertOne(myobj, function (err, res) {
         if (err) throw err;
         console.log("1 document inserted");
