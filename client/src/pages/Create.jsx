@@ -253,12 +253,12 @@ const Create = () => {
     })``;
 
     const LeftSide = styled.div.attrs({
-        className: "col-8 ",
+        className: "col-12 col-lg-8 ",
     })``;
 
     const RightSide = styled.div.attrs({
         className:
-            "col-4 d-flex flex-column justify-content-center align-items-center",
+            "col-12 col-lg-4 d-flex flex-column justify-content-center align-items-center",
     })``;
 
     const Row = styled.div.attrs({
@@ -271,7 +271,7 @@ const Create = () => {
 
     const Controls = styled.div.attrs({
         className:
-            "d-flex flex-column justify-content-center align-items-center ",
+            "d-flex flex-column justify-content-center align-items-center createPageControls",
     })``;
 
     return (
@@ -324,7 +324,9 @@ const Create = () => {
                 </LeftSide>
                 <RightSide>
                     <Controls>
-                        <FontEdit />
+                        <div id="fontEditWrapper">
+                            <FontEdit />
+                        </div>
                         <button
                             type="button"
                             className="btn yellow-background red-text d-none d-lg-block mt-3"

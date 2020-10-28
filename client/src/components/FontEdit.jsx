@@ -18,7 +18,7 @@ const Row = styled.div.attrs({
 })``;
 
 const Input = styled.div.attrs({
-    className: "col-3",
+    className: "col-4",
 })``;
 
 const Label = styled.div.attrs({
@@ -26,12 +26,12 @@ const Label = styled.div.attrs({
 })``;
 
 const LeftSide = styled.div.attrs({
-    className: "col-12 col-lg-4 p-2",
+    className: "col-12 col-lg-6 ",
 })``;
 
 //for desktop only
 const RightSide = styled.div.attrs({
-    className: "col-12 col-lg-4 p-2",
+    className: "col-12 col-lg-6 ",
 })``;
 
 const FontEdit = () => {
