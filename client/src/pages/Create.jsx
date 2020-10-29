@@ -5,9 +5,12 @@ import {
     ImgPreviewArea,
     RandomB,
     ShareModal,
+    SearchBar,
+    Editbtn,
 } from "../components";
 import background from "../images/blossom.jpg"; // need to get this from state passed from app.js
 import { UNSPLASH_ACCESS_KEY, UNSPLASH_SECRET_KEY } from "../app/keys";
+import styled from "styled-components";
 
 const Create = () => {
     const [text, setText] = useState("");
@@ -240,63 +243,109 @@ const Create = () => {
         getImage();
         getQuote();
     };
+
+    const SearchbarContainer = styled.div.attrs({
+        className: "d-flex justify-content-between mt-3 mb-3",
+    })``;
+
+    const PageWrapper = styled.div.attrs({
+        className: "container",
+    })``;
+
+    const LeftSide = styled.div.attrs({
+        className: "col-12 col-lg-8 ",
+    })``;
+
+    const RightSide = styled.div.attrs({
+        className:
+            "col-12 col-lg-4 d-flex flex-column justify-content-center align-items-center",
+    })``;
+
+    const Row = styled.div.attrs({
+        className: "row",
+    })``;
+
+    const ImageWrapper = styled.div.attrs({
+        className: "mt-3",
+    })``;
+
+    const Controls = styled.div.attrs({
+        className:
+            "d-flex flex-column justify-content-center align-items-center createPageControls",
+    })``;
+
     return (
-        <div>
-            <p onClick={getImage}>
-                In this page you'll see the image creation screen
-            </p>
-            <RandomB
-                height="100px"
-                width="100px"
-                style={{ backgroundColor: "blue", marginTop: "30px" }}
-                // getQuote={getQuote}
-                getQuote={buildPreview}
-            />
-            <ImgPreviewArea
-                text={text}
-                font={font}
-                fontSize={fontSize}
-                fontWeight={fontWeight}
-                textColor={textColor}
-                width={window.outerWidth}
-                canvasHeight={canvasHeight}
-                margin={margin}
-                bgColor={bgColor}
-                bgOpacity={bgOpacity}
-                // background import is just for testing. remove later
-                background={background}
-                setCanvasHeight={setCanvasHeight}
-                imgUrl={imgUrl}
-            />
-            <FinalImgArea
-                finalImgUrl={finalImgUrl}
-                finalText={finalText}
-                finalFont={finalFont}
-                finalFontSize={finalFontSize}
-                finalFontWeight={finalFontWeight}
-                finalTextColor={finalTextColor}
-                width={window.outerWidth}
-                finalMargin={finalMargin}
-                finalBgColor={finalBgColor}
-                finalBgOpacity={finalBgOpacity}
-                generateFinalCanvas={generateFinalCanvas}
-                photographer={photographer}
-            />
-            {/* open modal button */}
-            <button
-                type="button"
-                className="btn yellow-background red-text"
-                data-toggle="modal"
-                data-target="#shareModal"
-            >
-                SHARE
-            </button>
-            <ShareModal
-                searchTerm={searchTerm}
-                random={random}
-                finalUrl={finalUrl}
-            />
-        </div>
+        <PageWrapper>
+            <SearchbarContainer>
+                <RandomB
+                    height="100px" //should I remove
+                    width="100px" //not working
+                    style={{ backgroundColor: "blue", marginTop: "30px" }} //not working
+                    // getQuote={getQuote}
+                    getQuote={buildPreview}
+                />
+                <SearchBar />
+            </SearchbarContainer>
+            <Row>
+                <LeftSide>
+                    <ImageWrapper>
+                        <ImgPreviewArea
+                            text={text}
+                            font={font}
+                            fontSize={fontSize}
+                            fontWeight={fontWeight}
+                            textColor={textColor}
+                            width={window.outerWidth}
+                            canvasHeight={canvasHeight}
+                            margin={margin}
+                            bgColor={bgColor}
+                            bgOpacity={bgOpacity}
+                            // background import is just for testing. remove later
+                            background={background}
+                            setCanvasHeight={setCanvasHeight}
+                            imgUrl={imgUrl}
+                        />
+                        <FinalImgArea
+                            finalImgUrl={finalImgUrl}
+                            finalText={finalText}
+                            finalFont={finalFont}
+                            finalFontSize={finalFontSize}
+                            finalFontWeight={finalFontWeight}
+                            finalTextColor={finalTextColor}
+                            width={window.outerWidth}
+                            finalMargin={finalMargin}
+                            finalBgColor={finalBgColor}
+                            finalBgOpacity={finalBgOpacity}
+                            generateFinalCanvas={generateFinalCanvas}
+                            photographer={photographer}
+                        />
+                    </ImageWrapper>
+                    {/* open modal button */}
+                </LeftSide>
+                <RightSide>
+                    <Controls>
+                        <div className="d-none d-lg-block" id="fontEditWrapper">
+                            <FontEdit />
+                        </div>
+                        <button
+                            type="button"
+                            className="btn yellow-background red-text  mt-3"
+                            data-toggle="modal"
+                            data-target="#shareModal"
+                            style={{ left: "50%" }}
+                        >
+                            SHARE
+                        </button>
+                        <ShareModal
+                            searchTerm={searchTerm}
+                            random={random}
+                            finalUrl={finalUrl}
+                        />
+                    </Controls>
+                    <Editbtn />
+                </RightSide>
+            </Row>
+        </PageWrapper>
     );
 };
 
