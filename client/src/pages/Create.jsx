@@ -324,12 +324,12 @@ const Create = () => {
                 </LeftSide>
                 <RightSide>
                     <Controls>
-                        <div id="fontEditWrapper">
+                        <div className="d-none d-lg-block" id="fontEditWrapper">
                             <FontEdit />
                         </div>
                         <button
                             type="button"
-                            className="btn yellow-background red-text d-none d-lg-block mt-3"
+                            className="btn yellow-background red-text  mt-3"
                             data-toggle="modal"
                             data-target="#shareModal"
                             style={{ left: "50%" }}

@@ -1,9 +1,12 @@
 import React from "react";
 import styled from "styled-components";
+import FonteditPop from "./FontEditPop";
 
 const Button = styled.button.attrs({
     type: "button",
     className: "btn yellow-background red-text d-lg-none",
+    "data-toggle": "modal",
+    "data-target": "#myModal",
 })`
     position: fixed;
     top: 30%;
@@ -28,6 +31,7 @@ const Editbtn = () => {
                 {/* E<br />D<br />I<br />T */}
                 <Text>EDIT</Text>
             </Button>
+            <FonteditPop />
         </div>
     );
 };

@@ -6,7 +6,7 @@ const Button = styled.div.attrs({
 })``;
 
 const wrapper = styled.div.attrs({
-    className: "input-group-append",
+    className: " input-group-append",
 })``;
 
 const Container = styled.div.attrs({
@@ -18,11 +18,11 @@ const Row = styled.div.attrs({
 })``;
 
 const Input = styled.div.attrs({
-    className: "col-4",
+    className: "col-6",
 })``;
 
 const Label = styled.div.attrs({
-    className: "col-4",
+    className: "col-12",
 })``;
 
 const LeftSide = styled.div.attrs({

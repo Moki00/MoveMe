@@ -17,6 +17,7 @@ import { TextCanvas, ImgCanvas, FinalCanvas } from "./Canvas";
 import ShareTwitter from "./ShareTwitter";
 import ShareWhatsapp from "./ShareWhatsapp";
 import ShareFacebook from "./ShareFacebook";
+import FonteditPop from "./FontEditPop";
 
 export {
     Links,
@@ -39,5 +40,6 @@ export {
     ShareWhatsapp,
     ShareFacebook,
     FontEdit,
-    Editbtn
+    Editbtn,
+    FonteditPop,
 };
