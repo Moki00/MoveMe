@@ -172,16 +172,16 @@ const FonteditPop = () => {
                         </Container>
                     </div>
                     <div class="modal-footer">
-                        <button
+                        {/* <button
                             type="button"
                             class="btn btn-default btn-danger"
                             data-dismiss="modal"
                         >
                             Close
-                        </button>
+                        </button> */}
                         <button
                             type="button"
-                            class="btn btn-default btn-danger"
+                            class="btn btn-default btn-warning text-danger"
                             data-dismiss="modal"
                         >
                             Save
