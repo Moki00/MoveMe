@@ -2,6 +2,8 @@
 
 ## MoveMe is a Motivational E-card generator
 
+_Version 1.0_
+
 Have you ever seen those motivational posters and thought, "Wouldn't it be cool if I could generate those easily?"
 
 So maybe you find a service that can make one and it's good.<br> But then you think, "I wish there was some way to easily share this with people..."
@@ -15,6 +17,8 @@ MoveMe is **_exactly_** that.
 -   Share your new poster on all popular social media platforms
 -   Feel amazing
 
-_version 1.0 Currently under development_
+### Check out the live site: TBC
+
+_version 1.0 currently under development_
 
 By moki929 (Morgan King), dancingCamel (Robert Morgan) and Ram
