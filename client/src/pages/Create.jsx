@@ -7,6 +7,8 @@ import {
     ShareModal,
     SearchBar,
     Editbtn,
+    LeftArrowButton,
+    RightArrowButton,
 } from "../components";
 import background from "../images/blossom.jpg"; // need to get this from state passed from app.js
 import { UNSPLASH_ACCESS_KEY, UNSPLASH_SECRET_KEY } from "../app/keys";
@@ -253,12 +255,12 @@ const Create = () => {
     })``;
 
     const LeftSide = styled.div.attrs({
-        className: "col-12 col-lg-8 ",
+        className: "col-12 col-lg-7 ",
     })``;
 
     const RightSide = styled.div.attrs({
         className:
-            "col-12 col-lg-4 d-flex flex-column justify-content-center align-items-center",
+            "col-12 col-lg-5 d-flex flex-column justify-content-center align-items-center",
     })``;
 
     const Row = styled.div.attrs({
@@ -273,6 +275,12 @@ const Create = () => {
         className:
             "d-flex flex-column justify-content-center align-items-center createPageControls",
     })``;
+
+    const ImgQuotebtn = styled.div.attrs({
+        className: "w-100 ",
+    })`
+        text-align: -webkit-center;
+    `;
 
     return (
         <PageWrapper>
@@ -324,12 +332,27 @@ const Create = () => {
                 </LeftSide>
                 <RightSide>
                     <Controls>
-                        <div className="d-none d-lg-block" id="fontEditWrapper">
+                        <div
+                            className="d-none d-lg-block "
+                            id="fontEditWrapper"
+                        >
                             <FontEdit />
                         </div>
+                        <ImgQuotebtn>
+                            <div className="h4 m-3">Image</div>
+                            <div className="d-flex justify-content-between w-50 ">
+                                <LeftArrowButton />
+                                <RightArrowButton />
+                            </div>
+                            <div className="h4  m-3">Quote</div>
+                            <div className="d-flex justify-content-between w-50">
+                                <LeftArrowButton />
+                                <RightArrowButton />
+                            </div>
+                        </ImgQuotebtn>
                         <button
                             type="button"
-                            className="btn yellow-background red-text  mt-3"
+                            className="btn yellow-background red-text mt-3 "
                             data-toggle="modal"
                             data-target="#shareModal"
                             style={{ left: "50%" }}

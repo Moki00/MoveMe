@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const Button = styled.div.attrs({
-    className: "btn btn-warning w-100 text-danger",
+    className: "btn btn-warning text-danger w-100",
 })``;
 
 const wrapper = styled.div.attrs({
@@ -18,15 +18,21 @@ const Row = styled.div.attrs({
 })``;
 
 const Input = styled.div.attrs({
-    className: "col-6",
+    className: "col-4 pl-1",
+})`
+    padding: 0;
+`;
+
+const Inputs = styled.div.attrs({
+    className: "col-8",
 })``;
 
 const Label = styled.div.attrs({
-    className: "col-12",
+    className: "col-4",
 })``;
 
 const LeftSide = styled.div.attrs({
-    className: "col-12 col-lg-6 ",
+    className: "col-12 col-lg-6",
 })``;
 
 //for desktop only
@@ -90,7 +96,6 @@ const FontEdit = () => {
                                 <option value="">Courier New</option>
                             </select>
                         </Input>
-                        <Input></Input>
                     </Row>
                 </LeftSide>
                 <RightSide>
