@@ -29,7 +29,9 @@ const Inputs = styled.div.attrs({
 
 const Label = styled.div.attrs({
     className: "col-4",
-})``;
+})`
+    font-size: 14px;
+`;
 
 const LeftSide = styled.div.attrs({
     className: "col-12 col-lg-6",
