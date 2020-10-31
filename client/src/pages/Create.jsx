@@ -338,15 +338,19 @@ const Create = () => {
                         >
                             <FontEdit />
                         </div>
-                        <ImgQuotebtn>
-                            <div className="h4 m-3">Image</div>
-                            <div className="d-flex justify-content-between w-50 ">
+                        <ImgQuotebtn
+                            className="m-1"
+                            style={{ background: "#cecece" }}
+                        >
+                            <div className="d-flex justify-content-between w-50 m-1">
                                 <LeftArrowButton />
+                                <div className="h4 m-3 text-dark">Image</div>
                                 <RightArrowButton />
                             </div>
-                            <div className="h4  m-3">Quote</div>
-                            <div className="d-flex justify-content-between w-50">
+
+                            <div className="d-flex justify-content-between w-50 m-1">
                                 <LeftArrowButton />
+                                <div className="h4  m-3 text-dark">Quote</div>
                                 <RightArrowButton />
                             </div>
                         </ImgQuotebtn>
