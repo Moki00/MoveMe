@@ -3,7 +3,9 @@ import styled from "styled-components";
 
 const Button = styled.div.attrs({
     className: "btn btn-warning text-danger w-100",
-})``;
+})`
+    background-color: #fff55a;
+`;
 
 const wrapper = styled.div.attrs({
     className: " input-group-append",
@@ -86,7 +88,7 @@ const FontEdit = () => {
                                 name="cars"
                                 id="cars"
                                 style={{
-                                    background: "#ffc107",
+                                    background: "#fff55a",
                                     width: "100%",
                                     color: "red",
                                 }}

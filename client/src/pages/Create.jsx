@@ -273,7 +273,7 @@ const Create = () => {
 
     const Controls = styled.div.attrs({
         className:
-            "d-flex flex-column justify-content-center align-items-center createPageControls",
+            "d-flex flex-column justify-content-center align-items-center createPageControls ",
     })``;
 
     const ImgQuotebtn = styled.div.attrs({
@@ -338,19 +338,16 @@ const Create = () => {
                         >
                             <FontEdit />
                         </div>
-                        <ImgQuotebtn
-                            className="m-1"
-                            style={{ background: "#cecece" }}
-                        >
-                            <div className="d-flex justify-content-between w-50 m-1">
+                        <ImgQuotebtn className="m-1">
+                            <div className="d-flex justify-content-between  m-1">
                                 <LeftArrowButton />
-                                <div className="h4 m-3 text-dark">Image</div>
+                                <div className="h4 m-3 ">Image</div>
                                 <RightArrowButton />
                             </div>
 
-                            <div className="d-flex justify-content-between w-50 m-1">
+                            <div className="d-flex justify-content-between m-1">
                                 <LeftArrowButton />
-                                <div className="h4  m-3 text-dark">Quote</div>
+                                <div className="h4  m-3 ">Quote</div>
                                 <RightArrowButton />
                             </div>
                         </ImgQuotebtn>
