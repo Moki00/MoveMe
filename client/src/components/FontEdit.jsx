@@ -2,8 +2,10 @@ import React from "react";
 import styled from "styled-components";
 
 const Button = styled.div.attrs({
-    className: "btn btn-warning w-100 text-danger",
-})``;
+    className: "btn btn-warning text-danger w-100",
+})`
+    background-color: #fff55a;
+`;
 
 const wrapper = styled.div.attrs({
     className: " input-group-append",
@@ -18,15 +20,23 @@ const Row = styled.div.attrs({
 })``;
 
 const Input = styled.div.attrs({
-    className: "col-6",
+    className: "col-4 pl-1",
+})`
+    padding: 0;
+`;
+
+const Inputs = styled.div.attrs({
+    className: "col-8",
 })``;
 
 const Label = styled.div.attrs({
-    className: "col-12",
-})``;
+    className: "col-4",
+})`
+    font-size: 14px;
+`;
 
 const LeftSide = styled.div.attrs({
-    className: "col-12 col-lg-6 ",
+    className: "col-12 col-lg-6",
 })``;
 
 //for desktop only
@@ -78,7 +88,7 @@ const FontEdit = () => {
                                 name="cars"
                                 id="cars"
                                 style={{
-                                    background: "#ffc107",
+                                    background: "#fff55a",
                                     width: "100%",
                                     color: "red",
                                 }}
@@ -90,7 +100,6 @@ const FontEdit = () => {
                                 <option value="">Courier New</option>
                             </select>
                         </Input>
-                        <Input></Input>
                     </Row>
                 </LeftSide>
                 <RightSide>

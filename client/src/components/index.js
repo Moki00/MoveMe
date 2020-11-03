@@ -18,6 +18,8 @@ import ShareTwitter from "./ShareTwitter";
 import ShareWhatsapp from "./ShareWhatsapp";
 import ShareFacebook from "./ShareFacebook";
 import FonteditPop from "./FontEditPop";
+import LeftArrowButton from "./LeftArrowButton";
+import RightArrowButton from "./RightArrowButton";
 
 export {
     Links,
@@ -42,4 +44,6 @@ export {
     FontEdit,
     Editbtn,
     FonteditPop,
+    LeftArrowButton,
+    RightArrowButton,
 };
