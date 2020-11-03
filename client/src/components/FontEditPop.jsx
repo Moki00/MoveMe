@@ -185,6 +185,7 @@ const FonteditPop = () => {
                             type="button"
                             class="btn btn-default btn-warning text-danger"
                             data-dismiss="modal"
+                            style={{ background: "#fff55a" }}
                         >
                             Save
                         </button>

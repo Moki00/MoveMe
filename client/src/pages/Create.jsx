@@ -356,7 +356,7 @@ const Create = () => {
                             className="btn yellow-background red-text mt-3 "
                             data-toggle="modal"
                             data-target="#shareModal"
-                            style={{ left: "50%" }}
+                            style={{ left: "50%", width: "60%" }}
                         >
                             SHARE
                         </button>
