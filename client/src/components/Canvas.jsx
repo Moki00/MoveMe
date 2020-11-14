@@ -228,11 +228,20 @@ const ImgCanvas = ({
         base_image.src = imgUrl;
 
         base_image.onload = function () {
+            if (canvasRef.current === null) {
+                console.log("rendering canvas pre width");
+                return;
+            }
             // set height of canvas to ratio determined by base_image width/height ratio
             const ratio = base_image.height / base_image.width;
             const newHeight = canvasRef.current.width * ratio;
 
             handleSetCanvasHeight(newHeight);
+
+            if (canvasRef.current === null) {
+                console.log("rendering canvas pre height");
+                return;
+            }
 
             canvasRef.current.height = newHeight;
 
