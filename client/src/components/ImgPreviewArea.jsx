@@ -1,9 +1,9 @@
-import React from 'react';
-import styled from 'styled-components'
+import React from "react";
+import styled from "styled-components";
 import { TextCanvas, ImgCanvas } from ".";
 
 const Wrapper = styled.div.attrs({})`
-    position: relative;    
+    position: relative;
 `;
 
 const ImgPreviewArea = ({
@@ -12,14 +12,16 @@ const ImgPreviewArea = ({
     fontSize,
     fontWeight,
     textColor,
-    clickCanvas,
-    canvasHeight,
+    // canvasHeight,
+    canvasWidth,
+    height,
     margin,
     bgColor,
     bgOpacity,
     imgUrl,
     background,
-    setCanvasHeight,
+    // setCanvasHeight,
+    setCanvasWidth,
 }) => {
     return (
         <Wrapper>
@@ -30,9 +32,11 @@ const ImgPreviewArea = ({
                 fontSize={fontSize}
                 fontWeight={fontWeight}
                 textColor={textColor}
-                width={window.outerWidth}
+                // width={window.outerWidth}
+                height={height}
                 background={background}
-                setCanvasHeight={setCanvasHeight}
+                // setCanvasHeight={setCanvasHeight}
+                setCanvasWidth={setCanvasWidth}
                 id="imgCanvas"
             />
             <TextCanvas
@@ -41,16 +45,18 @@ const ImgPreviewArea = ({
                 fontSize={fontSize}
                 fontWeight={fontWeight}
                 textColor={textColor}
-                clickCanvas={clickCanvas}
-                width={window.outerWidth}
-                canvasHeight={canvasHeight}
+                // clickCanvas={clickCanvas}
+                // width={window.outerWidth}
+                // canvasHeight={canvasHeight}
+                canvasWidth={canvasWidth}
+                height={height}
                 margin={margin}
                 bgColor={bgColor}
-                bgOpacity = {bgOpacity}
+                bgOpacity={bgOpacity}
                 id="textCanvas"
             />
         </Wrapper>
-    )
-}
+    );
+};
 
-export default ImgPreviewArea
+export default ImgPreviewArea;

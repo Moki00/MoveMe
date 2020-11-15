@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import styled from "styled-components";
 
-const CanvasElement = styled.canvas.attrs({ className: "w-100" })`
+const CanvasElement = styled.canvas.attrs({ className: "" })`
     border: 1px solid black;
 `;
 
@@ -82,15 +82,22 @@ const TextCanvas = ({
     fontSize,
     fontWeight,
     textColor,
-    canvasHeight,
+    // canvasHeight,
+    canvasWidth,
+    height,
     margin,
-    clickCanvas,
+    // clickCanvas,
     bgColor,
     bgOpacity,
     id,
 }) => {
     // we use a ref to access the canvas' DOM node
     const canvasRef = useRef(null);
+
+    // For testing purposes
+    useEffect(() => {
+        console.log("text canvas height: " + height);
+    }, []);
 
     // handle changing text or background overlay
     useEffect(() => {
@@ -142,17 +149,18 @@ const TextCanvas = ({
         bgOpacity,
     ]);
 
-    useEffect(() => {
-        const styleWidth =
-            window.outerWidth * 2 > 1200 ? 1200 : window.outerWidth * 2;
-        canvasRef.current.style.width = styleWidth;
-        canvasRef.current.height = canvasHeight;
-    }, [canvasHeight]);
+    // useEffect(() => {
+    //     const styleWidth =
+    //         window.outerWidth * 2 > 1200 ? 1200 : window.outerWidth * 2;
+    //     canvasRef.current.style.width = styleWidth;
+    //     canvasRef.current.height = canvasHeight;
+    // }, [canvasHeight]);
 
     // resize text canvas when image canvas changes height
     useEffect(() => {
         const context = canvasRef.current.getContext("2d");
-        canvasRef.current.height = canvasHeight;
+        // canvasRef.current.height = canvasHeight;
+        canvasRef.current.width = canvasWidth;
 
         //draw overlay
         context.save();
@@ -179,7 +187,7 @@ const TextCanvas = ({
             textColor,
             fontWeight
         );
-    }, [canvasHeight]);
+    }, [canvasWidth]);
 
     return (
         <div>
@@ -190,7 +198,8 @@ const TextCanvas = ({
                 fontSize={fontSize}
                 fontWeight={fontWeight}
                 textColor={textColor}
-                width={window.outerWidth}
+                // width={window.outerWidth}
+                height={height}
                 id={id}
             />
         </div>
@@ -199,19 +208,25 @@ const TextCanvas = ({
 
 const ImgCanvas = ({
     imgUrl,
-    text,
-    font,
-    fontSize,
-    fontWeight,
-    textColor,
-    setCanvasHeight,
+    height,
+    // text,
+    // font,
+    // fontSize,
+    // fontWeight,
+    // textColor,
+    // setCanvasHeight,
+    setCanvasWidth,
     id,
 }) => {
     // we use a ref to access the canvas' DOM node
     const canvasRef = useRef(null);
 
-    const handleSetCanvasHeight = (height) => {
-        setCanvasHeight(height);
+    // const handleSetCanvasHeight = (height) => {
+    //     setCanvasHeight(height);
+    // };
+
+    const handleSetCanvasWidth = (width) => {
+        setCanvasWidth(width);
     };
 
     // handle changing image
@@ -234,16 +249,24 @@ const ImgCanvas = ({
             }
             // set height of canvas to ratio determined by base_image width/height ratio
             const ratio = base_image.height / base_image.width;
-            const newHeight = canvasRef.current.width * ratio;
+            // const newHeight = canvasRef.current.width * ratio;
 
-            handleSetCanvasHeight(newHeight);
+            const newWidth = canvasRef.current.height / ratio;
+
+            // need logic here to keep less than max width?
+
+            // handleSetCanvasHeight(newHeight);
+            // set state for new width to change Text canvas
+            handleSetCanvasWidth(newWidth);
 
             if (canvasRef.current === null) {
                 console.log("rendering canvas pre height");
                 return;
             }
 
-            canvasRef.current.height = newHeight;
+            // canvasRef.current.height = newHeight;
+            // change width of this image canvas
+            canvasRef.current.width = newWidth;
 
             // set size of image to match new canvas size
             context.drawImage(
@@ -257,6 +280,7 @@ const ImgCanvas = ({
     }, [imgUrl]);
 
     useEffect(() => {
+        console.log("img canvas height: " + height);
         const styleWidth =
             window.outerWidth * 2 > 1200 ? 1200 : window.outerWidth * 2;
         canvasRef.current.style.width = styleWidth;
@@ -267,12 +291,13 @@ const ImgCanvas = ({
             <CanvasElement
                 ref={canvasRef}
                 imgUrl={imgUrl}
-                text={text}
-                font={font}
-                fontSize={fontSize}
-                fontWeight={fontWeight}
-                textColor={textColor}
-                width={window.outerWidth}
+                // text={text}
+                // font={font}
+                // fontSize={fontSize}
+                // fontWeight={fontWeight}
+                // textColor={textColor}
+                // width={window.outerWidth}
+                height={height}
                 id={id}
             />
         </div>
