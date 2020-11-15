@@ -14,6 +14,42 @@ import background from "../images/blossom.jpg"; // need to get this from state p
 import { UNSPLASH_ACCESS_KEY, UNSPLASH_SECRET_KEY } from "../app/keys";
 import styled from "styled-components";
 
+const SearchbarContainer = styled.div.attrs({
+    className: "d-flex justify-content-between mt-3 mb-3",
+})``;
+
+const PageWrapper = styled.div.attrs({
+    className: "container",
+})``;
+
+const LeftSide = styled.div.attrs({
+    className: "col-12 col-lg-7 ",
+})``;
+
+const RightSide = styled.div.attrs({
+    className:
+        "col-12 col-lg-5 d-flex flex-column justify-content-center align-items-center",
+})``;
+
+const Row = styled.div.attrs({
+    className: "row",
+})``;
+
+const ImageWrapper = styled.div.attrs({
+    className: "mt-3",
+})``;
+
+const Controls = styled.div.attrs({
+    className:
+        "d-flex flex-column justify-content-center align-items-center createPageControls ",
+})``;
+
+const ImgQuotebtn = styled.div.attrs({
+    className: "w-100 ",
+})`
+    text-align: -webkit-center;
+`;
+
 const Create = () => {
     const [text, setText] = useState("");
     const [font, setFont] = useState("Ariel");
@@ -245,42 +281,6 @@ const Create = () => {
         getImage();
         getQuote();
     };
-
-    const SearchbarContainer = styled.div.attrs({
-        className: "d-flex justify-content-between mt-3 mb-3",
-    })``;
-
-    const PageWrapper = styled.div.attrs({
-        className: "container",
-    })``;
-
-    const LeftSide = styled.div.attrs({
-        className: "col-12 col-lg-7 ",
-    })``;
-
-    const RightSide = styled.div.attrs({
-        className:
-            "col-12 col-lg-5 d-flex flex-column justify-content-center align-items-center",
-    })``;
-
-    const Row = styled.div.attrs({
-        className: "row",
-    })``;
-
-    const ImageWrapper = styled.div.attrs({
-        className: "mt-3",
-    })``;
-
-    const Controls = styled.div.attrs({
-        className:
-            "d-flex flex-column justify-content-center align-items-center createPageControls ",
-    })``;
-
-    const ImgQuotebtn = styled.div.attrs({
-        className: "w-100 ",
-    })`
-        text-align: -webkit-center;
-    `;
 
     return (
         <PageWrapper>
