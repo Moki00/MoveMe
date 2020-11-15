@@ -11,7 +11,7 @@ import {
     RightArrowButton,
 } from "../components";
 import background from "../images/blossom.jpg"; // need to get this from state passed from app.js
-import { UNSPLASH_ACCESS_KEY, UNSPLASH_SECRET_KEY } from "../app/keys";
+import { UNSPLASH_ACCESS_KEY } from "../app/keys";
 import styled from "styled-components";
 
 const SearchbarContainer = styled.div.attrs({
@@ -52,15 +52,15 @@ const ImgQuotebtn = styled.div.attrs({
 
 const Create = () => {
     const [text, setText] = useState("");
-    const [font, setFont] = useState("Ariel");
-    const [fontSize, setFontSize] = useState(54);
-    const [fontWeight, setFontWeight] = useState("400");
-    const [textColor, setTextColor] = useState("white");
-    const [canvasWidth, setCanvasWidth] = useState(0);
+    const [font] = useState("Ariel");
+    const [fontSize] = useState(54);
+    const [fontWeight] = useState("400");
+    const [textColor] = useState("white");
+    // const [canvasWidth, setCanvasWidth] = useState(0);
     const [canvasHeight, setCanvasHeight] = useState(150);
-    const [margin, setMargin] = useState(30);
-    const [bgColor, setBgColor] = useState("#444444");
-    const [bgOpacity, setBgOpacity] = useState(0.5);
+    const [margin] = useState(30);
+    const [bgColor] = useState("#444444");
+    const [bgOpacity] = useState(0.5);
 
     // final image state settings
     const [finalImgUrl, setFinalImgUrl] = useState("");
@@ -69,16 +69,16 @@ const Create = () => {
     const [finalFontSize, setFinalFontSize] = useState(0);
     const [finalFontWeight, setFinalFontWeight] = useState(0);
     const [finalTextColor, setFinalTextColor] = useState("#ffffff");
-    const [finalCanvasWidth, setFinalCanvasWidth] = useState(0);
-    const [finalCanvasHeight, setFinalCanvasHeight] = useState(0);
+    // const [finalCanvasWidth, setFinalCanvasWidth] = useState(0);
+    // const [finalCanvasHeight, setFinalCanvasHeight] = useState(0);
     const [finalMargin, setFinalMargin] = useState(0);
     const [finalBgColor, setFinalBgColor] = useState("#ffffff");
     const [finalBgOpacity, setFinalBgOpacity] = useState(0.2);
-    const [finalUrl, setFinalUrl] = useState("robbmdev.com");
+    const [finalUrl] = useState("robbmdev.com");
 
     //Quote Api
-    const [random, setRandom] = useState(true); //set to true for production!!
-    const [searchTerm, setSearchTerm] = useState(""); //(deceptive hunters series) set to emptry string for production!!
+    const [random] = useState(true); //set to true for production!!
+    const [searchTerm] = useState(""); //(deceptive hunters series) set to emptry string for production!!
 
     // Unsplash API
     // populate this in image fetch function
@@ -167,19 +167,19 @@ const Create = () => {
 
                 if (
                     responsejson.results.length > 0 &&
-                    responsejson.results != undefined
+                    responsejson.results !== undefined
                 ) {
                     quote = responsejson.results[0].quote;
                     author = responsejson.results[0].author;
                 }
                 offset = Math.ceil(offset / 2) - 1;
                 counter++;
-                if (counter == 4) {
+                if (counter === 4) {
                     break; //show warning to user
                 }
             }
             console.log(quote); //get list of all tags from paperquotes for autocomplete input box
-            if (quote != "") {
+            if (quote !== "") {
                 // need to check if "Unknown" is in the quote and no author attributed here
 
                 quote = quote.replace(author, "");
