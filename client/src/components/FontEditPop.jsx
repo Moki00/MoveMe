@@ -85,7 +85,7 @@ const FonteditPop = () => {
                                                     width: "100%",
                                                     height: "25px",
                                                 }}
-                                                value="#00ffff"
+                                                defaultvalue="#00ffff"
                                             />
                                         </Input>
                                         <Input></Input>
@@ -103,12 +103,16 @@ const FonteditPop = () => {
                                                 }}
                                             >
                                                 <option></option>
-                                                <option value="">Arial</option>
-                                                <option value="">
+                                                <option defaultvalue="">
+                                                    Arial
+                                                </option>
+                                                <option defaultvalue="">
                                                     Times New Roman
                                                 </option>
-                                                <option value="">Times</option>
-                                                <option value="">
+                                                <option defaultvalue="">
+                                                    Times
+                                                </option>
+                                                <option defaultvalue="">
                                                     Courier New
                                                 </option>
                                             </select>
@@ -129,7 +133,7 @@ const FonteditPop = () => {
                                                     width: "100%",
                                                     height: "25px",
                                                 }}
-                                                value="#00ffff"
+                                                defaultvalue="#00ffff"
                                             />
                                         </Input>
                                         <Input></Input>
