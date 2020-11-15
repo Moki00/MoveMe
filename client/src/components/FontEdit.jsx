@@ -7,9 +7,9 @@ const Button = styled.div.attrs({
     background-color: #fff55a;
 `;
 
-const wrapper = styled.div.attrs({
-    className: " input-group-append",
-})``;
+// const wrapper = styled.div.attrs({
+//     className: " input-group-append",
+// })``;
 
 const Container = styled.div.attrs({
     className: "col-12 text-dark ",
@@ -25,9 +25,9 @@ const Input = styled.div.attrs({
     padding: 0;
 `;
 
-const Inputs = styled.div.attrs({
-    className: "col-8",
-})``;
+// const Inputs = styled.div.attrs({
+//     className: "col-8",
+// })``;
 
 const Label = styled.div.attrs({
     className: "col-4",
