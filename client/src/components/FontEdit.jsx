@@ -25,9 +25,9 @@ const Input = styled.div.attrs({
     padding: 0;
 `;
 
-const Inputs = styled.div.attrs({
-    className: "col-8",
-})``;
+// const Inputs = styled.div.attrs({
+//     className: "col-8",
+// })``;
 
 const Label = styled.div.attrs({
     className: "col-4",
