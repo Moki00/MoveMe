@@ -127,7 +127,7 @@ const FontEdit = () => {
                             <Button>+</Button>
                         </Input>
                     </Row>
-                    <Row style={{ "margin-top": "20px" }}>
+                    <Row style={{ marginTop: "20px" }}>
                         <Input>
                             <Button
                                 className="d-lg-none"
