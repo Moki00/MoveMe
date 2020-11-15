@@ -12,7 +12,6 @@ const ImgPreviewArea = ({
     fontSize,
     fontWeight,
     textColor,
-    // canvasHeight,
     canvasWidth,
     height,
     margin,
@@ -20,7 +19,6 @@ const ImgPreviewArea = ({
     bgOpacity,
     imgUrl,
     background,
-    // setCanvasHeight,
     setCanvasWidth,
 }) => {
     return (
@@ -32,10 +30,8 @@ const ImgPreviewArea = ({
                 fontSize={fontSize}
                 fontWeight={fontWeight}
                 textColor={textColor}
-                // width={window.outerWidth}
                 height={height}
                 background={background}
-                // setCanvasHeight={setCanvasHeight}
                 setCanvasWidth={setCanvasWidth}
                 id="imgCanvas"
             />
@@ -45,9 +41,6 @@ const ImgPreviewArea = ({
                 fontSize={fontSize}
                 fontWeight={fontWeight}
                 textColor={textColor}
-                // clickCanvas={clickCanvas}
-                // width={window.outerWidth}
-                // canvasHeight={canvasHeight}
                 canvasWidth={canvasWidth}
                 height={height}
                 margin={margin}

@@ -303,16 +303,11 @@ const Create = () => {
                             fontSize={fontSize}
                             fontWeight={fontWeight}
                             textColor={textColor}
-                            // width={window.outerWidth}
-                            // canvasHeight={canvasHeight}
                             canvasWidth={canvasWidth}
                             height={canvasHeight}
                             margin={margin}
                             bgColor={bgColor}
                             bgOpacity={bgOpacity}
-                            // background import is just for testing. remove later
-                            background={background}
-                            // setCanvasHeight={setCanvasHeight}
                             setCanvasWidth={setCanvasWidth}
                             imgUrl={imgUrl}
                         />
