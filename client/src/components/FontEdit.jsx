@@ -76,7 +76,7 @@ const FontEdit = () => {
                             <input
                                 type="color"
                                 style={{ width: "100%", height: "25px" }}
-                                value="#00ffff"
+                                defaultValue="#00ffff"
                             />
                         </Input>
                         <Input></Input>
@@ -94,10 +94,10 @@ const FontEdit = () => {
                                 }}
                             >
                                 <option></option>
-                                <option value="">Arial</option>
-                                <option value="">Times New Roman</option>
-                                <option value="">Times</option>
-                                <option value="">Courier New</option>
+                                <option defaultValue="">Arial</option>
+                                <option defaultValue="">Times New Roman</option>
+                                <option defaultValue="">Times</option>
+                                <option defaultValue="">Courier New</option>
                             </select>
                         </Input>
                     </Row>
@@ -112,7 +112,7 @@ const FontEdit = () => {
                             <input
                                 type="color"
                                 style={{ width: "100%", height: "25px" }}
-                                value="#00ffff"
+                                defaultValue="#00ffff"
                             />
                         </Input>
                         <Input></Input>
@@ -127,7 +127,7 @@ const FontEdit = () => {
                             <Button>+</Button>
                         </Input>
                     </Row>
-                    <Row style={{ "margin-top": "20px" }}>
+                    <Row style={{ marginTop: "20px" }}>
                         <Input>
                             <Button
                                 className="d-lg-none"

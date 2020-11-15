@@ -27,7 +27,7 @@ const SearchBar = () => {
                     placeholder="e.g. Nature"
                     aria-label="SearchBox"
                     aria-describedby="SearchIcon"
-                    useRef={searchBoxRef}
+                    ref={searchBoxRef}
                 />
                 <Wrapper>
                     <SearchIconButton>
