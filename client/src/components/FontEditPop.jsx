@@ -38,20 +38,20 @@ const RightSide = styled.div.attrs({
 
 const FonteditPop = () => {
     return (
-        <div class="modal fade" id="myModal" role="dialog">
+        <div className="modal fade" id="myModal" role="dialog">
             <div className="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
+                <div className="modal-content">
+                    <div className="modal-header">
                         <h4 className="text-dark">Edit Style</h4>
                         <button
                             type="button"
-                            class="close"
+                            className="close"
                             data-dismiss="modal"
                         >
                             &times;
                         </button>
                     </div>
-                    <div class="modal-body">
+                    <div className="modal-body">
                         <Container>
                             <Row>
                                 <LeftSide>
@@ -85,7 +85,7 @@ const FonteditPop = () => {
                                                     width: "100%",
                                                     height: "25px",
                                                 }}
-                                                defaultvalue="#00ffff"
+                                                defaultValue="#00ffff"
                                             />
                                         </Input>
                                         <Input></Input>
@@ -103,16 +103,16 @@ const FonteditPop = () => {
                                                 }}
                                             >
                                                 <option></option>
-                                                <option defaultvalue="">
+                                                <option defaultValue="">
                                                     Arial
                                                 </option>
-                                                <option defaultvalue="">
+                                                <option defaultValue="">
                                                     Times New Roman
                                                 </option>
-                                                <option defaultvalue="">
+                                                <option defaultValue="">
                                                     Times
                                                 </option>
-                                                <option defaultvalue="">
+                                                <option defaultValue="">
                                                     Courier New
                                                 </option>
                                             </select>
@@ -133,7 +133,7 @@ const FonteditPop = () => {
                                                     width: "100%",
                                                     height: "25px",
                                                 }}
-                                                defaultvalue="#00ffff"
+                                                defaultValue="#00ffff"
                                             />
                                         </Input>
                                         <Input></Input>
@@ -177,17 +177,17 @@ const FonteditPop = () => {
                             </Row>
                         </Container>
                     </div>
-                    <div class="modal-footer">
+                    <div className="modal-footer">
                         {/* <button
                             type="button"
-                            class="btn btn-default btn-danger"
+                            className="btn btn-default btn-danger"
                             data-dismiss="modal"
                         >
                             Close
                         </button> */}
                         <button
                             type="button"
-                            class="btn btn-default btn-warning text-danger"
+                            className="btn btn-default btn-warning text-danger"
                             data-dismiss="modal"
                             style={{ background: "#fff55a" }}
                         >
