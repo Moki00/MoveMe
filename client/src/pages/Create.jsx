@@ -131,7 +131,7 @@ const Create = () => {
                 const author = responsejson.quoteAuthor.trim();
                 const attributedQuote = quote + " - " + author;
 
-                saveToLocalStorage("random" + "-quotes", attributedQuote);
+                saveToLocalStorage(`random-quotes${attributedQuote}`);
                 setText(attributedQuote);
             } catch (e) {
                 // show error?
@@ -213,7 +213,7 @@ const Create = () => {
                     photographer: responsejson.user.name,
                     url: responsejson.urls.regular,
                 };
-                saveToLocalStorage("random" + "-images", photo);
+                saveToLocalStorage(`random-images${photo}`);
                 setPhotographer(responsejson.user.name);
                 setImgUrl(responsejson.urls.regular);
             } catch (e) {
