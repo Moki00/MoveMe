@@ -83,6 +83,7 @@ const TextCanvas = ({
     fontWeight,
     textColor,
     canvasWidth,
+    canvasHeight,
     height,
     margin,
     bgColor,
@@ -151,6 +152,7 @@ const TextCanvas = ({
     useEffect(() => {
         const context = canvasRef.current.getContext("2d");
         canvasRef.current.width = canvasWidth;
+        canvasRef.current.height = canvasHeight;
 
         //draw overlay
         context.save();
@@ -177,7 +179,7 @@ const TextCanvas = ({
             textColor,
             fontWeight
         );
-    }, [canvasWidth]);
+    }, [canvasWidth, canvasHeight]);
 
     return (
         <div>
@@ -195,12 +197,16 @@ const TextCanvas = ({
     );
 };
 
-const ImgCanvas = ({ imgUrl, height, setCanvasWidth, id }) => {
+const ImgCanvas = ({ imgUrl, height, setCanvasWidth, setCanvasHeight, id }) => {
     // we use a ref to access the canvas' DOM node
     const canvasRef = useRef(null);
 
     const handleSetCanvasWidth = (width) => {
-        setCanvasWidth(width);
+        setCanvasWidth((oldwidth) => width);
+    };
+
+    const handleSetCanvasHeight = (height) => {
+        setCanvasHeight((oldheight) => height);
     };
 
     // handle changing image
@@ -218,26 +224,52 @@ const ImgCanvas = ({ imgUrl, height, setCanvasWidth, id }) => {
 
         base_image.onload = function () {
             if (canvasRef.current === null) {
-                console.log("rendering canvas pre width");
+                console.log("rendering canvas");
                 return;
             }
+
+            // reset height each time image loads
+            canvasRef.current.height = 430;
+            handleSetCanvasHeight(430);
+
             // set height of canvas to ratio determined by base_image width/height ratio
             const ratio = base_image.height / base_image.width;
 
             const newWidth = canvasRef.current.height / ratio;
 
-            // need logic here to keep less than max width?
+            // Check if viewing on md/sm/xs device
+            if (window.innerWidth < 992) {
+                // set max image width
+                const maxWidth = window.innerWidth * 0.8;
 
-            // set state for new width to change Text canvas
-            handleSetCanvasWidth(newWidth);
+                // check to see if the image is wider than possible for fixed height
+                if (newWidth > maxWidth) {
+                    const newHeight = maxWidth * ratio;
+                    handleSetCanvasHeight(newHeight);
+                    handleSetCanvasWidth(maxWidth);
 
-            if (canvasRef.current === null) {
-                console.log("rendering canvas pre height");
-                return;
+                    if (canvasRef.current === null) {
+                        console.log("rendering canvas");
+                        return;
+                    }
+
+                    // change width and height of this image canvas
+                    canvasRef.current.width = maxWidth;
+                    canvasRef.current.height = newHeight;
+                }
+            } else {
+                // user is using a lg> device
+                // set state for new width to change Text canvas
+                handleSetCanvasWidth(newWidth);
+
+                if (canvasRef.current === null) {
+                    console.log("rendering canvas");
+                    return;
+                }
+
+                // change width of this image canvas
+                canvasRef.current.width = newWidth;
             }
-
-            // change width of this image canvas
-            canvasRef.current.width = newWidth;
 
             // set size of image to match new canvas size
             context.drawImage(

@@ -13,6 +13,7 @@ const ImgPreviewArea = ({
     fontWeight,
     textColor,
     canvasWidth,
+    canvasHeight,
     height,
     margin,
     bgColor,
@@ -20,6 +21,7 @@ const ImgPreviewArea = ({
     imgUrl,
     background,
     setCanvasWidth,
+    setCanvasHeight,
 }) => {
     return (
         <Wrapper>
@@ -33,6 +35,7 @@ const ImgPreviewArea = ({
                 height={height}
                 background={background}
                 setCanvasWidth={setCanvasWidth}
+                setCanvasHeight={setCanvasHeight}
                 id="imgCanvas"
             />
             <TextCanvas
@@ -42,6 +45,7 @@ const ImgPreviewArea = ({
                 fontWeight={fontWeight}
                 textColor={textColor}
                 canvasWidth={canvasWidth}
+                canvasHeight={canvasHeight}
                 height={height}
                 margin={margin}
                 bgColor={bgColor}

@@ -56,7 +56,7 @@ const Create = () => {
     const [fontSize, setFontSize] = useState(70);
     const [fontWeight, setFontWeight] = useState("400");
     const [textColor, setTextColor] = useState("white");
-    const [canvasWidth, setCanvasWidth] = useState(0);
+    const [canvasWidth, setCanvasWidth] = useState(300);
     const [canvasHeight, setCanvasHeight] = useState(430);
     const [margin, setMargin] = useState(60);
     const [bgColor, setBgColor] = useState("#444444");
@@ -304,11 +304,13 @@ const Create = () => {
                             fontWeight={fontWeight}
                             textColor={textColor}
                             canvasWidth={canvasWidth}
+                            canvasHeight={canvasHeight}
                             height={canvasHeight}
                             margin={margin}
                             bgColor={bgColor}
                             bgOpacity={bgOpacity}
                             setCanvasWidth={setCanvasWidth}
+                            setCanvasHeight={setCanvasHeight}
                             imgUrl={imgUrl}
                         />
                         <FinalImgArea
