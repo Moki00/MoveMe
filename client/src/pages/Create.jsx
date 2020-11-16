@@ -53,12 +53,12 @@ const ImgQuotebtn = styled.div.attrs({
 const Create = () => {
     const [text, setText] = useState("");
     const [font, setFont] = useState("Ariel");
-    const [fontSize, setFontSize] = useState(54);
+    const [fontSize, setFontSize] = useState(70);
     const [fontWeight, setFontWeight] = useState("400");
     const [textColor, setTextColor] = useState("white");
-    const [canvasWidth, setCanvasWidth] = useState(0);
-    const [canvasHeight, setCanvasHeight] = useState(150);
-    const [margin, setMargin] = useState(30);
+    const [canvasWidth, setCanvasWidth] = useState(300);
+    const [canvasHeight, setCanvasHeight] = useState(430);
+    const [margin, setMargin] = useState(60);
     const [bgColor, setBgColor] = useState("#444444");
     const [bgOpacity, setBgOpacity] = useState(0.5);
 
@@ -303,13 +303,13 @@ const Create = () => {
                             fontSize={fontSize}
                             fontWeight={fontWeight}
                             textColor={textColor}
-                            width={window.outerWidth}
+                            canvasWidth={canvasWidth}
                             canvasHeight={canvasHeight}
+                            height={canvasHeight}
                             margin={margin}
                             bgColor={bgColor}
                             bgOpacity={bgOpacity}
-                            // background import is just for testing. remove later
-                            background={background}
+                            setCanvasWidth={setCanvasWidth}
                             setCanvasHeight={setCanvasHeight}
                             imgUrl={imgUrl}
                         />
