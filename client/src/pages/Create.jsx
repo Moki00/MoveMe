@@ -68,8 +68,8 @@ const Create = () => {
     const [finalFontSize, setFinalFontSize] = useState(0);
     const [finalFontWeight, setFinalFontWeight] = useState(0);
     const [finalTextColor, setFinalTextColor] = useState("#ffffff");
-    // const [finalCanvasWidth, setFinalCanvasWidth] = useState(0); // use later
-    // const [finalCanvasHeight, setFinalCanvasHeight] = useState(0); //use later
+    const [finalCanvasWidth, setFinalCanvasWidth] = useState(0);
+    const [finalCanvasHeight, setFinalCanvasHeight] = useState(0);
     const [finalMargin, setFinalMargin] = useState(0);
     const [finalBgColor, setFinalBgColor] = useState("#ffffff");
     const [finalBgOpacity, setFinalBgOpacity] = useState(0.2);
