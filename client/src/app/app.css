@@ -12,6 +12,10 @@
     background-color: var(--moveme-yellow) !important;
 }
 
+html {
+    background-color: #333333;
+}
+
 .app {
     min-height: 100vh;
 }
@@ -56,18 +60,18 @@ footer {
 }
 
 @media screen and (max-width: 992px) {
-    body {
+    /* body {
         overflow: hidden;
     }
     main {
         overflow: hidden;
-    }
+    } */
     .createPageControls {
         overflow: hidden;
     }
-    html {
+    /* html {
         overflow: hidden;
-    }
+    } */
     #fontEditWrapper {
         position: fixed;
         bottom: 0px;

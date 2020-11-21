@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import {
     FinalImgArea,
     FontEdit,
@@ -32,7 +32,7 @@ const RightSide = styled.div.attrs({
 })``;
 
 const Row = styled.div.attrs({
-    className: "row",
+    className: "row mb-5",
 })``;
 
 const ImageWrapper = styled.div.attrs({
@@ -84,6 +84,8 @@ const Create = () => {
     // populate this in image fetch function
     const [photographer, setPhotographer] = useState("");
     const [imgUrl, setImgUrl] = useState("");
+
+    const leftSideRef = useRef(null);
 
     const generateFinalCanvas = () => {
         setFinalImgUrl(imgUrl);
@@ -277,6 +279,20 @@ const Create = () => {
         }
     };
 
+    const setCanvasHeightFunc = (height) => {
+        setCanvasHeight(height);
+        // need to check that the user is on a mobile device
+        let isNotDesktop = window.matchMedia(
+            "only screen and (max-width: 992px)"
+        ).matches;
+        console.log(isNotDesktop);
+        if (isNotDesktop) {
+            //extract this variable so can make changes to height if required
+            const divHeight = height;
+            leftSideRef.current.style.height = divHeight + "px";
+        }
+    };
+
     const buildPreview = () => {
         getImage();
         getQuote();
@@ -295,7 +311,7 @@ const Create = () => {
                 <SearchBar />
             </SearchbarContainer>
             <Row>
-                <LeftSide>
+                <LeftSide ref={leftSideRef}>
                     <ImageWrapper>
                         <ImgPreviewArea
                             text={text}
@@ -310,7 +326,7 @@ const Create = () => {
                             bgOpacity={bgOpacity}
                             // background import is just for testing. remove later
                             background={background}
-                            setCanvasHeight={setCanvasHeight}
+                            setCanvasHeight={setCanvasHeightFunc}
                             imgUrl={imgUrl}
                         />
                         <FinalImgArea
