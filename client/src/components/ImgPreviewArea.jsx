@@ -1,9 +1,9 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components'
 import { TextCanvas, ImgCanvas } from ".";
 
 const Wrapper = styled.div.attrs({})`
-    position: relative;
+    position: relative;    
 `;
 
 const ImgPreviewArea = ({
@@ -12,15 +12,13 @@ const ImgPreviewArea = ({
     fontSize,
     fontWeight,
     textColor,
-    canvasWidth,
+    clickCanvas,
     canvasHeight,
-    height,
     margin,
     bgColor,
     bgOpacity,
     imgUrl,
     background,
-    setCanvasWidth,
     setCanvasHeight,
 }) => {
     return (
@@ -32,9 +30,8 @@ const ImgPreviewArea = ({
                 fontSize={fontSize}
                 fontWeight={fontWeight}
                 textColor={textColor}
-                height={height}
+                width={window.outerWidth}
                 background={background}
-                setCanvasWidth={setCanvasWidth}
                 setCanvasHeight={setCanvasHeight}
                 id="imgCanvas"
             />
@@ -44,16 +41,16 @@ const ImgPreviewArea = ({
                 fontSize={fontSize}
                 fontWeight={fontWeight}
                 textColor={textColor}
-                canvasWidth={canvasWidth}
+                clickCanvas={clickCanvas}
+                width={window.outerWidth}
                 canvasHeight={canvasHeight}
-                height={height}
                 margin={margin}
                 bgColor={bgColor}
-                bgOpacity={bgOpacity}
+                bgOpacity = {bgOpacity}
                 id="textCanvas"
             />
         </Wrapper>
-    );
-};
+    )
+}
 
-export default ImgPreviewArea;
+export default ImgPreviewArea
