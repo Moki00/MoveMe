@@ -84,7 +84,6 @@ const TextCanvas = ({
     textColor,
     canvasHeight,
     margin,
-    clickCanvas,
     bgColor,
     bgOpacity,
     id,
@@ -232,18 +231,28 @@ const ImgCanvas = ({
                 console.log("rendering canvas pre width");
                 return;
             }
+
             // set height of canvas to ratio determined by base_image width/height ratio
             const ratio = base_image.height / base_image.width;
             const newHeight = canvasRef.current.width * ratio;
+            const maxHeight = 518;
+            // Here need to check if image newHeight is larger than 518px.
+            // if it is, set height to 518 and then set image width determined by ratio of image.
+            // if not, just do normal code that we have already
+            if (newHeight > maxHeight) {
+                // set canvas width here based on ratio we determined earlier and 518px height
+                handleSetCanvasHeight(maxHeight);
+                canvasRef.current.height = maxHeight;
+            } else {
+                handleSetCanvasHeight(newHeight);
 
-            handleSetCanvasHeight(newHeight);
+                // if (canvasRef.current === null) {
+                //     console.log("rendering canvas pre height");
+                //     return;
+                // }
 
-            if (canvasRef.current === null) {
-                console.log("rendering canvas pre height");
-                return;
+                canvasRef.current.height = newHeight;
             }
-
-            canvasRef.current.height = newHeight;
 
             // set size of image to match new canvas size
             context.drawImage(
@@ -355,7 +364,7 @@ const FinalCanvas = ({
                 context,
                 finalTextColor,
                 photographer,
-                "Unsplah"
+                "Unsplash"
             );
         };
         // should this just keep track of a state var e.g. "generated" then run this function? Set true in generate final function?
