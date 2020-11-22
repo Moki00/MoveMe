@@ -22,7 +22,7 @@ const PageWrapper = styled.div.attrs({
 })``;
 
 const LeftSide = styled.div.attrs({
-    className: "col-12 col-lg-7 ",
+    className: "col-12 col-lg-7 d-flex justify-content-center",
 })``;
 
 const RightSide = styled.div.attrs({
