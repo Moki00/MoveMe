@@ -11,7 +11,7 @@ import {
     RightArrowButton,
 } from "../components";
 import background from "../images/blossom.jpg"; // need to get this from state passed from app.js
-import { UNSPLASH_ACCESS_KEY, UNSPLASH_SECRET_KEY } from "../app/keys";
+import { UNSPLASH_ACCESS_KEY } from "../app/keys";
 import styled from "styled-components";
 
 const SearchbarContainer = styled.div.attrs({
@@ -133,7 +133,7 @@ const Create = () => {
                 const author = responsejson.quoteAuthor.trim();
                 const attributedQuote = quote + " - " + author;
 
-                saveToLocalStorage("random" + "-quotes", attributedQuote);
+                saveToLocalStorage("random-quotes", attributedQuote);
                 setText(attributedQuote);
             } catch (e) {
                 // show error?
@@ -169,19 +169,19 @@ const Create = () => {
 
                 if (
                     responsejson.results.length > 0 &&
-                    responsejson.results != undefined
+                    responsejson.results !== undefined
                 ) {
                     quote = responsejson.results[0].quote;
                     author = responsejson.results[0].author;
                 }
                 offset = Math.ceil(offset / 2) - 1;
                 counter++;
-                if (counter == 4) {
+                if (counter === 4) {
                     break; //show warning to user
                 }
             }
             console.log(quote); //get list of all tags from paperquotes for autocomplete input box
-            if (quote != "") {
+            if (quote !== "") {
                 // need to check if "Unknown" is in the quote and no author attributed here
 
                 quote = quote.replace(author, "");
@@ -215,7 +215,7 @@ const Create = () => {
                     photographer: responsejson.user.name,
                     url: responsejson.urls.regular,
                 };
-                saveToLocalStorage("random" + "-images", photo);
+                saveToLocalStorage("random-images", photo);
                 setPhotographer(responsejson.user.name);
                 setImgUrl(responsejson.urls.regular);
             } catch (e) {
