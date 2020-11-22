@@ -325,6 +325,7 @@ const Create = () => {
                             bgColor={bgColor}
                             bgOpacity={bgOpacity}
                             // background import is just for testing. remove later
+                            //testing an error
                             background={background}
                             setCanvasHeight={setCanvasHeightFunc}
                             imgUrl={imgUrl}
