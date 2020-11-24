@@ -4,7 +4,11 @@ import styled from "styled-components";
 const Button = styled.div.attrs({
     className: "btn btn-warning text-danger w-100",
 })`
+    margin: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
     background-color: #fff55a;
+    font-size: 25px;
 `;
 
 // const wrapper = styled.div.attrs({
@@ -20,7 +24,7 @@ const Row = styled.div.attrs({
 })``;
 
 const Input = styled.div.attrs({
-    className: "col-4 pl-1",
+    className: "col-4 pr-3",
 })`
     padding: 0;
 `;
@@ -36,7 +40,7 @@ const Label = styled.div.attrs({
 `;
 
 const LeftSide = styled.div.attrs({
-    className: "col-12 col-lg-6",
+    className: "col-12 col-lg-6 pb-2",
 })``;
 
 //for desktop only
@@ -126,25 +130,6 @@ const FontEdit = () => {
                         <Input>
                             <Button>+</Button>
                         </Input>
-                    </Row>
-                    <Row style={{ marginTop: "20px" }}>
-                        <Input>
-                            <Button
-                                className="d-lg-none"
-                                style={{ background: "red", border: "red" }}
-                            >
-                                Close
-                            </Button>
-                        </Input>
-                        <Input>
-                            <Button
-                                className="d-lg-none"
-                                style={{ background: "red", border: "red" }}
-                            >
-                                Save
-                            </Button>
-                        </Input>
-                        <Input></Input>
                     </Row>
                 </RightSide>
             </Row>
