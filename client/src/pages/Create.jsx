@@ -36,7 +36,7 @@ const Row = styled.div.attrs({
 })``;
 
 const ImageWrapper = styled.div.attrs({
-    className: "mt-3",
+    className: "mt-3 w-100",
 })``;
 
 const Controls = styled.div.attrs({
@@ -319,7 +319,7 @@ const Create = () => {
                             fontSize={fontSize}
                             fontWeight={fontWeight}
                             textColor={textColor}
-                            width={window.outerWidth}
+                            width={canvasWidth}
                             canvasHeight={canvasHeight}
                             margin={margin}
                             bgColor={bgColor}
@@ -328,6 +328,7 @@ const Create = () => {
                             //testing an error
                             background={background}
                             setCanvasHeight={setCanvasHeightFunc}
+                            setCanvasWidth={setCanvasWidth}
                             imgUrl={imgUrl}
                         />
                         <FinalImgArea

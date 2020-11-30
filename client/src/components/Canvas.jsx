@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import styled from "styled-components";
 
-const CanvasElement = styled.canvas.attrs({ className: "w-100" })`
+const CanvasElement = styled.canvas.attrs({ className: "" })`
     border: 1px solid black;
 `;
 
@@ -83,6 +83,7 @@ const TextCanvas = ({
     fontWeight,
     textColor,
     canvasHeight,
+    canvasWidth,
     margin,
     bgColor,
     bgOpacity,
@@ -142,11 +143,11 @@ const TextCanvas = ({
     ]);
 
     useEffect(() => {
-        const styleWidth =
-            window.outerWidth * 2 > 1200 ? 1200 : window.outerWidth * 2;
+        const styleWidth = canvasWidth * 2 > 1200 ? 1200 : canvasWidth * 2;
         canvasRef.current.style.width = styleWidth;
+        canvasRef.current.width = canvasWidth;
         canvasRef.current.height = canvasHeight;
-    }, [canvasHeight]);
+    }, [canvasHeight, canvasWidth]);
 
     // resize text canvas when image canvas changes height
     useEffect(() => {
@@ -204,13 +205,22 @@ const ImgCanvas = ({
     fontWeight,
     textColor,
     setCanvasHeight,
+    setCanvasWidth,
     id,
 }) => {
     // we use a ref to access the canvas' DOM node
     const canvasRef = useRef(null);
 
     const handleSetCanvasHeight = (height) => {
-        setCanvasHeight(height);
+        setCanvasHeight((oldHeight) => {
+            return height;
+        });
+    };
+
+    const handleSetCanvasWidth = (width) => {
+        setCanvasWidth((oldWidth) => {
+            return width;
+        });
     };
 
     // handle changing image
@@ -227,31 +237,40 @@ const ImgCanvas = ({
         base_image.src = imgUrl;
 
         base_image.onload = function () {
-            if (canvasRef.current === null) {
-                console.log("rendering canvas pre width");
-                return;
-            }
-
             // set height of canvas to ratio determined by base_image width/height ratio
             const ratio = base_image.height / base_image.width;
-            const newHeight = canvasRef.current.width * ratio;
+
+            // need to check that the user is on a mobile device
+            let isNotDesktop = window.matchMedia(
+                "only screen and (max-width: 992px)"
+            ).matches;
+
+            let originalWidth;
+            if (isNotDesktop) {
+                originalWidth = window.innerWidth * 0.9; //mobile
+            } else {
+                originalWidth = window.innerWidth * 0.38; //desktop
+            }
+
+            const newHeight = originalWidth * ratio;
             const maxHeight = 518;
-            // Here need to check if image newHeight is larger than 518px.
-            // if it is, set height to 518 and then set image width determined by ratio of image.
-            // if not, just do normal code that we have already
+            // make sure images doesn't get bigger than 518px
             if (newHeight > maxHeight) {
                 // set canvas width here based on ratio we determined earlier and 518px height
+                const newWidth = maxHeight / ratio;
+                handleSetCanvasWidth(newWidth);
                 handleSetCanvasHeight(maxHeight);
+                canvasRef.current.width = newWidth;
+                console.log("canvas current width: " + canvasRef.current.width);
                 canvasRef.current.height = maxHeight;
             } else {
+                handleSetCanvasWidth(originalWidth);
                 handleSetCanvasHeight(newHeight);
-
-                // if (canvasRef.current === null) {
-                //     console.log("rendering canvas pre height");
-                //     return;
-                // }
+                console.log("smaller than 518px. Height: " + newHeight);
+                console.log("smaller than 518px. Width: " + originalWidth);
 
                 canvasRef.current.height = newHeight;
+                canvasRef.current.width = originalWidth;
             }
 
             // set size of image to match new canvas size
@@ -281,7 +300,7 @@ const ImgCanvas = ({
                 fontSize={fontSize}
                 fontWeight={fontWeight}
                 textColor={textColor}
-                width={window.outerWidth}
+                // width={window.outerWidth}
                 id={id}
             />
         </div>
