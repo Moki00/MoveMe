@@ -280,15 +280,18 @@ const Create = () => {
     };
 
     const setCanvasHeightFunc = (height) => {
-        setCanvasHeight(height);
+        setCanvasHeight((oldHeight) => {
+            return height;
+        });
         // need to check that the user is on a mobile device
         let isNotDesktop = window.matchMedia(
             "only screen and (max-width: 992px)"
         ).matches;
-        console.log(isNotDesktop);
+
+        console.log(canvasHeight);
         if (isNotDesktop) {
             //extract this variable so can make changes to height if required
-            const divHeight = height;
+            const divHeight = height + 20;
             leftSideRef.current.style.height = divHeight + "px";
         }
     };

@@ -212,9 +212,7 @@ const ImgCanvas = ({
     const canvasRef = useRef(null);
 
     const handleSetCanvasHeight = (height) => {
-        setCanvasHeight((oldHeight) => {
-            return height;
-        });
+        setCanvasHeight(height);
     };
 
     const handleSetCanvasWidth = (width) => {
@@ -261,7 +259,6 @@ const ImgCanvas = ({
                 handleSetCanvasWidth(newWidth);
                 handleSetCanvasHeight(maxHeight);
                 canvasRef.current.width = newWidth;
-                console.log("canvas current width: " + canvasRef.current.width);
                 canvasRef.current.height = maxHeight;
             } else {
                 handleSetCanvasWidth(originalWidth);
