@@ -58,7 +58,8 @@ footer {
 }
 
 #finalCanvas {
-    visibility: hidden;
+    /* visibility: hidden; */
+    display: none;
 }
 
 @media screen and (max-width: 992px) {
