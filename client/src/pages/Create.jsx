@@ -56,7 +56,7 @@ const Create = () => {
     const [fontSize, setFontSize] = useState(54);
     const [fontWeight, setFontWeight] = useState("400");
     const [textColor, setTextColor] = useState("white");
-    const [canvasWidth, setCanvasWidth] = useState(0);
+    const [canvasWidth, setCanvasWidth] = useState(300);
     const [canvasHeight, setCanvasHeight] = useState(150);
     const [margin, setMargin] = useState(30);
     const [bgColor, setBgColor] = useState("#444444");
@@ -288,12 +288,18 @@ const Create = () => {
             "only screen and (max-width: 992px)"
         ).matches;
 
-        console.log(canvasHeight);
         if (isNotDesktop) {
             //extract this variable so can make changes to height if required
             const divHeight = height + 20;
             leftSideRef.current.style.height = divHeight + "px";
         }
+    };
+
+    const setCanvasWidthFunc = (width) => {
+        setCanvasWidth((oldWidth) => {
+            console.log("setting width to: " + width);
+            return width;
+        });
     };
 
     const buildPreview = () => {
@@ -322,7 +328,7 @@ const Create = () => {
                             fontSize={fontSize}
                             fontWeight={fontWeight}
                             textColor={textColor}
-                            width={canvasWidth}
+                            canvasWidth={canvasWidth}
                             canvasHeight={canvasHeight}
                             margin={margin}
                             bgColor={bgColor}
@@ -331,7 +337,7 @@ const Create = () => {
                             //testing an error
                             background={background}
                             setCanvasHeight={setCanvasHeightFunc}
-                            setCanvasWidth={setCanvasWidth}
+                            setCanvasWidth={setCanvasWidthFunc}
                             imgUrl={imgUrl}
                         />
                         <FinalImgArea

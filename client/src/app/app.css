@@ -53,6 +53,8 @@ footer {
     position: absolute;
     top: 0px;
     left: 0px;
+    margin-left: 50%;
+    transform: translateX(-50%);
 }
 
 #finalCanvas {

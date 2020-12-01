@@ -146,6 +146,7 @@ const TextCanvas = ({
         const styleWidth = canvasWidth * 2 > 1200 ? 1200 : canvasWidth * 2;
         canvasRef.current.style.width = styleWidth;
         canvasRef.current.width = canvasWidth;
+        console.log("text canvas width: " + canvasWidth);
         canvasRef.current.height = canvasHeight;
     }, [canvasHeight, canvasWidth]);
 
@@ -216,9 +217,7 @@ const ImgCanvas = ({
     };
 
     const handleSetCanvasWidth = (width) => {
-        setCanvasWidth((oldWidth) => {
-            return width;
-        });
+        setCanvasWidth(width);
     };
 
     // handle changing image
