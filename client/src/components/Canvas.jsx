@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import styled from "styled-components";
 
-const CanvasElement = styled.canvas.attrs({ className: "w-100" })`
+const CanvasElement = styled.canvas.attrs({ className: "" })`
     border: 1px solid black;
 `;
 
@@ -83,8 +83,8 @@ const TextCanvas = ({
     fontWeight,
     textColor,
     canvasHeight,
+    canvasWidth,
     margin,
-    clickCanvas,
     bgColor,
     bgOpacity,
     id,
@@ -143,11 +143,12 @@ const TextCanvas = ({
     ]);
 
     useEffect(() => {
-        const styleWidth =
-            window.outerWidth * 2 > 1200 ? 1200 : window.outerWidth * 2;
+        const styleWidth = canvasWidth * 2 > 1200 ? 1200 : canvasWidth * 2;
         canvasRef.current.style.width = styleWidth;
+        canvasRef.current.width = canvasWidth;
+        console.log("text canvas width: " + canvasWidth);
         canvasRef.current.height = canvasHeight;
-    }, [canvasHeight]);
+    }, [canvasHeight, canvasWidth]);
 
     // resize text canvas when image canvas changes height
     useEffect(() => {
@@ -205,6 +206,7 @@ const ImgCanvas = ({
     fontWeight,
     textColor,
     setCanvasHeight,
+    setCanvasWidth,
     id,
 }) => {
     // we use a ref to access the canvas' DOM node
@@ -212,6 +214,10 @@ const ImgCanvas = ({
 
     const handleSetCanvasHeight = (height) => {
         setCanvasHeight(height);
+    };
+
+    const handleSetCanvasWidth = (width) => {
+        setCanvasWidth(width);
     };
 
     // handle changing image
@@ -228,22 +234,40 @@ const ImgCanvas = ({
         base_image.src = imgUrl;
 
         base_image.onload = function () {
-            if (canvasRef.current === null) {
-                console.log("rendering canvas pre width");
-                return;
-            }
             // set height of canvas to ratio determined by base_image width/height ratio
             const ratio = base_image.height / base_image.width;
-            const newHeight = canvasRef.current.width * ratio;
 
-            handleSetCanvasHeight(newHeight);
+            // need to check that the user is on a mobile device
+            let isNotDesktop = window.matchMedia(
+                "only screen and (max-width: 992px)"
+            ).matches;
 
-            if (canvasRef.current === null) {
-                console.log("rendering canvas pre height");
-                return;
+            let originalWidth;
+            if (isNotDesktop) {
+                originalWidth = window.innerWidth * 0.9; //mobile
+            } else {
+                originalWidth = window.innerWidth * 0.38; //desktop
             }
 
-            canvasRef.current.height = newHeight;
+            const newHeight = originalWidth * ratio;
+            const maxHeight = 518;
+            // make sure images doesn't get bigger than 518px
+            if (newHeight > maxHeight) {
+                // set canvas width here based on ratio we determined earlier and 518px height
+                const newWidth = maxHeight / ratio;
+                handleSetCanvasWidth(newWidth);
+                handleSetCanvasHeight(maxHeight);
+                canvasRef.current.width = newWidth;
+                canvasRef.current.height = maxHeight;
+            } else {
+                handleSetCanvasWidth(originalWidth);
+                handleSetCanvasHeight(newHeight);
+                console.log("smaller than 518px. Height: " + newHeight);
+                console.log("smaller than 518px. Width: " + originalWidth);
+
+                canvasRef.current.height = newHeight;
+                canvasRef.current.width = originalWidth;
+            }
 
             // set size of image to match new canvas size
             context.drawImage(
@@ -272,7 +296,7 @@ const ImgCanvas = ({
                 fontSize={fontSize}
                 fontWeight={fontWeight}
                 textColor={textColor}
-                width={window.outerWidth}
+                // width={window.outerWidth}
                 id={id}
             />
         </div>
@@ -355,7 +379,7 @@ const FinalCanvas = ({
                 context,
                 finalTextColor,
                 photographer,
-                "Unsplah"
+                "Unsplash"
             );
         };
         // should this just keep track of a state var e.g. "generated" then run this function? Set true in generate final function?

@@ -53,10 +53,13 @@ footer {
     position: absolute;
     top: 0px;
     left: 0px;
+    margin-left: 50%;
+    transform: translateX(-50%);
 }
 
 #finalCanvas {
-    visibility: hidden;
+    /* visibility: hidden; */
+    display: none;
 }
 
 @media screen and (max-width: 992px) {
