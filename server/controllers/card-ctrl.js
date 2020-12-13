@@ -32,44 +32,6 @@ createCard = (req, res) => {
         });
 };
 
-//maybe remove for MVP
-updateCard = async (req, res) => {
-    const body = req.body;
-
-    if (!body) {
-        return res.status(400).json({
-            success: false,
-            error: "You must provide a body to update",
-        });
-    }
-
-    Card.findOne({ _id: req.params.id }, (err, card) => {
-        if (err) {
-            return res.status(404).json({
-                err,
-                message: "Card not found!",
-            });
-        }
-        card.name = body.name;
-        card.time = body.time;
-        card.rating = body.rating;
-        card.save()
-            .then(() => {
-                return res.status(200).json({
-                    success: true,
-                    id: card._id,
-                    message: "Card updated!",
-                });
-            })
-            .catch((error) => {
-                return res.status(404).json({
-                    error,
-                    message: "Card not updated!",
-                });
-            });
-    });
-};
-
 deleteCard = async (req, res) => {
     await Card.findOneAndDelete({ _id: req.params.id }, (err, card) => {
         if (err) {
@@ -79,7 +41,7 @@ deleteCard = async (req, res) => {
         if (!card) {
             return res
                 .status(404)
-                .json({ success: false, error: `Card not found` });
+                .json({ success: false, error: "Card not found" });
         }
 
         return res.status(200).json({ success: true, data: card });
@@ -95,8 +57,9 @@ getCardById = async (req, res) => {
         if (!card) {
             return res
                 .status(404)
-                .json({ success: false, error: `Card not found` });
+                .json({ success: false, error: "Card not found" });
         }
+
         return res.status(200).json({ success: true, data: card });
     }).catch((err) => console.log(err));
 };
@@ -109,7 +72,7 @@ getCards = async (req, res) => {
         if (!cards.length) {
             return res
                 .status(404)
-                .json({ success: false, error: `Card not found` });
+                .json({ success: false, error: "Cards not found" });
         }
         return res.status(200).json({ success: true, data: cards });
     }).catch((err) => console.log(err));
@@ -117,7 +80,6 @@ getCards = async (req, res) => {
 
 module.exports = {
     createCard,
-    updateCard,
     deleteCard,
     getCards,
     getCardById,
