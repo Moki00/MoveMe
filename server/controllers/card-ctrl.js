@@ -10,7 +10,7 @@ createCard = (req, res) => {
         });
     }
 
-    const card = new Card(body);
+    const card = new Card({ image: body.image });
 
     if (!card) {
         return res.status(400).json({ success: false, error: err });
@@ -44,7 +44,9 @@ deleteCard = async (req, res) => {
                 .json({ success: false, error: "Card not found" });
         }
 
-        return res.status(200).json({ success: true, data: card });
+        return res
+            .status(200)
+            .json({ success: true, message: "Deleted", data: card });
     }).catch((err) => console.log(err));
 };
 
@@ -60,7 +62,9 @@ getCardById = async (req, res) => {
                 .json({ success: false, error: "Card not found" });
         }
 
-        return res.status(200).json({ success: true, data: card });
+        return res
+            .status(200)
+            .json({ success: true, message: "Found card", data: card });
     }).catch((err) => console.log(err));
 };
 
@@ -74,7 +78,9 @@ getCards = async (req, res) => {
                 .status(404)
                 .json({ success: false, error: "Cards not found" });
         }
-        return res.status(200).json({ success: true, data: cards });
+        return res
+            .status(200)
+            .json({ success: true, message: "Found cards", data: cards });
     }).catch((err) => console.log(err));
 };
 
