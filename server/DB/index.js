@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 
 //const MongoAtlasServer = require("../mongo.js");
+var MongoAtlasServer = process.env.MongoKey;
 
 //27017 is Mongo's port
 mongoose
