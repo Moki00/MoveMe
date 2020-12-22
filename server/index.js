@@ -1,4 +1,4 @@
-const MongoAtlasServer = require("./mongo.js");
+// const MongoAtlasServer = require("./mongo.js");
 
 const express = require("express");
 const bodyParser = require("body-parser");
@@ -8,7 +8,7 @@ const db = require("./DB");
 const cardRouter = require("./routes/card-router");
 
 const app = express();
-const apiPort = 3000;
+// const apiPort = 3000;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
@@ -22,8 +22,10 @@ app.get("/", (req, res) => {
 
 app.use("/api", cardRouter);
 
-app.listen(apiPort, () => console.log(`Server running on port ${apiPort}`));
-
+// app.listen(apiPort, () => console.log(`Server running on port ${apiPort}`));
+app.listen(process.env.PORT || 3000, () => {
+    console.log(`app is running smoothly on ${process.env.PORT}`);
+});
 ////
 
 // const client = new MongoClient(uri, { useNewUrlParser: true });
@@ -37,8 +39,8 @@ app.listen(apiPort, () => console.log(`Server running on port ${apiPort}`));
 
 // var MongoClient = require("mongodb").MongoClient;
 // var url = MongoAtlasServer;
-
-// // to insert into our cloud database
+var url = process.env.MongoKey;
+// to insert into our cloud database
 
 // MongoClient.connect(url, function (err, db) {
 //     if (err) throw err;
