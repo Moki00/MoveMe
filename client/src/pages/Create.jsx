@@ -11,8 +11,9 @@ import {
     RightArrowButton,
 } from "../components";
 import background from "../images/blossom.jpg"; // need to get this from state passed from app.js
-import { UNSPLASH_ACCESS_KEY } from "../app/keys";
 import styled from "styled-components";
+// import { UNSPLASH_ACCESS_KEY } from "../app/keys";
+const unsplash = process.env.UNSPLASH_ACCESS_KEY;
 
 const SearchbarContainer = styled.div.attrs({
     className: "d-flex justify-content-between mt-3 mb-3",
@@ -205,7 +206,7 @@ const Create = () => {
                         // mode: "cors",
                         headers: {
                             // "Access-Control-Allow-Origin": "http://localhost:8000",
-                            Authorization: "Client-ID " + UNSPLASH_ACCESS_KEY,
+                            Authorization: "Client-ID " + unsplash,
                         },
                     }
                 );
@@ -229,7 +230,7 @@ const Create = () => {
                     `https://api.unsplash.com/search/photos?query=${searchTerm}&per_page=0`,
                     {
                         headers: {
-                            Authorization: "Client-ID " + UNSPLASH_ACCESS_KEY,
+                            Authorization: "Client-ID " + unsplash,
                         },
                     }
                 );
@@ -251,7 +252,7 @@ const Create = () => {
                     `https://api.unsplash.com/search/photos?query=${searchTerm}&per_page=1&content_filter=high&page=${offset}`,
                     {
                         headers: {
-                            Authorization: "Client-ID " + UNSPLASH_ACCESS_KEY,
+                            Authorization: "Client-ID " + unsplash,
                         },
                     }
                 );
