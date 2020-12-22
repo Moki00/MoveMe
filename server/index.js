@@ -17,7 +17,7 @@ app.use(bodyParser.json());
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
 
 app.get("/", (req, res) => {
-    res.send("this should be working!!");
+    res.send("Hello!!");
 });
 
 app.use("/api", cardRouter);
@@ -37,18 +37,18 @@ app.listen(process.env.PORT || 3000, () => {
 
 // our cloud database
 
-var MongoClient = require("mongodb").MongoClient;
+// var MongoClient = require("mongodb").MongoClient;
 // var url = MongoAtlasServer;
 var url = process.env.MongoKey;
 // to insert into our cloud database
 
-MongoClient.connect(url, function (err, db) {
-    if (err) throw err;
-    var dbo = db.db("firstTry");
-    var myobj = { image_id: "875098200DDD", image: "donkeyKong" };
-    dbo.collection("firstCollection").insertOne(myobj, function (err, res) {
-        if (err) throw err;
-        console.log("1 document inserted");
-        db.close();
-    });
-});
+// MongoClient.connect(url, function (err, db) {
+//     if (err) throw err;
+//     var dbo = db.db("firstTry");
+//     var myobj = { image_id: "875098200DDD", image: "donkeyKong" };
+//     dbo.collection("firstCollection").insertOne(myobj, function (err, res) {
+//         if (err) throw err;
+//         console.log("1 document inserted");
+//         db.close();
+//     });
+// });
