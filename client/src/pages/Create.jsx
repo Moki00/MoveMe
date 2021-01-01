@@ -14,6 +14,7 @@ import background from "../images/blossom.jpg"; // need to get this from state p
 import styled from "styled-components";
 // import { UNSPLASH_ACCESS_KEY } from "../app/keys";
 const unsplash = process.env.UNSPLASH_ACCESS_KEY;
+console.log(unsplash);
 
 const SearchbarContainer = styled.div.attrs({
     className: "d-flex justify-content-between mt-3 mb-3",
@@ -206,6 +207,7 @@ const Create = () => {
                         // mode: "cors",
                         headers: {
                             // "Access-Control-Allow-Origin": "http://localhost:8000",
+                            //UNSPLASH_ACCESS_KEY from Heroku
                             Authorization: "Client-ID " + unsplash,
                         },
                     }
