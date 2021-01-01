@@ -14,7 +14,9 @@ import background from "../images/blossom.jpg"; // need to get this from state p
 import styled from "styled-components";
 // import { UNSPLASH_ACCESS_KEY } from "../app/keys";
 // const unsplash = process.env.UNSPLASH_ACCESS_KEY; //undefined
-const unsplash = { apiKey: process.env.REACT_APP_UNSPLASH_ACCESS_KEY };
+const unsplash = process.env.REACT_APP_UNSPLASH_ACCESS_KEY
+    ? process.env.REACT_APP_UNSPLASH_ACCESS_KEY
+    : require("../app/keys.js").UNSPLASH_ACCESS_KEY;
 
 const SearchbarContainer = styled.div.attrs({
     className: "d-flex justify-content-between mt-3 mb-3",
