@@ -13,8 +13,8 @@ import {
 import background from "../images/blossom.jpg"; // need to get this from state passed from app.js
 import styled from "styled-components";
 // import { UNSPLASH_ACCESS_KEY } from "../app/keys";
-// const unsplash = process.env.UNSPLASH_ACCESS_KEY;
-const unsplash = { apiKey: process.env.UNSPLASH_ACCESS_KEY };
+// const unsplash = process.env.UNSPLASH_ACCESS_KEY; //undefined
+const unsplash = { apiKey: process.env.REACT_APP_UNSPLASH_ACCESS_KEY };
 console.log(unsplash.apiKey); //undefined
 console.log(unsplash); //undefined
 
