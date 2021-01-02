@@ -322,7 +322,7 @@ const Create = () => {
                     // getQuote={getQuote}
                     getQuote={buildPreview}
                 />
-                <SearchBar />
+                {/* <SearchBar /> bring back for Version 2 */}
             </SearchbarContainer>
             <Row>
                 <LeftSide ref={leftSideRef}>
@@ -368,22 +368,22 @@ const Create = () => {
                             className="d-none d-lg-block "
                             id="fontEditWrapper"
                         >
-                            <FontEdit />
+                            {/* <FontEdit /> bring back for Version 2*/}
                         </div>
                         <ImgQuotebtn className="m-1">
                             <div className="d-flex justify-content-between  m-1">
-                                <LeftArrowButton />
+                                {/* <LeftArrowButton /> bring back for Version 2*/}
                                 <div className="h4 m-3 ">Image</div>
                                 <RightArrowButton />
                             </div>
 
                             <div className="d-flex justify-content-between m-1">
-                                <LeftArrowButton />
+                                {/* <LeftArrowButton /> bring back for Version 2 */}
                                 <div className="h4  m-3 ">Quote</div>
                                 <RightArrowButton />
                             </div>
                         </ImgQuotebtn>
-                        <button
+                        {/* <button
                             type="button"
                             className="btn yellow-background red-text mt-3 "
                             data-toggle="modal"
@@ -391,6 +391,15 @@ const Create = () => {
                             style={{ left: "50%", width: "60%" }}
                         >
                             SHARE
+                        </button> bring back for Version 2 */}
+                        <button
+                            type="button"
+                            className="btn yellow-background red-text mt-3 "
+                            data-toggle="modal"
+                            data-target="#"
+                            style={{ left: "50%", width: "60%" }}
+                        >
+                            Save(disabled)
                         </button>
                         <ShareModal
                             searchTerm={searchTerm}
@@ -398,7 +407,7 @@ const Create = () => {
                             finalUrl={finalUrl}
                         />
                     </Controls>
-                    <Editbtn />
+                    {/* <Editbtn /> bring back in version 2 */}
                 </RightSide>
             </Row>
         </PageWrapper>
