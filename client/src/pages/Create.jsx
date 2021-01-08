@@ -12,8 +12,7 @@ import {
 } from "../components";
 import background from "../images/blossom.jpg"; // need to get this from state passed from app.js
 import styled from "styled-components";
-// import { UNSPLASH_ACCESS_KEY } from "../app/keys";
-// const unsplash = process.env.UNSPLASH_ACCESS_KEY; //undefined
+
 const unsplash = process.env.REACT_APP_UNSPLASH_ACCESS_KEY
     ? process.env.REACT_APP_UNSPLASH_ACCESS_KEY
     : require("../app/keys.js").UNSPLASH_ACCESS_KEY;
@@ -54,6 +53,12 @@ const ImgQuotebtn = styled.div.attrs({
     text-align: -webkit-center;
 `;
 
+// const btnDisplay = document.querySelector("#btnDisplay");
+// const getURL = () => {
+//     const dataURI = FinalCanvas.toDataURL();
+//     console.log(dataURI);
+// };
+
 const Create = () => {
     const [text, setText] = useState("");
     const [font, setFont] = useState("Ariel");
@@ -78,7 +83,8 @@ const Create = () => {
     const [finalMargin, setFinalMargin] = useState(0);
     const [finalBgColor, setFinalBgColor] = useState("#ffffff");
     const [finalBgOpacity, setFinalBgOpacity] = useState(0.2);
-    const [finalUrl, setFinalUrl] = useState("robbmdev.com");
+    const [finalUrl, setFinalUrl] = useState("thisNeedsToBeTheImageToSave");
+    const [finalDataURI, setFinalDataURI] = useState("");
 
     //Quote Api
     const [random, setRandom] = useState(true); //set to true for production!!
@@ -91,6 +97,8 @@ const Create = () => {
 
     const leftSideRef = useRef(null);
 
+    //Generate Final Canvas
+
     const generateFinalCanvas = () => {
         setFinalImgUrl(imgUrl);
         setFinalText(text);
@@ -101,6 +109,9 @@ const Create = () => {
         setFinalMargin(margin);
         setFinalBgColor(bgColor);
         setFinalBgOpacity(bgOpacity);
+        setFinalCanvasHeight(canvasHeight);
+        setFinalCanvasWidth(canvasWidth);
+        console.log(finalDataURI);
         // save to db then
         // setFinalUrl("url/for/view/page");
     };
@@ -347,6 +358,8 @@ const Create = () => {
                         />
                         <FinalImgArea
                             finalImgUrl={finalImgUrl}
+                            finalCanvasHeight={finalCanvasHeight}
+                            finalCanvasWidth={finalCanvasWidth}
                             finalText={finalText}
                             finalFont={finalFont}
                             finalFontSize={finalFontSize}
@@ -358,6 +371,7 @@ const Create = () => {
                             finalBgOpacity={finalBgOpacity}
                             generateFinalCanvas={generateFinalCanvas}
                             photographer={photographer}
+                            setFinalDataURI={setFinalDataURI}
                         />
                     </ImageWrapper>
                     {/* open modal button */}
@@ -394,12 +408,14 @@ const Create = () => {
                         </button> bring back for Version 2 */}
                         <button
                             type="button"
+                            id="btnDisplay"
                             className="btn yellow-background red-text mt-3 "
                             data-toggle="modal"
                             data-target="#"
                             style={{ left: "50%", width: "60%" }}
+                            onClick={generateFinalCanvas}
                         >
-                            Save(disabled)
+                            Display(x)
                         </button>
                         <ShareModal
                             searchTerm={searchTerm}

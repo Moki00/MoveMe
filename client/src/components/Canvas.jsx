@@ -305,6 +305,8 @@ const ImgCanvas = ({
 
 const FinalCanvas = ({
     finalImgUrl,
+    finalCanvasHeight,
+    finalCanvasWidth,
     finalText,
     finalFont,
     finalFontSize,
@@ -315,6 +317,7 @@ const FinalCanvas = ({
     finalBgOpacity,
     generateFinalCanvas,
     photographer,
+    setFinalDataURI,
     id,
 }) => {
     const canvasRef = useRef(null);
@@ -329,14 +332,18 @@ const FinalCanvas = ({
             canvasRef.current.width,
             canvasRef.current.height
         );
+
         let base_image = new Image();
         base_image.src = finalImgUrl;
 
         base_image.onload = function () {
             // set height of canvas to ratio determined by base_image width/height ratio
-            const ratio = base_image.height / base_image.width;
+            // const ratio = base_image.height / base_image.width;
 
-            canvasRef.current.height = canvasRef.current.width * ratio;
+            // canvasRef.current.height = canvasRef.current.width * ratio;
+
+            canvasRef.current.width = finalCanvasWidth;
+            canvasRef.current.height = finalCanvasHeight;
 
             // set size of image to match new canvas size
             context.drawImage(
@@ -381,6 +388,10 @@ const FinalCanvas = ({
                 photographer,
                 "Unsplash"
             );
+            // display final image
+            setFinalDataURI((URI) => {
+                canvasRef.current.toDataURL();
+            });
         };
         // should this just keep track of a state var e.g. "generated" then run this function? Set true in generate final function?
     }, [
