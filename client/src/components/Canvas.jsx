@@ -335,6 +335,7 @@ const FinalCanvas = ({
 
         let base_image = new Image();
         base_image.src = finalImgUrl;
+        base_image.crossOrigin = "Anonymous";
 
         base_image.onload = function () {
             // set height of canvas to ratio determined by base_image width/height ratio
