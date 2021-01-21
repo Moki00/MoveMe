@@ -71,7 +71,7 @@ const Create = () => {
     const [bgColor, setBgColor] = useState("#444444");
     const [bgOpacity, setBgOpacity] = useState(0.5);
 
-    // final image state settings
+    // final image state settings (value, function)
     const [finalImgUrl, setFinalImgUrl] = useState("");
     const [finalText, setFinalText] = useState("");
     const [finalFont, setFinalFont] = useState("Ariel");
@@ -323,6 +323,11 @@ const Create = () => {
         getQuote();
     };
 
+    const handleGenerateFinalCanvas = () => {
+        console.log("making the final image");
+        generateFinalCanvas();
+    };
+
     return (
         <PageWrapper>
             <SearchbarContainer>
@@ -413,7 +418,7 @@ const Create = () => {
                             data-toggle="modal"
                             data-target="#"
                             style={{ left: "50%", width: "60%" }}
-                            onClick={generateFinalCanvas}
+                            onClick={handleGenerateFinalCanvas}
                         >
                             Display(x)
                         </button>

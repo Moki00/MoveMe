@@ -438,10 +438,12 @@ const FinalCanvas = ({
         canvasRef.current.style.width = styleWidth;
     }, []);
 
-    const handleGenerateFinalCanvas = () => {
-        console.log("making the final image");
-        generateFinalCanvas();
-    };
+    //moved to Create.jsx
+
+    // const handleGenerateFinalCanvas = () => {
+    //     console.log("making the final image");
+    //     generateFinalCanvas();
+    // };
 
     return (
         <div>
@@ -454,7 +456,7 @@ const FinalCanvas = ({
                 // fontWeight={fontWeight}
                 // textColor={textColor}
                 width={window.outerWidth}
-                onClick={handleGenerateFinalCanvas}
+                // onClick={handleGenerateFinalCanvas}
                 id={id}
             />
         </div>
