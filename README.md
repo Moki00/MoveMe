@@ -17,8 +17,8 @@ MoveMe is **_exactly_** that.
 -   Share your new poster on all popular social media platforms
 -   Feel amazing
 
-### Check out the live site: TBC
+### Version
 
-_version 1.0 currently under development_
+_version 1.0_
 
-By moki929 (Morgan King), dancingCamel (Robert Morgan) and Ram
+By Moki00 (Morgan King), dancingCamel (Robert Morgan) and Ram
